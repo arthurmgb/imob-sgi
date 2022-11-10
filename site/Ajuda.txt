@@ -1,0 +1,18 @@
+Instale o banco de dados do arquivo Imob.sql
+altera configure cms/config.php
+
+
+
+
+Para acessar a administração do site 
+
+http://meusite.com.br/cms
+
+usuario 
+Usuário e senha é : admin
+
+
+Note para hospedagem e suporte:
+http://mdhospeda.com 
+Eu trabalho por lá e garanto o melhor suporte para você!
+Paiano

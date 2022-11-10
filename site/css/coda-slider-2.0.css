@@ -1,0 +1,58 @@
+
+	.coda-slider-wrapper { padding: 20px 0 }
+	.coda-slider { 
+		background-image:url(../images/bg_lancamento.gif);
+		background-repeat:no-repeat;
+		background-position:top;	
+	}
+	
+	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
+	.coda-slider-no-js .coda-slider { height: 200px; overflow: auto !important; padding-right: 20px }
+	
+	/* Change the width of the entire slider (without dynamic arrows) */
+	.coda-slider, .coda-slider .panel { width: 680px } 
+	
+	/* Change margin and width of the slider (with dynamic arrows) */
+	.coda-slider-wrapper.arrows .coda-slider, .coda-slider-wrapper.arrows .coda-slider .panel { width: 680px }
+
+	
+	/* Tab nav */
+	.coda-nav ul li a.current { 
+		background-image:url(../images/btn_lancamento_o.png);
+		background-repeat:no-repeat;
+		background-position:center;
+		color:#6A0000;
+	}
+	
+	/* Panel padding */
+	.coda-slider .panel-wrapper { padding: 20px }
+	
+	/* Preloader */
+	.coda-slider p.loading { padding: 20px; text-align: center }
+
+/* Don't change anything below here unless you know what you're doing */
+
+	/* Tabbed nav */
+	.coda-nav ul { clear: both; display: block; margin: auto; overflow: hidden }
+	.coda-nav ul li { display: inline }
+	.coda-nav ul li a { 
+		float: left; 
+		background-image:url(../images/btn_lancamento.png);
+		background-repeat:no-repeat;
+		background-position:center;
+		color: #000;  
+		text-decoration: none;
+		width:110px;
+		height:21px;
+		text-align:center;
+		padding-top:10px;
+	}
+	
+	/* Miscellaneous */
+	.coda-slider-wrapper { clear: both; overflow: auto }
+	.coda-slider { float: left; overflow: hidden; position: relative }
+	.coda-slider .panel { display: block; float: left }
+	.coda-slider .panel-container { position: relative }
+	.coda-nav-left, .coda-nav-right { float: left }
+	.coda-nav-left a, .coda-nav-right a { display: block; text-align: center; text-decoration: none }
+	

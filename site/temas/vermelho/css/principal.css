@@ -1,0 +1,1432 @@
+@charset "utf-8";
+/* CSS Document 
+Sistema HomeDevice
+Sistema desenvolvido por WEBDEVICE - (Fernando Blomer)
+Todos os direitos reservados
+
+Tema Vermelho - color: #DE2528
+*/
+
+body {
+	background: #F6F6F6 top no-repeat;
+	margin: 0;
+	padding: 0;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 12px;
+}
+
+#geral {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.topo{
+	width:1000px;
+	height:250px;
+	background:url(../images/topo.png) 50% 0%  no-repeat;
+	position: absolute;
+	top:0;
+	z-index: 5;
+}
+
+.logo{	
+	margin-top:10px;
+	margin-left:20px;
+	width:260px;
+	height:100px;
+	float:left;
+}
+
+#bg{
+	background:url(../images/topo_site.png) 50% 0%  no-repeat;
+	height:1750px;	
+}
+
+#bg_empresa{
+	background:url(../images/topo_site.png) 50% 0%  no-repeat;
+	height:1100px;	
+}
+
+#bg_descicao{
+	background:url(../images/topo_site.png) 50% 0%  no-repeat;
+	height: 2250px;;	
+}
+
+
+/* CSS Reset */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {  
+	margin:0; 
+	padding:0; 
+} 
+
+.central_atendimento{
+	width: 607px;
+	height: 80px;
+	background-image:url(../images/central_atendimento.png);
+	background-repeat:no-repeat;
+	background-position:top;
+	float:right;
+	margin-right: 30px;
+	margin-top: 30px;
+}
+
+.central_atendimento_titulo{
+	width: 600px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;	
+}
+
+.central_atendimento_subtitulo{
+	height: 20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+	font-weight:bold;
+	margin-left: 10px;	
+	margin-top: 20px;
+}
+
+.central_atendimento_telefone{
+	height: 40px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:25px;
+	color:#DE2528;
+	font-weight:bold;	
+	margin-left: 5px;	
+	margin-top: 13px;
+	margin-right: 5px;
+}
+
+.central_atendimento_chat{
+	width: 115px;
+	height: 30px;
+	float:left;
+	margin-left: 15px;	
+	margin-top: 14px;
+}
+
+.central_atendimento_email{
+	width: 115px;
+	height: 30px;
+	float:left;
+	margin-left: 15px;	
+	margin-top: 14px;
+}
+
+.central_atendimento_fone{
+	width: 115px;
+	height: 30px;
+	float:left;
+	margin-left: 15px;	
+	margin-top: 14px;
+}
+
+.menu_ul{
+
+	width:900px;
+	height:42px;
+	float:left;
+	display:inline;
+	margin-top:50px;
+	margin-left:15px;
+}
+
+.menu_clas{
+
+	float:left;
+	display:inline;
+	list-style:none;
+	padding-left:22px;
+	padding-right:22px;
+	padding-top:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menu_clas a { color:#DE2528; text-decoration:none;}
+
+
+.menu_ul ul{
+
+	position:absolute;
+	z-index:4;
+}
+
+/* Represents the background of the highlighted menu-item. */
+.lavaLamp {
+    position: relative;
+}
+
+.lavaLamp li.back {
+    background:url(../images/fundo-menu.png)  no-repeat right -44px;
+    height: 44px;
+    z-index: -1;
+    top: -10px;
+    position: absolute;
+	list-style-type:none;
+}
+
+.lavaLamp li.back .left {
+    background:url(../images/fundo-menu.png) no-repeat top left;
+    height: 44px;
+    margin-right: 15px;
+}
+
+.lavaLamp li a:hover{
+    color: #666666 !important;
+}
+
+.lavaLamp li:hover{
+    color: #666666 !important;
+}
+
+.lavaLamp li.current a{
+    color: #666666 !important;
+}
+
+#conteudo{
+	width:1000px;
+	height:1550px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	top: 200px;
+	background-color:#FFF;
+}
+
+#conteudo_empresa{
+	width:1000px;
+	height:900px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	top: 200px;
+	background-color:#FFF;
+}
+
+#conteudo_descricao{
+	width:1000px;
+	height:2050px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	top: 200px;
+	background-color:#FFF;
+}
+
+.banner{	
+	margin-top: 0px;
+	width: 830px;
+	height: 330px;
+	float:left;
+}
+
+/* Inicio Banner */
+	img{border:none;}
+	
+	#slider ul, #slider li,
+	#slider2 ul, #slider2 li{
+		margin:0;
+		padding:0;
+		list-style:none; 
+		}
+
+	#slider li, #slider2 li{ 
+		width:830px;
+		height:330px;
+		overflow:hidden; 
+		}			
+	/* numeric controls */	
+
+	ol#controls{
+		margin:-30px 0;
+		padding:0;
+		height:24px;
+		margin-left: 5px;	
+		}
+	ol#controls li{
+		margin:0 5px 0 0;  
+		float:left;
+		list-style:none;
+		height:24px;
+		line-height:24px;
+		}
+	ol#controls li a{
+		float:left;
+		height:24px;
+		line-height:24px;
+		color:#555;
+		padding:0 10px;
+		text-decoration:none;
+		background:url(../images/silde-nav.png) no-repeat 50% 0;
+		}
+	ol#controls li.current a{
+		color:#fff;
+		background:url(../images/silde-nav2.png) no-repeat 50% 0;
+		}
+	ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
+	
+/* // Final Banner*/
+
+.banner_lateral{	
+	margin-top: 0px;
+	width: 170px;
+	height: 330px;
+	float:left;
+	background-image:url(../images/banner_direito.png);
+	background-repeat:no-repeat;
+	margin-left: 0px;
+}
+
+.banner_lateral_financiamento{	
+	margin-top: 15px;
+	width: 140px;
+	height: 155px;
+	margin-left: 15px;	
+	float:left;
+}
+
+.banner_lateral_financiamento a{
+	border:none;
+}
+
+.banner_lateral_indique{	
+	margin-top: 10px;
+	width: 140px;
+	height: 65px;
+	margin-left: 15px;	
+	float:left;
+}
+
+.banner_lateral_indique a{
+	border:none;
+}
+
+.banner_lateral_empresa{	
+	margin-top: 13px;
+	width: 140px;
+	height: 65px;
+	margin-left: 15px;	
+	float:left;
+}
+
+.banner_lateral_empresa a{
+	border:none;
+}
+
+.busca{	
+	margin-top: 5px;
+	width: 1000px;
+	height: 92px;
+	float:left;
+	background-image:url(../images/fundo_busca.jpg);
+	background-repeat:no-repeat;
+	margin-left: 0px;
+}
+.busca_empresa{	
+	margin-top: 25px;
+	width: 1000px;
+	height: 92px;
+	float:left;
+	background-image:url(../images/fundo_busca.jpg);
+	background-repeat:no-repeat;
+	margin-left: 0px;
+}
+
+.busca_titulo{	
+	margin-top: 5px;
+	margin-left: 60px;
+	width: 800px;
+	height: 20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+}
+
+.form_busca_imovel{
+	margin-top: 5px;
+	margin-left: 45px;
+	width: 940px;
+	height: 55px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	font-weight:bold;
+	float:left;
+}
+
+.item_form1{
+	width: 120px;
+	height: 50px;
+	float:left;
+	margin-left: 10px;
+}
+
+.item_form2{
+	width: 150px;
+	height: 50px;
+	float:left;
+	margin-left: 10px;
+}
+
+.item_form3{
+	width: 170px;
+	height: 50px;
+	float:left;
+	margin-left: 10px;
+}
+
+.btn_pesquisa{
+	width: 63px;
+	height: 30px;
+	float:left;
+	margin-left: 12px;
+	margin-top:15px;	
+}
+
+.texto_imput_pesquisar{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	margin-left:5px;
+	width: 100px;	
+}
+
+.carregando{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#666;
+	margin-left:5px;
+	width: 100px;	
+}
+
+.form_select_pesquisa1{	
+	width:100px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #DE2528;
+	margin-left:15px;
+	margin-bottom:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.form_select_pesquisa2{	
+	width:130px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #DE2528;
+	margin-left:15px;
+	margin-bottom:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.form_select_pesquisa3{	
+	width:150px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #DE2528;
+	margin-left:15px;
+	margin-bottom:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#666;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.destaque{
+	width: 1000px;
+	height: 240px;
+	float:left;
+}
+
+.destaque_titulo{
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 800px;
+	height: 20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+}
+
+.item_destaque{
+	width: 180px;
+    height: 220px;
+	position:relative;
+	z-index: 1;
+}
+
+.faixa{
+	position:absolute;
+	left:74px;
+	top:9px;
+	background-image:url(../images/iconeFaixaLancamento.png);
+	background-repeat:no-repeat;
+	z-index: 6;
+	width: 89px;
+    height: 90px;
+}
+
+<!-- destaques -->
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width: 880px;
+    padding: 20px 60px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  880px;
+    height: 220px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: 180px;
+    height: 220px;
+	text-align:center;
+	background-image:url(../images/fundo_destaque.png);
+	background-repeat:no-repeat;
+	background-position:top;
+}
+
+.jcarousel-skin-tango .jcarousel-item img{
+	margin-top: 24px;	
+}
+
+.jcarousel-skin-tango .jcarousel-item a{
+    text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	
+}
+
+.jcarousel-skin-tango .jcarousel-item img {
+	border: 0;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+    margin-right: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+    top: 110px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/next-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url(../images/next-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 110px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/prev-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    left: auto;
+    right: 5px;
+    background-image: url(../images/next-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+<!-- Destaques -->
+
+
+.jcarousel-skin-tango-descricao .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-container-horizontal {
+    width: 770px;
+    padding: 20px 60px;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-clip-horizontal {
+    width:  770px;
+    height: 140px;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item {
+    width: 165px;
+    height: 140px;
+	text-align:center;
+	background-image:url(../images/fundo_foto.png);
+	background-repeat:no-repeat;
+	background-position:top;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item img{
+	margin-top: 22px;
+	margin-left: -3px;	
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item a{
+    text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;	
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item img {
+	border: 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item-horizontal {
+	margin-left: 0;
+    margin-right: 5px;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 5px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango-descricao .jcarousel-next-horizontal {
+    position: absolute;
+    top: 70px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/next-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url(../images/next-horizontal.png);
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango-descricao .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango-descricao .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango-descricao .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango-descricao .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 70px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/prev-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    left: auto;
+    right: 5px;
+    background-image: url(../images/next-horizontal.png);
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-prev-horizontal:hover, 
+.jcarousel-skin-tango-descricao .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango-descricao .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango-descricao .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango-descricao .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango-descricao .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+
+.mais_imoveis{
+	width: 1000px;
+	height: 800px;
+	float:left;
+	margin-top: 10px;
+}
+
+.mais_imoveis_titulo{
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 800px;
+	height: 20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;	
+}
+
+.mais_imoveis_itens{
+	width: 950px;	
+	float:left;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+.item_maisimoveis{
+	width: 180px;
+	height: 220px;
+	background-image:url(../images/fundo_destaque.png);
+	background-repeat:no-repeat;
+	float:left;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-right: 20px;
+	text-align:center;
+	position:relative;
+	z-index: 1;
+}
+
+.item_maisimoveis img{
+	float:left;
+	margin-top: 24px;
+	margin-left: 30px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.item_maisimoveis a{
+	text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+}
+
+.item_destaque{
+	width: 180px;
+    height: 220px;
+	position:relative;
+	z-index: 1;
+}
+
+.mais_imoveis_saibamais{
+	margin-top: 30px;
+	margin-right: 50px;
+	width: 900px;
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#DE2528;
+	font-weight:bold;
+	float:right;
+	text-align:right;
+}
+
+.mais_imoveis_saibamais a{
+	text-decoration:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#DE2528;
+}
+
+.rodape{
+	background:url(../images/fundo_rodape.png) 50% 0%  no-repeat;
+}
+
+.rodape_conteudo{
+	width: 1000px;
+	margin: 0 auto;	
+	height:100px;
+}
+
+.rodape_creditos{
+	width: 100px;
+	height:50px;
+	float:right;
+	margin-top: 70px;
+	margin-right: 30px;
+}
+
+.rodape_creditos img{
+	border: 0;
+}
+
+.rodape_redessociais{
+	width: 200px;
+	height:50px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 50px;
+}
+
+.rodape_redessociais_imagens{
+	width: 200px;
+	height:50px;
+	margin-top: 55px;
+	float:left;
+	margin-left: 20px;
+}
+
+.rodape_redessociais_imagens img{
+	width: 30px;
+	height:30px;
+	margin-left: 10px;
+}
+
+.rodape_redessociais_imagens a{
+	border:none;
+}
+
+.rodape_dados{
+	width: 400px;
+	height:50px;
+	margin-top: 30px;
+	float:left;
+}
+
+.rodape_dados_titulo{
+	width: 300px;
+	height:20px;
+	margin-top: 30px;
+	float:left;
+	margin-left: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	font-weight:bold;
+}
+
+.rodape_dados_texto{
+	width: 400px;
+	height:20px;
+	float:left;
+	margin-left: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	font-weight:bold;
+}
+
+
+.pagina_titulo{
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 800px;
+	height: 20px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+}
+
+.pagina_texto{
+	width: 800px;
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+	float:left;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.pagina_chat{
+	width: 1000px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+	float:left;
+	margin-top: 30px;
+	text-align:center;
+}
+
+.navegacao{
+	width: 1000px;
+	height: 20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+	float:left;
+	margin-top: 30px;
+	text-align:center;
+}
+
+.navegacao a{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666666;
+	text-align:center;
+	text-decoration:none;
+}
+
+.mais_imoveis_pagina{
+	width: 950px;
+	height: 800px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+.mais_imoveis_descricao{
+	width: 950px;
+	height: 1300px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+#contato{
+	width:500px;
+	height:440px;
+	float:left;
+	margin-left:5px;
+}
+
+#contato_endereco{
+	width:300px;
+	height:440px;
+	float:right;
+	margin-left:5px;
+}
+
+#contato_venda{
+	width:550px;
+	height:740px;
+	float:left;
+	margin-left:5px;
+}
+
+.titulo_contato{
+	
+	width:548px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	float:left;
+	padding-left:10px;
+	margin-top:10px;
+	font-weight:bold;
+}
+
+.label_contato{
+	width:548px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	text-align:left;
+	padding-left:10px;
+	margin-top:18px;
+}
+
+.contato_form_cont{
+	
+	width:530px;
+	height:370px;
+	float:left;
+	margin-left:15px;
+}
+
+.contato_form_cont_venda{
+	
+	width:530px;
+	height:650px;
+	float:left;
+	margin-left:15px;
+}
+
+.form_cont{
+	
+	width:423px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #e5e5e5;
+	margin-top:13px;
+	margin-left:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#7f7f7f;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.labelcontato{
+
+	width:90px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	font-weight:bold;
+	text-align:right;
+	margin-top:18px;
+}
+
+.form_cont_text{
+	
+	width:423px;
+	height:123px;
+	float:left;
+	border: solid 1px #e5e5e5;
+	margin-top:13px;
+	margin-left:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#7f7f7f;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+	padding-top:10px;
+}
+
+.btn_enviar{
+	float:left;
+	margin-left:480px;
+	margin-top:10px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	font-weight:bold;
+}
+
+.fone{
+	float:left;
+	width:600px
+	margin-left:20px;
+
+}
+
+.fone_conteudo{
+	width:600px;
+	height:158px;
+	background:url(../images/bg_contato_01.png) no-repeat;
+}
+
+.fone_pereira{
+	float:left;
+	width:130px
+	margin-left:20px;
+}
+
+.titulo_01{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	width:130px;
+	text-align:left;
+	padding:0 25px 0;
+	font-weight:bold
+}
+
+
+.nome_01{
+	width:100px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+.fone_01{
+	width:120px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+.fone_rogerio{
+	float:left;
+	width:130px
+	margin-left:20px;
+}
+
+.titulo_02{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	width:130px;
+	text-align:left;
+	padding:0 25px 0;
+	font-weight:bold
+}
+
+
+.nome_02{
+	width:100px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+.fone_02{
+	width:120px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+
+.fone_rodrigo{
+	float:left;
+	width:130px
+	margin-left:20px;
+}
+
+.titulo_03{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	width:130px;
+	text-align:left;
+	padding:0 25px 0;
+	font-weight:bold
+}
+
+
+.nome_03{
+	width:100px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+.fone_03{
+	width:120px;
+	text-align:left;
+	font-size:16px;
+	color:#666666;
+	padding:0 25px 0;
+}
+
+
+.mapa_geral{
+	float:left;
+	width:600px;
+	margin-top:15px;
+}
+
+.mapa_lages{
+	float:left;
+	width:290px;
+	height:220px;
+	background:url(../images/fundo_mapa.png) no-repeat;
+	margin-left:10px;
+}
+
+.mapa_vacaria{
+	float:right;
+	width:290px;
+	height:220px;
+	background:url(../images/fundo_mapa.png) no-repeat;
+	margin-left:10px;
+}
+
+.meio_mapa{
+	width:270px;
+	height:200px;
+	background:url(../images/mamteste.png) no-repeat;
+	margin:10px 10px ;
+}
+
+.simulador{
+	width:200px;
+	height:60px;
+	float:left;	
+	margin-left:10px;
+}
+
+.simulador a{
+	border:none;	
+}
+
+.descricao_imovel{
+	width:900px;
+	height:1550px;
+	margin: 0 auto;
+}
+
+.titulo_imovel_descricao{
+	width: 1000px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+}
+
+.foto_imovel_descricao{
+	width: 140px;
+	height: 140px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	float:left;
+}
+
+.texto_imovel_descricao{
+	width: 730px;
+	min-height: 140px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.subtitulo_imovel_descricao{
+	width: 1000px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+	margin-top: 20px;
+}
+
+.subtitulo_imovel_descricao2{
+	width: 1000px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+	margin-top: 40px;
+}
+
+.subtitulo_imovel_descricao3{
+	width: 1000px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+	margin-top: 10px;
+}
+
+.subtitulo_imovel_descricao4{
+	width: 450px;
+	height: 22px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#DE2528;
+	font-weight:bold;
+	float:left;
+	margin-top: 20px;
+}
+
+.item_imovel_descricao{
+	width: 210px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.esquerda_imovel_descricao{
+	width: 450px;
+	height: 340px;
+	float:left;
+	margin-bottom:10px;
+}
+
+.direita_imovel_descricao{
+	width: 450px;
+	height: 340px;
+	float:left;
+	margin-bottom:10px;
+}
+
+.item_imovel_video{
+	width: 420px;
+	height: 315px;
+	float:left;	
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.texto_imovel_endereco{
+	width: 900px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.mapagoogle{
+	width: 900px;
+	height: 300px;
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+
+.fotos_imovel_descricao{
+	width: 900px;
+	float:left;
+	margin-bottom:10px;
+}
+
+.item_imovel_barra{
+	width: 270px;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	float:left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left:10px;
+}

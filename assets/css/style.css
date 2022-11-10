@@ -1,0 +1,103 @@
+a{color: #000; text-decoration: none;}
+a:hover{color:#000;  text-decoration: none;}
+.nav-link {color: #999  !important; font-size: 20px !important; }
+.nav-link:hover {color: #FFF  !important; }
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  margin-top: 76px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.portfolio-item {
+  margin-bottom: 25px;
+}
+.mark{
+  padding: 10px 22px;
+  left: 0;
+  top: 0; 
+  z-index: 99;
+  position: absolute;
+  color: #FFF;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.mark-1{
+  padding: 10px 22px;
+  right: 0;
+  top: 0; 
+  z-index: 99;
+  position: absolute;
+  color: #FFF;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.nav-link{
+  font-size: 17px;
+}
+.call-action{
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+/*FOOTER*/
+
+footer .section-title {
+    text-align: center;
+    color: #212529;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+footer {
+    background: #212529 !important;
+     padding: 60px 0;
+}
+footer h5{
+  padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color:#ffffff;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+footer ul.quick-links li{
+  padding: 3px 0;
+  -webkit-transition: .5s all ease;
+  -moz-transition: .5s all ease;
+  transition: .5s all ease;
+}
+footer ul.quick-links li:hover{
+  padding: 3px 0;
+  margin-left:5px;
+  font-weight:700;
+}
+footer ul.quick-links li a i{
+  margin-right: 5px;
+}
+footer ul.quick-links li:hover a i {
+    font-weight: 700;
+
+}
+
+  @media (max-width:767px){
+    footer h5 {
+      padding-left: 0;
+      border-left: transparent;
+      padding-bottom: 0px;
+      margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}

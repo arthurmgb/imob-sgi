@@ -1,0 +1,312 @@
+@charset "utf-8";
+/* CSS Document */
+
+#conteudo{
+	width:1000px;
+	height: 1044px;
+	margin: 0 auto;
+	background:url(../images/bg_cont_topo.png) no-repeat;
+	background-position: top;
+}
+
+.banner{	
+	float: left;
+	width: 925px;
+	height: 360px;
+	margin-top: 30px;
+	margin-left: 37px;
+	margin-right: 37px;
+}
+
+#principal{
+	float: left;
+	width: 1000px;
+	margin-top: 10px;
+	background:url(../images/bg_cont_meio.png);
+	background-repeat: repeat-y;
+	background-position: center;
+}
+
+.central_atendimento{	
+	float: left;
+	width: 925px;
+	height: 130px;
+	margin-top: 5px;
+	margin-left: 36px;
+	margin-right: 37px;
+	background:url(../images/bg_centralatendimento.jpg) no-repeat;
+}
+
+.central_atendimento_esq{	
+	float: left;
+	width: 430px;
+	height: 110px;
+	margin: 5px 5px 5px 5px;
+}
+
+.central_atendimento_esq_esq{
+	float: left;
+	width: 225px;
+	height: 110px;
+	background:url(../images/mulher_atendimento.png) no-repeat;
+	background-position: right;
+}
+
+.central_atendimento_titulo{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#6A0000;
+	padding-top:0px;
+	padding-left:10px;
+	margin-bottom:5px;
+	list-style:none;
+	font-weight:bold;	
+}
+
+.central_atendimento_fone{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:#D78110;
+	padding-left:20px;
+	margin-bottom:5px;
+	list-style:none;
+	font-weight:bold;
+}
+
+.central_atendimento_texto{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	padding-top:5px;
+	padding-left:5px;
+	width: 190px;
+}
+
+.central_atendimento_texto2{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	padding-top:5px;
+	padding-left:5px;
+	width: 600px;
+}
+
+
+.central_atendimento_texto2{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	padding-left:20px;
+	width: 190px;
+}
+
+.central_atendimento_saibamais{
+	float: right;
+ 	margin-right:25px;
+	margin-top: 0px;
+}
+
+.central_atendimento_esq_dir{
+	float: left;
+	width: 194px;
+	height: 110px;
+}
+
+.sepera_atendimento{
+	float:left;
+	width: 2px;
+	height: 95px;
+	margin-top:10px;
+}
+
+.form_imput_contato_nome{
+	
+	width:170px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #6C0603;
+	margin-top:5px;
+	margin-left:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#6C0603;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.form_imput_contato_fone{	
+	width:120px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #6C0603;
+	margin-top:5px;
+	margin-left:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#6C0603;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.btn_ok{
+
+	float:left;
+	margin-top:7px;
+	margin-left:4px;
+}
+
+
+
+.central_atendimento_cen{	
+	float: left;
+	width: 230px;
+	height: 110px;
+	margin: 5px 5px 5px 5px;
+	background:url(../images/relogio_atendimento.png) no-repeat;
+	background-position: right;
+}
+
+.central_atendimento_dir{	
+	float: left;
+	width: 230px;
+	height: 110px;
+	margin: 5px 5px 5px 5px;
+	background:url(../images/mapa_vendaseuterreno.png) no-repeat;
+	background-position: right;
+}
+
+
+.esquerda{
+	float: left;
+	width: 700px;
+	margin-top: 5px;
+	margin-left: 37px;
+}
+
+.lancamento{
+	width:700px;
+	height:	295px;
+
+}
+
+.lancamento_titulo{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#6A0000;
+	padding-top:10px;
+	padding-left:10px;
+	margin-bottom:5px;
+	list-style:none;
+	font-weight:bold;	
+}
+
+.lancamento_saibamais{
+	float:right;
+	margin-right:20px;
+
+}
+
+.direita{
+	float: left;
+	width: 220px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.busca_imovel{
+	width: 209px;
+	height: 490px;
+	border: solid 1px #6A0000;
+	margin-top: 10px;
+	background-color:#F8F8F8;
+}
+
+.titulo_busca_imovel{	
+	padding-top:10px;
+	padding-left:10px;
+	list-style:none;
+	
+}
+
+.form_busca_imovel{
+	margin-top:10px;
+	margin-left:5px;
+}
+
+.texto_imput_pesquisar{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	margin-left:5px;
+	width: 200px;
+	font-weight:bold;	
+}
+
+
+.form_select_pesquisa{
+	
+	width:190px;
+	padding-top:5px;
+	padding-bottom:5px;
+	float:left;
+	border: solid 1px #6C0603;
+	margin-left:5px;
+	margin-bottom:15px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#6C0603;
+	padding-left:5px;
+	-moz-border-radius:5px; 
+    -webkit-border:5px; 
+    -khtml-border-radius:5px; 
+    border-radius:5px; 
+}
+
+.btn_pesquisa{
+	float:right;
+	margin-right:10px;
+	margin-top: 20px;
+		
+}
+
+.venda_imovel{
+	background:url(../images/mapa_vendaseuterreno.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	width: 209px;
+	height: 200px;
+	border: solid 1px #6A0000;
+	margin-top: 10px;
+	background-color:#F8F8F8;	
+}
+
+.titulo_venda_imovel{	
+	padding-top:10px;
+	padding-left:10px;
+	list-style:none;
+	
+}
+
+.texto_venda_imovel{	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;
+	margin-left:5px;
+	width: 160px;
+	margin-top:10px;
+}
+
+.btn_venda_imovel_saibamais{
+	float:right;
+	margin-right:10px;
+	margin-top:10px;
+	
+}

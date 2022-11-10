@@ -1,0 +1,2 @@
+RewriteEngine On 
+RewriteRule ^sitemap\.xml$ gera_xml.php [L] 

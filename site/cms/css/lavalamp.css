@@ -1,0 +1,30 @@
+/* Represents the background of the highlighted menu-item. */
+.lavaLamp {
+    position: relative;
+}
+
+.lavaLamp li.back {
+    background: url(../images/bg_menu_over.png) no-repeat right -44px;
+    height: 44px;
+    z-index: -1;
+    top: 0px;
+    position: absolute;
+	list-style-type:none;
+}
+
+.lavaLamp li.back .left {
+    background:url(../images/bg_menu_over.png) no-repeat top left;
+    height: 44px;    
+}
+
+.lavaLamp li a:hover{
+    color: #FFF !important;
+}
+
+.lavaLamp li:hover{
+    color: #FFF !important;
+}
+
+.lavaLamp li.current a{
+    color: #FFF !important;
+}

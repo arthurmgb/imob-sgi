@@ -1,0 +1,141 @@
+.gallery_item {
+	display: block;
+	width: 272px;
+	height: 245px;
+	background-color: #ddd;
+	float: left;
+	margin: 5px;
+}
+
+.area_buttons {
+	height: 50px;
+	margin-top: -1px;
+	border: 1px solid #efefef;
+	padding: 10px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+}
+
+table thead th:last-child {
+	width: 120px;
+}
+
+/*@media (min-width: 900px) and (max-width: 1450px) {
+	.user-panel {
+		display: none;
+	}
+}
+
+@media (min-width: 100px) and (max-width: 1450px) {
+	.table-responsive { overflow-x: auto; }
+}*/
+
+.view {
+	padding: 25px;
+	box-shadow: 0 1px 1px #999;
+}
+
+.view.no-shadow {
+	box-shadow: none;
+}
+
+.view.border-dashed {
+	box-shadow: none;
+	border-bottom: 1px dashed #999;
+}
+
+.view h3 {
+	font-family: Arial;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 0;
+}
+
+.view p {
+	font-family: sans-serif;
+	font-size: 1.25rem;
+	letter-space: .8;
+	line-height: 13px;
+	color: #000;
+}
+
+.view span.ml {
+	margin-left: 20px;
+}
+
+.box.flex-row {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+}
+
+.caixa {
+	flex: 1;
+	box-shadow: 0 0 3px #606060;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 4px;
+}
+
+/*.box.flex-row:last-child {
+	margin-right: 0;
+}
+
+.box.flex-row:first-child {
+	margin-left: 0;
+}*/
+
+.caixa .caixa-header {
+	background-color: #ddd;
+	border-bottom: .5 solid #333;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.caixa .caixa-header h3 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.caixa .caixa-body {
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 200px;
+	color: #333;
+	height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
