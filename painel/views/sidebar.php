@@ -6,8 +6,8 @@
 			</a>	
 		</div>
 		<ul class="sidebar-menu" data-widget="tree">
-			<li class="treeview <?php echo ($viewData['menu_ativo']=='dashboard')? 'active': ''; ?>">
-				<a href="#" title="Dashboard" > 
+			<li class=" <?php echo ($viewData['menu_ativo']=='dashboard')? 'active': ''; ?>">
+				<a href="<?php echo BASE_URL; ?>" title="Dashboard" > 
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 			</li>
@@ -93,7 +93,7 @@
 					<li><a href="<?php echo BASE_URL; ?>financeiro/repasse"><i class="fa fa-circle-o"></i>Repasse do Proprietario</a></li>
 				</ul>
 			</li>
-			<li class="treeview">
+			<li class="treeview <?php echo ($viewData['menu_ativo']=='relatorios') ? 'active':''; ?>">
 				<a href="#">
 					<i class="fa fa-file-text-o"></i> 
 					<span>Relatórios</span>
@@ -102,7 +102,14 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatorio Mensal</a></li>
+
+					<li>
+						<a href="<?php echo BASE_URL;?>relatorios/clientes">
+							<i class="fa fa-circle-o"></i>Relatório Clientes
+						</a>
+					</li>
+
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatório Mensal</a></li>
 				
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/imoveis"><i class="fa fa-circle-o"></i>Imóveis</a></li>
 

@@ -1,2 +1,3 @@
 <?php
-define("ENVIRONMENT", "development");
+define("ENVIRONMENT", "null");
+// define("ENVIRONMENT", "development");

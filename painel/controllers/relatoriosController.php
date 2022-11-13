@@ -2,7 +2,7 @@
 class relatoriosController extends Controller {
 
  	private $dados = array(
-        'menu_ativo' => 'finaceiro'
+        'menu_ativo' => 'relatorios'
     );
 
 	public function __construct() {
@@ -12,6 +12,38 @@ class relatoriosController extends Controller {
 			header("Location: ".BASE_URL."login");
 			exit;
 		}   
+	}
+
+	public function clientes(){
+
+		$dados = $this->dados;
+
+		//BUSCAR INQUILINOS PARA O SELECT
+		$get_all_inquilinos = new Parcelas;
+		$get_all_inquilinos = $get_all_inquilinos->getInquilinosRelatorio();
+		$dados['get_all_inquilinos'] = $get_all_inquilinos;
+
+		//ARRAY DE DADOS DOS INPUTS
+		$get_input_data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+		
+		//CHECAGEM SE O BOTÃO BUSCAR FOI CLICADO
+        if (!empty($get_input_data['button-search'])) {
+
+			$dados['get_input_data'] = $get_input_data;
+
+			$parcelas = new Parcelas;
+			$parcelas = $parcelas->getParcelasFromInput($dados['get_input_data']);
+			$dados['parcelas'] = $parcelas;
+
+			$valor_total = implode(',', array_column($dados['parcelas'], 'valor'));
+			$valor_total = array_map('intval', explode(',', $valor_total));
+			$valor_total = array_sum($valor_total);
+			$dados['valor_total'] = number_format($valor_total, 2, ',', '.');
+
+        }
+
+		$this->loadTemplate('relatorios/clientes', $dados);
+
 	}
 
 	public function financeiro() {

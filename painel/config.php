@@ -13,11 +13,11 @@ if(ENVIRONMENT == 'development') {
 	$config['dbuser'] = 'imobsolelua_admin';
 	$config['dbpass'] = 'P@ssw0rd90';
 } else {
-	define("BASE_URL", "http://imobiliariasolelua.com.br/painel/");
+	define("BASE_URL", "http://localhost/solelua/painel/");
 	$config['dbname'] = 'imobsolelua_db';
 	$config['host'] = 'localhost';
-	$config['dbuser'] = 'imobsolelua_admin';
-	$config['dbpass'] = 'P@ssw0rd90';
+	$config['dbuser'] = 'root';
+	$config['dbpass'] = '';
 }
 
 $db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'].";charset=UTF8", $config['dbuser'], $config['dbpass']);

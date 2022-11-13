@@ -132,6 +132,101 @@ class Parcelas extends Model {
 		return $array;
 	}
 
+	public function getInquilinosRelatorio(){
+
+		$array = array();
+
+		$sql = "SELECT referencia, nome FROM `inquilinos` WHERE `status` = 1 ORDER BY nome ASC";
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+	
+	}
+
+	public function getParcelasFromInput($data){
+
+		$array = array();
+
+		$hoje = date('Y-m-d');
+		$data_inicio = $data['data-inicio'];
+		$data_fim = $data['data-fim'];
+		$data_situacao = $data['selected-situacao'];
+		$data_cliente = $data['selected-cliente'];
+
+		if($data_situacao == 'all'){
+			$data_situacao = "'1','0'";
+		}
+
+		if($data_cliente == 'all'){
+
+			$sql_inquilinos = "SELECT referencia FROM `inquilinos` WHERE `status` = 1";
+			
+			$sql_inquilinos = $this->db->query($sql_inquilinos);
+
+			if($sql_inquilinos->rowCount() > 0) {
+
+				$data_cliente = $sql_inquilinos->fetchAll(PDO::FETCH_ASSOC);
+				$data_cliente = implode ( "', '", array_column($data_cliente, 'referencia'));
+
+			}
+
+		}
+
+		//SQL'S
+		if($data_situacao == '3'){
+			$sql = "SELECT p.*, inq.nome AS nome_inquilino 
+					FROM parcelas AS p
+					INNER JOIN contratos AS con 
+					ON p.id_contrato = con.id
+					INNER JOIN inquilinos AS inq 
+					ON con.cod_inquilino = inq.referencia
+					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
+					AND p.status = '0'
+					AND p.data_fim <= '$hoje'
+					AND inq.referencia IN ('$data_cliente')
+					ORDER BY nome_inquilino ASC, p.data_inicio ASC";
+		}
+		elseif($data_situacao == '0'){
+			$sql = "SELECT p.*, inq.nome AS nome_inquilino 
+					FROM parcelas AS p
+					INNER JOIN contratos AS con 
+					ON p.id_contrato = con.id
+					INNER JOIN inquilinos AS inq 
+					ON con.cod_inquilino = inq.referencia
+					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
+					AND p.status = '0'
+					AND p.data_fim > '$hoje'
+					AND inq.referencia IN ('$data_cliente')
+					ORDER BY nome_inquilino ASC, p.data_inicio ASC";
+		}
+		else{
+			$sql = "SELECT p.*, 
+					inq.nome AS nome_inquilino				
+					FROM parcelas AS p
+					INNER JOIN contratos AS con 
+					ON p.id_contrato = con.id
+					INNER JOIN inquilinos AS inq 
+					ON con.cod_inquilino = inq.referencia
+					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
+					AND p.status IN ($data_situacao)
+					AND inq.referencia IN ('$data_cliente')
+					ORDER BY nome_inquilino ASC, p.data_inicio ASC";
+		}
+
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+
+	}
+
 	private function buildWhere($filtros) {
 		$where = array('1=1');
 

@@ -14,6 +14,19 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/plugins/lightbox/css/lightbox.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<style>
+		body{
+			-webkit-print-color-adjust: exact !important;
+		}
+		@media print {
+			.content-wrapper{
+				background-color: #fff !important;
+			}
+			.noPrint-rel{
+				display:none;
+			}
+		}
+	</style>
 	<title>IMOB - Sistema de Gerenciamento Imobiliario</title>
 	<script src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript">var BASE_URL = '<?php echo BASE_URL; ?>';</script>

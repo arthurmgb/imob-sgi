@@ -15,7 +15,7 @@
     <title>Imobiliaria Sol & Lua</title>
     <script src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
   </head>
-    <meta http-equiv="refresh" content="2; URL='https://www.soleluaimobiliaria.com'"/>
+    <meta http-equiv="refresh" content="2; URL='https://www.soleluaimobiliaria.com.br'"/>
 </head>
 <body>
     <img src="<?php echo BASE_URL;?>assets/images/carregando.gif"  style="display: block; margin-left: auto; margin-right: auto " >
