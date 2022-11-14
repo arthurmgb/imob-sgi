@@ -158,9 +158,15 @@ function buscar_imoveis() {
         var html = '';
 
         for(var i in json) {
+
+          if(!json[i].cemig){
+            json[i].cemig = 'Não cadastrado';
+          }
+
           html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'"><td>'+json[i].referencia+'</td>';
           html += '<td>'+json[i].tipo+'</td>';
           html += '<td>'+json[i].endereco+'</td>';
+          html += '<td>'+json[i].cemig+'</td>';
           html += '<td>'+json[i].bairro+'</td>';
           html += '<td>'+json[i].cidade+'</td>';
           html += '<td> R$ '+json[i].valor+'</td>';

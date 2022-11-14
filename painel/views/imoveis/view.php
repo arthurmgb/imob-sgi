@@ -49,6 +49,10 @@
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['endereco']; ?>"  placeholder="">
           </div>
           <div class="form-group">
+            <label for="">CEMIG</label>
+            <input type="text" readonly="true" class="form-control" id="" value="<?php echo !is_null($imoveis['cemig']) ? $imoveis['cemig'] : 'Não cadastrado'; ?>"  placeholder="">
+          </div>
+          <div class="form-group">
             <label for="">Bairro</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['bairro']; ?>" placeholder="">
           </div>

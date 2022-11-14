@@ -86,6 +86,10 @@
           <input required="required" name="endereco" type="text"  class="form-control" id="" value="<?php echo $imoveis['endereco']; ?>" >
         </div>
         <div class="form-group">
+          <label for="">CEMIG</label>
+          <input name="cemig" type="text"  class="form-control" id="" value="<?php echo $imoveis['cemig']; ?>" >
+        </div>
+        <div class="form-group">
           <label for=""> *Bairro</label>
           <input required="required" name="bairro" type="text"  class="form-control" id="" value="<?php echo $imoveis['bairro']; ?>">
         </div>

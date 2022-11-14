@@ -136,6 +136,7 @@ class Imoveis extends Model {
 	public function cadImoveis(
 		$cod_proprietario,
 		$endereco,
+		$cemig,
 		$bairro,
 		$cidade,
 		$uf,
@@ -163,6 +164,7 @@ class Imoveis extends Model {
 		$sql = "INSERT INTO imoveis SET 
 		cod_proprietario = '$cod_proprietario', 
 		endereco   = '$endereco',
+		cemig      = NULLIF('$cemig', ''),
 		bairro 	   = '$bairro',
 		cidade     = '$cidade',
 		uf		   = '$uf',
@@ -197,7 +199,7 @@ class Imoveis extends Model {
 
 	}
 
-	public function updateImovel($codigo_proprietario, $endereco, $bairro, $cidade, $uf, $cep, $type, $finalidade, $valor, $iptu, 
+	public function updateImovel($codigo_proprietario, $endereco, $cemig, $bairro, $cidade, $uf, $cep, $type, $finalidade, $valor, $iptu, 
             $reajuste, $comissao, $status, $dormitorios, $suites, $banheiros, $garagem, $tamanho, $outros, $site, $fotos, $id){	
 
 		if(count($fotos['tmp_name']) > 0) {
@@ -252,10 +254,10 @@ class Imoveis extends Model {
             }
         }
 
-
         $sql = "UPDATE imoveis SET 
 			cod_proprietario = '$codigo_proprietario', 
 			endereco   = '$endereco',
+			cemig      = NULLIF('$cemig', ''),
 			bairro 	   = '$bairro',
 			cidade     = '$cidade',
 			uf		   = '$uf',

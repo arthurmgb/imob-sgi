@@ -34,6 +34,7 @@
                   <th>#COD</th>
                   <th>Tipo</th>
                   <th>Endereço</th>
+                  <th>CEMIG</th>
                   <th>Bairro</th>
                   <th>Cidade</th>
                   <th>Valor</th>
@@ -52,6 +53,9 @@
                   <td><?php echo $imovel['referencia'];?></td>
                   <td><?php echo $imovel['tipo']; ?></td>
                   <td><?php echo $imovel['endereco']; ?></td>
+                  <td>
+                    <?php echo !is_null($imovel['cemig']) ? $imovel['cemig'] : 'Não cadastrado'; ?>
+                  </td>
                   <td><?php echo $imovel['bairro']; ?></td>
                   <td><?php echo $imovel['cidade']; ?></td>
                   <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>

@@ -29,6 +29,7 @@ class imovelController extends Controller {
 
             $codigo_proprietario = addslashes($_POST['codigo_proprietario']);
             $endereco   = addslashes($_POST['endereco']);
+            $cemig      = addslashes($_POST['cemig']);
             $bairro     = addslashes($_POST['bairro']);
             $cidade     = addslashes($_POST['cidade']);
             $uf         = addslashes($_POST['uf']);
@@ -55,7 +56,7 @@ class imovelController extends Controller {
             $id = 0;
 
             $i = new Imoveis();
-            $id = $i->cadImoveis($codigo_proprietario, $endereco, $bairro, $cidade, $uf, $cep, $tipo, $finalidade, $valor, $iptu, $reajuste, $comissao, $dormitorios, $suites, $banheiros, $garagem, $tamanho, $outros, $site, $id_user);
+            $id = $i->cadImoveis($codigo_proprietario, $endereco, $cemig, $bairro, $cidade, $uf, $cep, $tipo, $finalidade, $valor, $iptu, $reajuste, $comissao, $dormitorios, $suites, $banheiros, $garagem, $tamanho, $outros, $site, $id_user);
 
             if($id > 0) {
                 $data = array(
@@ -93,6 +94,7 @@ class imovelController extends Controller {
 
             $codigo_proprietario = addslashes($_POST['codigo_proprietario']);
             $endereco        = addslashes($_POST['endereco']);
+            $cemig           = addslashes($_POST['cemig']);
             $bairro          = addslashes($_POST['bairro']);
             $cidade          = addslashes($_POST['cidade']);
             $uf              = addslashes($_POST['uf']);
@@ -122,7 +124,7 @@ class imovelController extends Controller {
 
             $id = addslashes($id);
 
-            $atualizou = $i->updateImovel($codigo_proprietario, $endereco, $bairro, $cidade, $uf, $cep, $tipo, $finalidade, $valor, $iptu, $reajuste, $comissao, $status, $dormitorios, $suites, $banheiros, $garagem, $tamanho, $outros, $site, $fotos, $id);
+            $atualizou = $i->updateImovel($codigo_proprietario, $endereco, $cemig, $bairro, $cidade, $uf, $cep, $tipo, $finalidade, $valor, $iptu, $reajuste, $comissao, $status, $dormitorios, $suites, $banheiros, $garagem, $tamanho, $outros, $site, $fotos, $id);
 
             if($atualizou) {
                 $data = array(

@@ -76,9 +76,35 @@
     </div>		
   </div>
 
+  <?php
+  
+    $TotalImoveisCemig = 0;
+    $TotalImoveisSemCemig = 0;
+
+    foreach($imoveis as $c_imovel){
+      if(!is_null($c_imovel['cemig'])){
+        $TotalImoveisCemig += 1;
+      }else{
+        $TotalImoveisSemCemig += 1;
+      }
+    }
+
+  ?>
+
   <div class="content">
-    <h3 class="rel_title">RELATÓRIO DE IMÓVEIS</h3>
-    <p class="sub_title">Hoje temos <?php echo $TotalImoveis; ?> imóveis cadastrados</p>
+    <h3 class="rel_title">RELATÓRIO DE IMÓVEIS CADASTRADOS</h3>
+    <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">
+      Imóveis cadastrados:
+      <b><?php echo $TotalImoveis; ?></b>
+    </p>
+    <p style="margin: 0; padding-bottom: 0;" class="sub_title">
+      Imóveis <b style="color: blue;">com</b> <b style="color: green;">CEMIG</b> cadastrados:
+      <b style="color: blue;"><?php echo $TotalImoveisCemig; ?></b>
+    </p>
+    <p class="sub_title">
+      Imóveis <b style="color: red;">sem</b> <b style="color: green;">CEMIG</b> cadastrados:
+      <b style="color: red;"><?php echo $TotalImoveisSemCemig; ?></b>
+    </p>
     <table id="example2" class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -86,6 +112,7 @@
           <th>Tipo</th>
           <th>Finalidade</th>
           <th>Endereço</th>
+          <th style="color: #fff; background-color: green;">CEMIG</th>
           <th>Bairro</th>
           <th>Cidade</th>
           <th>Valor</th>
@@ -111,6 +138,25 @@
        </td>
        <td><?php echo ($imovel['finalidade']=='1') ? 'Aluguel':'Venda'; ?></td>
        <td><?php echo $imovel['endereco']; ?></td>
+       <td style="vertical-align: middle; background-color: #dcfce7;" class="text-center">
+          <?php 
+          
+          if(!is_null($imovel['cemig'])):
+            echo "
+            <span style='color: green; font-weight: 700; font-size: 16px;'>"
+            .$imovel['cemig'].
+            "</span>
+            ";
+          else:
+            echo "
+            <span style='color: black; font-weight: 500; font-size: 14px;'>
+              Não cadastrado
+            </span>
+            ";
+          endif;
+          
+          ?>
+        </td>
        <td><?php echo $imovel['bairro']; ?></td>
        <td><?php echo $imovel['cidade']; ?></td>
        <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>

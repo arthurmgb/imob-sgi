@@ -109,18 +109,18 @@
 						</a>
 					</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatório Mensal</a></li>
+					<!-- <li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatório Mensal</a></li> -->
 				
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/imoveis"><i class="fa fa-circle-o"></i>Imóveis</a></li>
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/imoveis"><i class="fa fa-circle-o"></i>Imóveis Cadastrados</a></li>
 
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/disponiveis"><i class="fa fa-circle-o"></i>Imóveis Disponiveis</a></li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietarios</a></li>
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietarios Cadastrados</a></li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/inquilinos"><i class="fa fa-circle-o"></i>Imóveis Inquilinos</a></li>
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/inquilinos"><i class="fa fa-circle-o"></i>Inquilinos Cadastrados</a></li>
 
 
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/iptu"><i class="fa fa-circle-o"></i>Inquilinos IPTU</a></li>
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/iptu"><i class="fa fa-circle-o"></i>Inquilinos com IPTU</a></li>
 
 				</ul>
 			</li>

@@ -56,6 +56,10 @@
                   <label for=""> * Endereço / N°</label>
                   <input name="endereco" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
+                 <div class="form-group">
+                  <label for="">CEMIG</label>
+                  <input name="cemig" type="text" class="form-control" id="" placeholder="">
+                </div>
                 <div class="form-group">
                   <label for=""> * Bairro</label>
                   <input name="bairro" type="text" required="required" class="form-control" id="" placeholder="">
