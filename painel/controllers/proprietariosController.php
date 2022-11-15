@@ -22,6 +22,12 @@ class proprietariosController extends Controller {
             $nome           = addslashes($_POST['nome']);
             $cpf            = addslashes($_POST['cpf']);
             $rg             = addslashes($_POST['rg']);
+            $banco          = addslashes($_POST['banco']);
+            $tipo_conta     = addslashes($_POST['tipo_conta']);
+            $agencia        = addslashes($_POST['agencia']);
+            $conta          = addslashes($_POST['conta']);
+            $operacao       = addslashes($_POST['operacao']);
+            $pix            = addslashes($_POST['pix']);
             $nacionalidade  = addslashes($_POST['nacionalidade']);
             $estado_civil   = addslashes($_POST['estado_civil']);
             $profissao      = addslashes($_POST['profissao']);
@@ -36,7 +42,7 @@ class proprietariosController extends Controller {
 
             $id = 0;
             $cadProp = new Proprietarios();
-            $id = $cadProp->cadProprietario($nome, $cpf, $rg, $nacionalidade, $estado_civil, $profissao, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $info, $pagamento);
+            $id = $cadProp->cadProprietario($nome, $cpf, $rg, $banco, $tipo_conta, $agencia, $conta, $operacao, $pix, $nacionalidade, $estado_civil, $profissao, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $info, $pagamento);
 
             if($id > 0) {
                 $data = array(
@@ -100,6 +106,12 @@ class proprietariosController extends Controller {
             $nome           = addslashes($_POST['nome']);
             $cpf            = addslashes($_POST['cpf']);
             $rg             = addslashes($_POST['rg']);
+            $banco          = addslashes($_POST['banco']);
+            $tipo_conta     = addslashes($_POST['tipo_conta']);
+            $agencia        = addslashes($_POST['agencia']);
+            $conta          = addslashes($_POST['conta']);
+            $operacao       = addslashes($_POST['operacao']);
+            $pix            = addslashes($_POST['pix']);
             $nacionalidade  = addslashes($_POST['nacionalidade']);
             $estado_civil   = addslashes($_POST['estado_civil']);
             $profissao      = addslashes($_POST['profissao']);
@@ -114,7 +126,7 @@ class proprietariosController extends Controller {
             $pagamento      = addslashes($_POST['pagamento']);
 
             $upPro = new Proprietarios();
-            $upPro->upProprietario($id, $nome, $cpf, $rg, $nacionalidade, $estado_civil, $profissao, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $info, $status, $pagamento);
+            $upPro->upProprietario($id, $nome, $cpf, $rg, $banco, $tipo_conta, $agencia, $conta, $operacao, $pix, $nacionalidade, $estado_civil, $profissao, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $info, $status, $pagamento);
 
             if($id > 0) {
                 $data = array(

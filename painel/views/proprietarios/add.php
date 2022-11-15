@@ -49,6 +49,43 @@
           <input name="rg" type="text" required="required" class="form-control" id="" >
         </div>
         <div class="form-group">
+          <label style="color: blue;" for="">
+          Informações bancárias
+          </label>
+          <hr style="margin: 10px 0px; border-color: #888;">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <label for="">Banco</label>
+              <input type="text" class="form-control" name="banco" id="" placeholder="">
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <label for="">Tipo de conta</label>
+              <select name="tipo_conta" class="form-control">
+                <option value="0" selected>Nenhuma selecionada</option>
+                <option value="1">Conta corrente</option>
+                <option value="2">Conta poupança</option>
+              </select>
+            </div>
+            <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+              <label for="">Agência</label>
+              <input type="text" class="form-control" name="agencia" id="" placeholder="">
+            </div>
+            <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+              <label for="">Conta</label>
+              <input type="text" class="form-control" name="conta" id="" placeholder="">
+            </div>
+            <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+              <label for="">Operação</label>
+              <input type="text" class="form-control" name="operacao" id="" placeholder="">
+            </div>
+            <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+              <label for="">Chave PIX</label>
+              <input type="text" class="form-control" name="pix" id="" placeholder="">
+            </div>
+          </div>
+          <hr style="margin: 15px 0px; border-color: #888;">
+        </div>
+        <div class="form-group">
           <label for="">* Profissão</label>
           <input name="profissao" type="text" required="required" class="form-control" id="" >
         </div>

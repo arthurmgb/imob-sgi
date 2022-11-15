@@ -2,7 +2,7 @@
 class financeiroController extends Controller {
 
  	private $dados = array(
-        'menu_ativo' => 'finaceiro'
+        'menu_ativo' => 'financeiro'
     );
 
 	public function __construct() {

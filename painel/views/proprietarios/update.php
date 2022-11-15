@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Atualizar Proprietario
+      Atualizar Proprietário
     </h1>
 
   </section>
@@ -35,6 +35,43 @@
           <div class="form-group">
             <label for="">* RG</label>
             <input name="rg" type="text" required="required"  class="form-control" id="" placeholder="" value="<?php echo $proprietario['rg'];?>">
+          </div>
+          <div class="form-group">
+            <label style="color: blue;" for="">
+            Informações bancárias
+            </label>
+            <hr style="margin: 10px 0px; border-color: #888;">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <label for="">Banco</label>
+                <input type="text" class="form-control" name="banco" id="" value="<?php echo $proprietario['banco'] ?>" placeholder="">
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <label for="">Tipo de conta</label>
+                <select name="tipo_conta" class="form-control">
+                  <option value="0" <?php echo ($proprietario['tipo_conta'] == '0')? 'selected="selected"':''; ?>>Nenhuma selecionada</option>
+                  <option value="1" <?php echo ($proprietario['tipo_conta'] == '1')? 'selected="selected"':''; ?>>Conta corrente</option>
+                  <option value="2" <?php echo ($proprietario['tipo_conta'] == '2')? 'selected="selected"':''; ?>>Conta poupança</option>
+                </select>
+              </div>
+              <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                <label for="">Agência</label>
+                <input type="text" class="form-control" name="agencia" id="" value="<?php echo $proprietario['agencia'] ?>" placeholder="">
+              </div>
+              <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                <label for="">Conta</label>
+                <input type="text" class="form-control" name="conta" id="" value="<?php echo $proprietario['conta'] ?>" placeholder="">
+              </div>
+              <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                <label for="">Operação</label>
+                <input type="text" class="form-control" name="operacao" id="" value="<?php echo $proprietario['operacao'] ?>" placeholder="">
+              </div>
+              <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                <label for="">Chave PIX</label>
+                <input type="text" class="form-control" name="pix" id="" value="<?php echo $proprietario['pix'] ?>" placeholder="">
+              </div>
+            </div>
+            <hr style="margin: 15px 0px; border-color: #888;">
           </div>
           <div class="form-group">
             <label for="">* Nacionalidade</label>

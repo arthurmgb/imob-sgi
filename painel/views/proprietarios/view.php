@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Sistema de Gerenciamento Imobiliario - Proprietarios
+      Sistema de Gerenciamento Imobiliario - Proprietários
     </h1>
   </section>
   
@@ -25,6 +25,52 @@
                 <div class="form-group">
                   <label for="">RG</label>
                   <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['rg'];?>" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label style="color: blue;" for="">
+                  Informações bancárias
+                  </label>
+                  <hr style="margin: 10px 0px; border-color: #888;">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <label for="">Banco</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['banco'] ?>" placeholder="">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <?php 
+                        switch($proprietario['tipo_conta']){
+                          case 0:
+                            $proprietario['tipo_conta'] = 'Não cadastrada';
+                          break;
+                          case 1:
+                            $proprietario['tipo_conta'] = 'Conta corrente';
+                          break;
+                          case 2:
+                            $proprietario['tipo_conta'] = 'Conta poupança';
+                          break;
+                        }               
+                      ?>
+                      <label for="">Tipo de conta</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['tipo_conta'] ?>" placeholder="">
+                    </div>
+                    <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                      <label for="">Agência</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['agencia'] ?>" placeholder="">
+                    </div>
+                    <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                      <label for="">Conta</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['conta'] ?>" placeholder="">
+                    </div>
+                    <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                      <label for="">Operação</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['operacao'] ?>" placeholder="">
+                    </div>
+                    <div style="margin-top: 10px;" class="col-md-6 col-sm-12">
+                      <label for="">Chave PIX</label>
+                      <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['pix'] ?>" placeholder="">
+                    </div>
+                  </div>
+                  <hr style="margin: 15px 0px; border-color: #888;">
                 </div>
                 <div class="form-group">
                   <label for="">* Nacionalidade</label>
