@@ -111,31 +111,23 @@ table thead th:last-child {
 	color: #333;
 	height: 200px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.custom-imob-loader{
+	position: absolute;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+}
+.custom-imob-loader .div-inside-loader{
+	margin: 0 auto 0 50%;
+}
+.custom-imob-loader h1{
+	font-size: 20px;
+	color: #666;
+}
