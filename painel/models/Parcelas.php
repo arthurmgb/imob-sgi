@@ -90,6 +90,40 @@ class Parcelas extends Model {
 		return $array;
 	}
 
+	public function getRecibosByDate($data){
+
+		$array = array();
+
+		$data_inicio = $data['data-inicio'];
+		$data_fim = $data['data-fim'];
+
+		$sql = "SELECT p.id_contrato, p.data_inicio, p.data_fim, p.n_parcela,
+				inq.nome AS nome_inq, inq.cpf AS cpf_inq, inq.referencia AS ref_inq,
+				pro.nome AS nome_pro, pro.cpf AS cpf_pro, pro.banco AS banco_pro, pro.tipo_conta AS tipo_conta_pro, pro.agencia AS agencia_pro, pro.conta AS conta_pro, pro.operacao AS operacao_pro, pro.pix AS pix_pro,
+				imv.endereco AS end_imv, imv.bairro AS bairro_imv, imv.valor AS valor_imv, imv.comissao AS com_imv
+				FROM parcelas AS p
+				INNER JOIN contratos AS con 
+				ON p.id_contrato = con.id
+				INNER JOIN inquilinos AS inq 
+				ON con.cod_inquilino = inq.referencia
+				INNER JOIN proprietario AS pro
+				ON con.cod_proprietario = pro.referencia
+				INNER JOIN imoveis AS imv 
+				ON con.cod_imovel = imv.referencia
+				WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
+				ORDER BY nome_pro ASC, p.data_inicio ASC
+				";
+
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+
+	}
+
 	public function pagar($id_contrato, $n_parcela) {
 		$data_pag = date('Y-m-d');
 

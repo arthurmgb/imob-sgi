@@ -22,6 +22,9 @@
 			.content-wrapper{
 				background-color: #fff !important;
 			}
+			.box-generate-recibo{
+				margin-bottom: 300px !important;
+			}
 			.noPrint-rel{
 				display:none;
 			}

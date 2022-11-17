@@ -20,7 +20,7 @@
 
                 <div class="col-xs-6">
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon text-bold" id="sizing-addon2">Vencimento</span>
+                        <span class="input-group-addon text-bold" id="sizing-addon2">Venc.</span>
                         <input style="cursor: pointer;" onfocus="this.showPicker()" class="form-control" type="date" name="data-fim" value="<?= $get_input_data['data-fim'] ?>" required>
                     </div>
                 </div>

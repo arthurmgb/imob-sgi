@@ -68,6 +68,29 @@ class financeiroController extends Controller {
 		header('Location: '.BASE_URL.'financeiro');
 	}
 
+	public function gerarecibo(){
+
+		$dados = $this->dados;
+
+		//ARRAY DE DADOS DOS INPUTS
+		$get_input_data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+		//CHECAGEM SE O BOTÃO BUSCAR FOI CLICADO
+        if (!empty($get_input_data['button-generate'])) {
+
+			$dados['get_input_data'] = $get_input_data;
+
+			$parcelas = new Parcelas;
+			$dados['recibos'] = $parcelas->getRecibosByDate($dados['get_input_data']);
+
+			$empresa = new Config;
+			$dados['empresa'] = $empresa->getEmpresa();
+
+		}
+
+		$this->loadTemplate('financeiro/gerarecibo', $dados);
+	}
+
 	public function caixa() {
 		$dados = $this->dados;
 
