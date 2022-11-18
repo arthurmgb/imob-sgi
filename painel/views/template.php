@@ -5,13 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="IMOB- Sistema de Gerenciamento Imobiliario<">
 	<meta name="author" content="Lucas Silva">
-	<link rel="icon" type="image/x-icon" href="<?php echo BASE_URL; ?>assets/images/favicon.ico">
+	<link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/home-4990196-4158270.png">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/skins.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=1.1">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=1.2">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/plugins/lightbox/css/lightbox.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	<style>
@@ -41,9 +41,11 @@
 			<!-- Logo -->
 			<a href="<?php echo BASE_URL; ?>" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>IMOB</b></span>
+				<span class="logo-mini">
+					<img width="50" height="50" src="https://cdn3d.iconscout.com/3d/premium/thumb/home-4990196-4158270.png">
+				</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>IMOB</b></span>
+				<span style="font-family: 'Source Sans Pro',sans-serif; font-weight: 400;" class="logo-lg">Sol & Lua Imobiliária</span>
 			</a>
 
 			<!-- Header Navbar: style can be found in header.less -->

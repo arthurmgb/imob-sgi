@@ -5,7 +5,8 @@
 <section class="content">
   <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
+          <a href="<?php BASE_URL ?>imovel">
+          <div class="info-box text-black custom-ifb custom-ifb">
             <span class="info-box-icon bg-aqua"><i class="fa fa-home fa-x2"></i></span>
 
             <div class="info-box-content">
@@ -14,11 +15,13 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
+          <a href="<?php BASE_URL ?>inquilinos">
+          <div class="info-box text-black custom-ifb">
             <span class="info-box-icon bg-red"><i class="fa fa-address-card fa-x2"></i></span>
 
             <div class="info-box-content">
@@ -27,6 +30,7 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
@@ -35,7 +39,8 @@
         <div class="clearfix visible-sm-block"></div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
+          <a href="<?php BASE_URL ?>proprietarios">
+          <div class="info-box text-black custom-ifb">
             <span class="info-box-icon bg-green"><i class="fa fa-address-card-o fa-x2"></i></span>
 
             <div class="info-box-content">
@@ -44,11 +49,13 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
+          <a href="<?php BASE_URL ?>contratos/buscar">
+          <div class="info-box text-black custom-ifb">
             <span class="info-box-icon bg-yellow"><i class="fa fa-handshake-o fa-x2"></i></span>
 
             <div class="info-box-content">
@@ -57,6 +64,7 @@
             </div>
             <!-- /.info-box-content -->
           </div>
+          </a>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
