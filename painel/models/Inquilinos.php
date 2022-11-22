@@ -28,6 +28,7 @@ class Inquilinos extends Model {
 		    imo.iptu 
 		FROM inquilinos inq 
 		LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE imo.iptu = '1' 
+		ORDER BY inq.nome ASC
 		LIMIT $limit";
 		$sql = $this->db->query($sql);
 		
