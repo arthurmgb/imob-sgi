@@ -22,8 +22,9 @@
 			.content-wrapper{
 				background-color: #fff !important;
 			}
-			.box-generate-recibo{
-				margin-bottom: 300px !important;
+			#generate-print-area{
+				break-inside: avoid;
+				/* page-break-after:always; */
 			}
 			.noPrint-rel{
 				display:none;

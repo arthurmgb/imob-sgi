@@ -159,6 +159,7 @@
                 <?php if (!empty($get_input_data['button-generate'])) : ?>
 
                     <?php foreach ($recibos as $recibo) : ?>
+                        <div id="generate-print-area">
                         <hr style="margin: 5px 0; border-color: #999;">              
                         <h4 style="margin: 15px 0 0px 0;">
                             <b>Proprietário:</b> <?php echo $recibo['nome_pro'] ?>
@@ -338,6 +339,7 @@
                                 </p>
                             </div>
 
+                        </div>
                         </div>
                     <?php endforeach; ?>
 
