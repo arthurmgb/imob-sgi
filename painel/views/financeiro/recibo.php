@@ -16,7 +16,7 @@ $imovel = $contrato['imovel'];
       <!-- left column -->
       <div class="col-md-12">
         <!-- general form elements -->
-        <div class="box box-primary">
+        <div style="margin-bottom: 0;" class="box box-primary">
           <div class="view no-shadow" style="position: relative;">
             <div style="position: absolute; top: 10px; right: 10px; ">
               <div>1° via <br />Inquilino</div>

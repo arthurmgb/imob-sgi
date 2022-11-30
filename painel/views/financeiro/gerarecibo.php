@@ -67,7 +67,7 @@
 </div>
 <div class="content-wrapper">
 
-    <section class="content-header">
+    <section class="content-header noPrint-rel">
 
         <h1>
             Gerar Recibos por Datas
@@ -159,15 +159,15 @@
                 <?php if (!empty($get_input_data['button-generate'])) : ?>
 
                     <?php foreach ($recibos as $recibo) : ?>
-                        <div id="generate-print-area">
-                        <hr style="margin: 5px 0; border-color: #999;">              
-                        <h4 style="margin: 15px 0 0px 0;">
+                        <div class="div-generate-print-area">
+                        <hr style="margin: 15px 0 10px 0; border-color: #999;">              
+                        <h4 style="margin: 10px 0 0px 0;">
                             <b>Proprietário:</b> <?php echo $recibo['nome_pro'] ?>
                         </h4>
                         <h4>
                             <b>Inquilino:</b> <?php echo $recibo['nome_inq'] ?> - <b> N° <?php echo $recibo['n_parcela']; ?> </b>
                         </h4>
-                        <div class="box box-primary box-generate-recibo">
+                        <div style="margin-bottom: 0;" class="box box-primary box-generate-recibo">
                             <!--- 1° via inquilino -->
                             <div class="view no-shadow" style="position: relative;">
                                 <div style="position: absolute; top: 10px; right: 10px; ">

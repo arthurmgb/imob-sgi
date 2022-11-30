@@ -18,13 +18,19 @@
 		body{
 			-webkit-print-color-adjust: exact !important;
 		}
+		@page {
+			size: A4 !important;
+			margin: 0 !important;
+		}
 		@media print {
+			body{
+				zoom: 95%;
+			}
 			.content-wrapper{
 				background-color: #fff !important;
 			}
-			#generate-print-area{
-				break-inside: avoid;
-				/* page-break-after:always; */
+			.div-generate-print-area{
+				page-break-after: always;
 			}
 			.noPrint-rel{
 				display:none;
@@ -109,7 +115,7 @@
 		$this->loadViewInTemplate($viewName, $viewData);
 		?>		
 
-		<footer class="main-footer">
+		<footer class="main-footer noPrint-rel">
 			<div class="pull-right hidden-xs">
 				<b>Version</b> 1.0
 			</div>
