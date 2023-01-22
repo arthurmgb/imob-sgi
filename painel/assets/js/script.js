@@ -36,7 +36,7 @@ function apagar_foto(obj) {
 function buscar_proprietario() {
   var valor = $('input[name=q]').val();
   
-  if(valor.length >= 6) {
+  // if(valor.length >= 6) {
     $.ajax({
       url:BASE_URL+'proprietarios/getlista/',
       type:'post',
@@ -66,7 +66,10 @@ function buscar_proprietario() {
         $('#example2 tbody').html(html);
       }
     });
-} else if (valor.length == 0) {
+// } else if (valor.length == 0) {
+  // window.location.href=window.location.href;
+// }
+if(valor.length == 0){
   window.location.href=window.location.href;
 }
 }
@@ -74,7 +77,7 @@ function buscar_proprietario() {
 function buscar_fiador() {
   var valor = $('input[name=q]').val();
   
-  if(valor.length >= 5) {
+  // if(valor.length >= 5) {
     $.ajax({
       url:BASE_URL+'fiadores/getlista/',
       type:'post',
@@ -104,7 +107,10 @@ function buscar_fiador() {
         $('#example2 tbody').html(html);
       }
     });
-} else if (valor.length == 0) {
+// } else if (valor.length == 0) {
+  // window.location.href=window.location.href;
+// }
+if(valor.length == 0){
   window.location.href=window.location.href;
 }
 }
@@ -112,7 +118,7 @@ function buscar_fiador() {
 function buscar_contratos() {
   var valor = $('input[name=q]').val();
 
-  if(valor.length >= 6) {
+  // if(valor.length >= 6) {
     $.ajax({
       url: BASE_URL+'contratos/getlista/',
       type: 'post',
@@ -140,7 +146,10 @@ function buscar_contratos() {
         $('#example2 tbody').html(html);
       }
     });
-} else if (valor.length == 0) {
+// } else if (valor.length == 0) {
+  // window.location.href=window.location.href;
+// }
+if(valor.length == 0){
   window.location.href=window.location.href;
 }
 }
@@ -148,7 +157,7 @@ function buscar_contratos() {
 function buscar_imoveis() {
   var valor = $('input[name=q]').val();
 
-  if(valor.length >= 6) {
+  // if(valor.length >= 6) {
     $.ajax({
       url:BASE_URL+'imovel/getlista/',
       type:'post',
@@ -184,15 +193,20 @@ function buscar_imoveis() {
         $('#example2 tbody').html(html);
       }
     });
-} else if (valor.length == 0) {
-  window.location.href=window.location.href;
-}
+// } else if (valor.length == 0) {
+  // window.location.href=window.location.href;
+// }
+
+    if(valor.length == 0){
+      window.location.href=window.location.href;
+    }
+
 }
 
 function buscar_inquilinos() {
   var valor = $('input[name=q]').val();
 
-  if(valor.length >= 5) {
+  // if(valor.length >= 5) {
     $.ajax({
       url:BASE_URL+'inquilinos/getlista/',
       type:'post',
@@ -225,7 +239,10 @@ function buscar_inquilinos() {
         $('#example2 tbody').html(html);
       }
     });
-  } else if (valor.length == 0) {
+  // } else if (valor.length == 0) {
+    // window.location.href=window.location.href;
+  // }
+  if(valor.length == 0){
     window.location.href=window.location.href;
   }
 }

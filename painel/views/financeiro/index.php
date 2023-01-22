@@ -6,14 +6,14 @@
       <small>Sistema de Gerenciamento Imobiliário</small>
     </h1>
     <!-- search form -->
-    <form method="GET" class="sidebar-form">
-      <div class="input-group">
-        <input type="search" name="contrato" value="<?php echo (!empty($searchText)) ? $searchText: ''; ?>" autofocus autocomplete="off" class="form-control" placeholder="Numero do contrato">
-        <span class="input-group-btn">
-          <button type="button" id="search-btn" class="btn btn-flat">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
+    <form method="GET" >
+      <div class="div-new-flex">
+        <input style="font-size: 20px; font-weight: 700; padding-top: 18px; padding-bottom: 18px;" type="search" name="contrato" value="<?php echo (!empty($searchText)) ? $searchText: ''; ?>" autocomplete="off" autofocus class="form-control" placeholder="Número do contrato" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+        
+        <button style="color: #fff; font-size: 16px; height: 100%" type="submit" id="search-btn" class="btn btn-success">
+          Buscar
+          <i style="margin-left: 8px;" class="fa fa-search"></i>
+        </button>
       </div>
     </form>
     <!-- /.search form -->

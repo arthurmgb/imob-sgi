@@ -178,7 +178,7 @@ class proprietariosController extends Controller {
             );
 
             $proprietarios = new Proprietarios;
-            $data = $proprietarios->getList(0, 5, $filtros);
+            $data = $proprietarios->getList(0, 99999, $filtros);
 
             header('Content-Type: application/json');
             echo json_encode($data);

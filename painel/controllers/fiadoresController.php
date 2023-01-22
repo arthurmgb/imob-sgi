@@ -163,7 +163,7 @@ class fiadoresController extends Controller {
                 );
 
             $fiadores = new Fiadores;
-            $data = $fiadores->getList(0, 5, $filtros);
+            $data = $fiadores->getList(0, 99999, $filtros);
 
             header('Content-Type: application/json');
             echo json_encode($data);

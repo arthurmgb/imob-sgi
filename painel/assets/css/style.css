@@ -141,3 +141,15 @@ table thead th:last-child {
 .custom-ifb:hover {
 	background-color: rgb(236, 236, 236) !important;
 }
+.div-new-flex{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+.div-new-flex button{
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-left: none;
+}

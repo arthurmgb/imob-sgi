@@ -257,7 +257,7 @@ class imovelController extends Controller {
             );
 
             $imoveis = new Imoveis;
-            $data = $imoveis->getList(0, 5, $filtros);
+            $data = $imoveis->getList(0, 99999, $filtros);
 
             $tipos_imoveis = array(
                 1 => 'Casa',

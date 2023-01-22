@@ -48,7 +48,7 @@ class Contratos extends Model {
 		FROM contratos con LEFT JOIN inquilinos inq ON inq.referencia = con.cod_inquilino 
 		WHERE '1'='1' ".implode(' OR ', $where)."
 		ORDER BY inq.nome ASC
-		LIMIT 0, 5";
+		LIMIT 0, 99999";
 		$sql = $this->db->prepare($sql);
 		$this->bnwhere($sql, $filtros);
 		$sql->execute();

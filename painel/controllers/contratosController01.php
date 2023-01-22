@@ -190,7 +190,7 @@ class contratosController extends Controller {
             );
 
             $contratos = new Contratos;
-            $data = $contratos->getlist(0, 16, $filtros);
+            $data = $contratos->getlist(0, 99999, $filtros);
             
             header('Content-Type: application/json');
             echo json_encode($data);
