@@ -116,7 +116,9 @@
 
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/disponiveis"><i class="fa fa-circle-o"></i>Imóveis Disponiveis</a></li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietarios Cadastrados</a></li>
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/banco"><i class="fa fa-circle-o"></i>Proprietários com Banco</a></li>
+
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietários Cadastrados</a></li>
 
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/inquilinos"><i class="fa fa-circle-o"></i>Inquilinos Cadastrados</a></li>
 

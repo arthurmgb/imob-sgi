@@ -82,7 +82,23 @@ class Proprietarios extends Model{
 		return $q;
 	}
 
+	public function getProprietariosBanco(){
 
+		$array = array();
+		
+		$sql = "SELECT * FROM proprietario WHERE tipo_conta != 0 ORDER BY nome ASC";
+
+		$sql = $this->db->prepare($sql);
+
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+
+	}
 
 	public function repasse($id_contrato, $n_parcela) {
 		$sql = "UPDATE parcelas SET repasse = '1', data_repasse = :data_repasse, id_user = :id_user WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";

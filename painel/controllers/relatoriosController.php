@@ -87,6 +87,19 @@ class relatoriosController extends Controller {
 		$this->loadView('relatorios/disponiveis', $dados);
 	}
 
+	public function banco(){
+
+		$dados = $this->dados;
+
+		$config = new Config;
+		$dados['empresa'] = $config->getEmpresa();
+
+		$proprietarios = new Proprietarios();
+		$dados['proprietarios'] = $proprietarios->getProprietariosBanco();
+		
+		$this->loadView('relatorios/banco', $dados);
+	}
+
 	public function proprietarios(){
 		$dados = $this->dados;
 		$config = new Config;
