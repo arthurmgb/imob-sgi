@@ -4,7 +4,7 @@ class Imoveis extends Model {
 
 	public function disponiveis($limit) {
 		$array = array();
-		$sql = "SELECT * FROM imoveis WHERE status = '2' ORDER BY endereco ASC LIMIT $limit";
+		$sql = "SELECT * FROM imoveis WHERE status = '2' ORDER BY endereco ASC";
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {

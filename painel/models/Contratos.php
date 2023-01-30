@@ -121,7 +121,7 @@ class Contratos extends Model {
 		$sql = "SELECT *,
 		(SELECT inq.nome FROM inquilinos inq WHERE con.cod_inquilino = inq.referencia) AS nome_inquilino,
 		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario
-		FROM contratos con WHERE data_final <= '$hoje' ORDER BY data_final ASC LIMIT $offset, $limit";
+		FROM contratos con WHERE data_final <= '$hoje' ORDER BY data_final ASC";
 		
 		//print_r($sql); exit;
 
