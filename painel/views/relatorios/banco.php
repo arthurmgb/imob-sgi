@@ -59,6 +59,13 @@
         .content table.table tbody tr {
             font-size: 1.1rem;
         }
+        table {
+            table-layout:fixed;
+        }
+        td {
+            word-wrap:break-word;
+            word-break: break-all;
+        }
     </style>
 </head>
 
