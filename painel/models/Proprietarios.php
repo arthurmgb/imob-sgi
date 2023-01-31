@@ -99,6 +99,22 @@ class Proprietarios extends Model{
 		return $array;
 
 	}
+	public function getProprietariosSemBanco(){
+
+		$q = 0;
+		
+		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE tipo_conta = '0' and status = '1'";
+
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+
+	}
 
 	public function repasse($id_contrato, $n_parcela) {
 		$sql = "UPDATE parcelas SET repasse = '1', data_repasse = :data_repasse, id_user = :id_user WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
@@ -226,7 +242,6 @@ class Proprietarios extends Model{
 		$this->db->query($sql);
 		
 	}
-	
 
 	public function removerProprietario($id) {
 

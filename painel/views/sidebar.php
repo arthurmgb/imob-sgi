@@ -106,9 +106,11 @@
 
 					<li>
 						<a href="<?php echo BASE_URL;?>relatorios/clientes">
-							<i class="fa fa-circle-o"></i>Relatório Clientes
+							<i class="fa fa-circle-o"></i>Relatório de Clientes
 						</a>
 					</li>
+
+					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/contratos"><i class="fa fa-circle-o"></i>Relatório de Contratos</a></li>
 
 					<!-- <li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatório Mensal</a></li> -->
 				
@@ -121,7 +123,6 @@
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietários Cadastrados</a></li>
 
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/inquilinos"><i class="fa fa-circle-o"></i>Inquilinos Cadastrados</a></li>
-
 
 					<li><a target="_blank" href="<?php echo BASE_URL;?>relatorios/iptu"><i class="fa fa-circle-o"></i>Inquilinos com IPTU</a></li>
 

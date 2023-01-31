@@ -96,6 +96,7 @@ class relatoriosController extends Controller {
 
 		$proprietarios = new Proprietarios();
 		$dados['proprietarios'] = $proprietarios->getProprietariosBanco();
+		$dados['nobank'] = $proprietarios->getProprietariosSemBanco();
 		
 		$this->loadView('relatorios/banco', $dados);
 	}
@@ -134,6 +135,20 @@ class relatoriosController extends Controller {
 		//echo ('<pre>'); print_r($inquilinos); 
 
 		$this->loadView('relatorios/iptu', $dados);
+	}
+
+	public function contratos(){
+
+		$dados = $this->dados;
+
+		$config = new Config;
+		$dados['empresa'] = $config->getEmpresa();
+
+		$contratos = new Contratos;
+		$dados['contratos'] = $contratos->getContratosForRelatorio();
+		
+		$this->loadView('relatorios/contratos', $dados);
+		
 	}
 
 }

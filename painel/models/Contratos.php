@@ -99,6 +99,28 @@ class Contratos extends Model {
 		return $array;
 	}*/
 
+	public function getContratosForRelatorio(){
+		
+		$array = array();
+
+		$sql = "SELECT con.*, prop.nome AS nome_proprietario, inq.nome AS nome_inquilino 
+				FROM contratos con
+				INNER JOIN proprietario AS prop ON con.cod_proprietario = prop.referencia
+				INNER JOIN inquilinos AS inq ON con.cod_inquilino = inq.referencia
+				ORDER BY nome_proprietario ASC
+				";
+
+		$sql = $this->db->prepare($sql);
+
+		$sql->execute();
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+
+	}
+
 	public function getTotalContratos($filtros=array()) {
 		$q = 0;
 

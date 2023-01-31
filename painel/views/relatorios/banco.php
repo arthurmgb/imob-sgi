@@ -80,7 +80,12 @@
 
         <div class="content">
             <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS COM BANCO</h3>
-            <p class="sub_title">Proprietários com banco cadastrado: <b style="font-size: 22px; color: green;"><?php echo count($proprietarios) ?></b></p>
+            <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Proprietários <b>COM</b> banco cadastrado: <b style="font-size: 22px; color: green;">
+                <?php echo count($proprietarios) ?></b>
+            </p>
+            <p class="sub_title">Proprietários <b>SEM</b> banco cadastrado: <b style="font-size: 22px; color: red;">
+                <?php echo $nobank ?></b>
+            </p>
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
