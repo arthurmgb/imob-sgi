@@ -59,6 +59,13 @@
         .content table.table tbody tr {
             font-size: 1.1rem;
         }
+        table {
+            table-layout:fixed;
+        }
+        td {
+            word-wrap:break-word;
+            word-break: break-all;
+        }
     </style>
 </head>
 
@@ -125,12 +132,12 @@
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Nº. Contrato</th>
+                        <th style="width: 80px;">Nº. Contrato</th>
                         <th>Proprietário</th>
                         <th>Inquilino</th>
                         <th>Imóvel</th>
-                        <th>Início</th>
-                        <th>Término</th>
+                        <th style="width: 100px;">Início</th>
+                        <th style="width: 100px;">Término</th>
                     </tr>
                 </thead>
 
@@ -153,7 +160,7 @@
                         <td style="font-weight: bold;"><?= $contrato['id'] ?></td>
                         <td><?= $contrato['nome_proprietario'] ?></td>
                         <td><?= $contrato['nome_inquilino'] ?></td>
-                        <td><?= $contrato['cod_imovel'] ?></td>
+                        <td><?= $contrato['end_imv'] ?></td>
                         <td style="font-weight: bold;">
                             <?php echo date("d/m/Y", strtotime($contrato['data_inicio']));?>
                         </td>

@@ -132,7 +132,7 @@ function buscar_contratos() {
           html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'"><td>'+json[i].id+'</td>';
           html += '<td>'+json[i].nome+'</td>';
           html += '<td>'+json[i].nome_proprietario+'</td>';
-          html += '<td>'+json[i].cod_imovel+'</td>';
+          html += '<td>'+json[i].end_imv+'</td>';
           html += '<td>'+json[i].data_inicio+'</td>';
           html += '<td>'+json[i].data_final+'</td>';
           html += '<td><a href="'+BASE_URL+'contratos/ver/'+json[i].id+'" title="Ver">';
@@ -217,7 +217,7 @@ function buscar_inquilinos() {
         for (var i in json) {
           var endereco = '';
           if(json[i].endereco != null) {
-            endereco = json[i].endereco+json[i].bairro;
+            endereco = json[i].endereco+' - '+json[i].bairro;
           }
 
           html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'">';

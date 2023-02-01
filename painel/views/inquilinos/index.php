@@ -8,7 +8,7 @@
     <!-- search form -->
     <div class="sidebar-form">
       <div class="input-group">
-        <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_inquilinos(this)" class="form-control" placeholder="Buscar pelo código, nome ou rg">
+        <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_inquilinos(this)" class="form-control" placeholder="Buscar pelo endereço, código, nome ou rg...">
         <span class="input-group-btn">
           <button type="button" name="search" id="search-btn" class="btn btn-flat">
             <i class="fa fa-search"></i>
@@ -50,7 +50,7 @@
                     if (!empty($inquilino['cod_imovel'])) {
                       $string = $inquilino['endereco'].' - ';
                       $string .= $inquilino['bairro'];
-                      echo $string;
+                      echo $string ;
                     }
                     ?></td>
                   <td>

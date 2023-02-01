@@ -9,6 +9,7 @@ class Inquilinos extends Model {
 
 		$sql = "SELECT inq.*, imo.endereco, imo.bairro
 		FROM inquilinos inq LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE '1'='1' ".implode(' OR ', $where)." ORDER BY nome ASC  LIMIT $offset, $limit";
+
 		$sql = $this->db->prepare($sql);
 		$this->bindwhere($sql, $filtros);
 		$sql->execute();
@@ -216,12 +217,12 @@ class Inquilinos extends Model {
 		$where = array();
 
 		if(!empty($filtros['search'])) {
-			$where[] = 'AND (inq.nome LIKE :nome';
-			$where[] = 'inq.referencia LIKE :referencia';
-			$where[] = 'inq.rg LIKE :rg)'; 
+			$where[] = 'AND (inq.nome LIKE :nome OR imo.endereco LIKE :endereco';
+			$where[] = 'inq.referencia LIKE :referencia OR imo.endereco LIKE :endereco';
+			$where[] = 'inq.rg LIKE :rg OR imo.endereco LIKE :endereco)';
 		}
 
-return $where;
+		return $where;
 }
 
 private function bindwhere(&$sql, $filtros) {
@@ -229,6 +230,7 @@ private function bindwhere(&$sql, $filtros) {
 		$sql->bindvalue(':nome', $filtros['search'].'%');
 		$sql->bindvalue(':referencia', '%'.$filtros['search'].'%');
 		$sql->bindvalue(':rg', '%'.$filtros['search'].'%');
+		$sql->bindvalue(':endereco', '%'.$filtros['search'].'%');
 	}
 }
 }

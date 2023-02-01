@@ -11,7 +11,9 @@ class Contratos extends Model {
 		(SELECT inq.nome FROM inquilinos inq WHERE con.cod_inquilino = inq.referencia) 
 		AS nome_inquilino,
 		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) 
-		AS nome_proprietario
+		AS nome_proprietario,
+		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
+		AS end_imv
 		FROM contratos con WHERE ".implode(' AND ', $where)." 
 		ORDER BY nome_inquilino ASC 
 		LIMIT $offset, $limit";
@@ -30,7 +32,9 @@ class Contratos extends Model {
 		$array = array();
 		$sql = "SELECT *,
 		(SELECT inq.nome FROM inquilinos inq WHERE con.cod_inquilino = inq.referencia) AS nome_inquilino,
-		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario
+		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario,
+		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
+		AS end_imv
 		FROM contratos con ORDER BY nome_inquilino ASC LIMIT $offset, $limit";
 		$sql = $this->db->prepare($sql);
 		$sql->execute();
@@ -44,7 +48,8 @@ class Contratos extends Model {
 		$where = $this->blwhere($filtros);
 		$array = array();
 		$sql = "SELECT con.*, inq.nome,
-		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario 
+		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario, 
+		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) AS end_imv 
 		FROM contratos con LEFT JOIN inquilinos inq ON inq.referencia = con.cod_inquilino 
 		WHERE '1'='1' ".implode(' OR ', $where)."
 		ORDER BY inq.nome ASC
@@ -103,10 +108,14 @@ class Contratos extends Model {
 		
 		$array = array();
 
-		$sql = "SELECT con.*, prop.nome AS nome_proprietario, inq.nome AS nome_inquilino 
+		$sql = "SELECT con.*, 
+				prop.nome AS nome_proprietario, 
+				inq.nome AS nome_inquilino, 
+				imv.endereco AS end_imv 
 				FROM contratos con
 				INNER JOIN proprietario AS prop ON con.cod_proprietario = prop.referencia
 				INNER JOIN inquilinos AS inq ON con.cod_inquilino = inq.referencia
+				INNER JOIN imoveis AS imv ON con.cod_imovel = imv.referencia
 				ORDER BY nome_proprietario ASC
 				";
 

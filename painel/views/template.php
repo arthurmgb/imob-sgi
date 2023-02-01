@@ -126,7 +126,7 @@
 		<script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/adminlte.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/dashboard.js"></script>
-		<script src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
+		<script src="<?php echo BASE_URL; ?>assets/js/script.js?v=1.0"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/lightbox/js/lightbox.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/jquery-mask/jquery.mask.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.min.js"></script>
