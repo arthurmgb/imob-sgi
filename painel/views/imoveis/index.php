@@ -8,7 +8,7 @@
     <!-- search form -->
     <div class="sidebar-form">
       <div class="input-group">
-        <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_imoveis(this)" class="form-control" placeholder="Buscar pelo bairro ou endereço">
+        <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_imoveis(this)" class="form-control" placeholder="Buscar pelo endereço, bairro ou nome do proprietário">
         <span class="input-group-btn">
           <button type="button" name="search" id="search-btn" class="btn btn-flat">
             <i class="fa fa-search"></i>

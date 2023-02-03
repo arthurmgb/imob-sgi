@@ -323,6 +323,7 @@ class Imoveis extends Model {
 
 		if(!empty($filtros['search'])) {
 			$where[] = 'AND (imv.bairro LIKE :bairro';
+			$where[] = 'prop.nome LIKE :prop';
 			$where[] = 'imv.endereco LIKE :endereco)';
 		}
 
@@ -333,6 +334,7 @@ class Imoveis extends Model {
 		if(!empty($filtros['search'])) {
 			$sql->bindvalue(':bairro', '%'.$filtros['search'].'%');
 			$sql->bindvalue(':endereco', '%'.$filtros['search'].'%');
+			$sql->bindvalue(':prop', '%'.$filtros['search'].'%');
 		}
 	}
 
