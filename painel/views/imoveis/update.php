@@ -3,7 +3,7 @@
   <section class="content-header">
     <h1>
       Atualizar Imóvel
-      <small> - Cod. do imovel <?php echo $imoveis['referencia'];?></small>
+      <small style="font-weight: bold;"> - Cod. do imovel <?php echo $imoveis['referencia'];?></small>
     </h1>
   </section>
 
@@ -20,13 +20,20 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+            <p class="box-title">Preencha as informações abaixo para realizar a edição, campos com * são obrigatorios!</p>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
 
           <form role="form" method="POST" enctype="multipart/form-data">
+          <div class="box-footer">
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Atualizar</button>
+        </div>
             <div class="box-body">
+            <div class="form-group">
+              <label for="" style="color: green; font-size: 16px;">CEMIG</label>
+              <input name="cemig" type="text"  class="form-control" id="" value="<?php echo $imoveis['cemig']; ?>" >
+            </div>
             <div class="form-group">
               <label for=""> * Código do proprietário</label>                                        
               <input type="text" class="form-control" name="codigo_proprietario" value="<?php echo $imoveis['cod_proprietario']; ?>">  
@@ -79,15 +86,11 @@
         <div class="form-group">
           <label for=""> *CEP</label>
             <!--input name="cep" type="text"  class="form-control" id="cep" onkeyup="buscar_cep()" required ="required" placeholder=""-->
-            <input name="cep" type="text"  class="form-control" id="cep" placeholder="">  
+            <input name="cep" type="text"  class="form-control" id="cep" placeholder="" value="<?php echo $imoveis['cep'] ?>">  
         </div>
         <div class="form-group">
           <label for=""> *Endereço / N°</label>
           <input required="required" name="endereco" type="text"  class="form-control" id="" value="<?php echo $imoveis['endereco']; ?>" >
-        </div>
-        <div class="form-group">
-          <label for="">CEMIG</label>
-          <input name="cemig" type="text"  class="form-control" id="" value="<?php echo $imoveis['cemig']; ?>" >
         </div>
         <div class="form-group">
           <label for=""> *Bairro</label>
@@ -186,7 +189,7 @@
           </select>
         </div>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Atualizar</button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Atualizar</button>
         </div>
 
       </form>

@@ -15,9 +15,13 @@
           <!-- form start -->
           <form role="form" method="POST" enctype="multipart/form-data">
             <div class="box-body">
+            <div class="form-group">
+            <label for="" style="color: green; font-size: 16px;">CEMIG</label>
+            <input type="text" readonly="true" class="form-control" id="" value="<?php echo !is_null($imoveis['cemig']) ? $imoveis['cemig'] : 'Não cadastrado'; ?>"  placeholder="">
+          </div>
              <div class="form-group">
               <label for="">Proprietário do imóvel</label>      
-              <input class="form-control" value="<?php echo $imoveis['cod_proprietario'];?>" readonly="true">
+              <input class="form-control" value="<?php echo $imoveis['nome_prop'] . ' - ' . 'Código: ' . $imoveis['cod_proprietario']; ?>" readonly="true">
             </select>
           </div>
           <div class="form-group">
@@ -47,10 +51,6 @@
           <div class="form-group">
             <label for="">Endereço / N°</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['endereco']; ?>"  placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="">CEMIG</label>
-            <input type="text" readonly="true" class="form-control" id="" value="<?php echo !is_null($imoveis['cemig']) ? $imoveis['cemig'] : 'Não cadastrado'; ?>"  placeholder="">
           </div>
           <div class="form-group">
             <label for="">Bairro</label>

@@ -2,61 +2,61 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>Imoveis</title>
+	<title>Imóveis Cadastrados</title>
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
   <style>
-  html {
-    font-size: 12px;
-  }
-  body {
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-    margin-top: 30px;
-  }
+    html {
+      font-size: 12px;
+    }
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-family: sans-serif;
+      margin-top: 30px;
+    }
 
-  .container {
-    margin: 0 auto;
-    width: 960px;
-    padding-bottom: 50vh;
-  }
+    .container {
+      margin: 0 auto;
+      width: 960px;
+      padding-bottom: 50vh;
+    }
 
-  .container div.view {
-    padding: 10px 20px;
-  }
+    .container div.view {
+      padding: 10px 20px;
+    }
 
-  .rel_title {
-    font-size: 1.2rem;
-    font-family: Arial;
-    line-height: 15px;
-    font-weight: bold !important;
-    letter-spacing: 1;
-  }
+    .rel_title {
+      font-size: 1.2rem;
+      font-family: Arial;
+      line-height: 15px;
+      font-weight: bold !important;
+      letter-spacing: 1;
+    }
 
-  .sub_title {
-    font-size: 1.6rem;
-    font-family: Arial;
-    line-height: 20px;
-    padding: 10px 0;
-    letter-spacing: 1;
-  }
+    .sub_title {
+      font-size: 1.6rem;
+      font-family: Arial;
+      line-height: 20px;
+      padding: 10px 0;
+      letter-spacing: 1;
+    }
 
-  .content {
-    padding: 20px;
-    padding-top: 0;
-  }
+    .content {
+      padding: 20px;
+      padding-top: 0;
+    }
 
-  .content .rel_title {
-    margin:15px 0;
-    text-align: center;
-    font-size: 20px;
-  }
-  
-  .content table.table thead th,
-  .content table.table tbody tr {
-    font-size: 1.1rem;
-  } 
+    .content .rel_title {
+      margin:15px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+    
+    .content table.table thead th,
+    .content table.table tbody tr {
+      font-size: 1.1rem;
+    } 
 
 </style>
 </head>

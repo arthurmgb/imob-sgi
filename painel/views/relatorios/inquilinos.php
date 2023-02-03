@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>Imoveis</title>
+	<title>Inquilinos cadastrados</title>
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
   <style>

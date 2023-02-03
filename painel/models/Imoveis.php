@@ -27,7 +27,13 @@ class Imoveis extends Model {
 	public function getList($offset, $limit, $filtros=array()){
 		$where = $this->buildwhere($filtros);
 		$array = array();
-		$sql = "SELECT * FROM imoveis WHERE 1=1 ".implode(' OR ', $where)." ORDER BY endereco ASC LIMIT $offset, $limit";
+		$sql = "SELECT imv.*, prop.nome AS nome_prop
+				FROM imoveis imv
+				INNER JOIN proprietario prop ON imv.cod_proprietario = prop.referencia
+				WHERE 1=1 ".implode(' OR ', $where)." ORDER BY imv.endereco ASC LIMIT $offset, $limit";
+		// $sql = "SELECT *
+		// 		FROM imoveis
+		// 		WHERE 1=1 ".implode(' OR ', $where)." ORDER BY endereco ASC LIMIT $offset, $limit";
 		$sql = $this->db->prepare($sql);
 		$this->bindwhere($sql, $filtros);
 		$sql->execute();
@@ -53,7 +59,10 @@ class Imoveis extends Model {
 
 	public function imovel($id){
 		$array = array();
-		$sql = "SELECT * FROM imoveis WHERE id = '$id'";
+		$sql = "SELECT imv.*, prop.nome AS nome_prop
+				FROM imoveis imv
+				INNER JOIN proprietario prop ON  imv.cod_proprietario = prop.referencia
+				WHERE imv.id = '$id'";
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {
@@ -313,8 +322,8 @@ class Imoveis extends Model {
 		$where = array();
 
 		if(!empty($filtros['search'])) {
-			$where[] = 'AND (bairro LIKE :bairro';
-			$where[] = 'endereco LIKE :endereco)';
+			$where[] = 'AND (imv.bairro LIKE :bairro';
+			$where[] = 'imv.endereco LIKE :endereco)';
 		}
 
 		return $where;

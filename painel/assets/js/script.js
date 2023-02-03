@@ -168,16 +168,27 @@ function buscar_imoveis() {
 
         for(var i in json) {
 
+          let style_cemig = '';
+
           if(!json[i].cemig){
             json[i].cemig = 'Não cadastrado';
+            style_cemig = 'style="color:red;"';
+          }else{
+            style_cemig = 'style="color: green; font-weight: bold;"';
+          }
+
+          if(json[i].finalidade == 1){
+            json[i].finalidade = 'Aluguel';
+          }else{
+            json[i].finalidade = 'Venda';
           }
 
           html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'"><td>'+json[i].referencia+'</td>';
           html += '<td>'+json[i].tipo+'</td>';
           html += '<td>'+json[i].endereco+'</td>';
-          html += '<td>'+json[i].cemig+'</td>';
+          html += '<td>'+json[i].nome_prop+'</td>';
+          html += `<td ${style_cemig}>`+json[i].cemig+`</td>`;
           html += '<td>'+json[i].bairro+'</td>';
-          html += '<td>'+json[i].cidade+'</td>';
           html += '<td> R$ '+json[i].valor+'</td>';
           html += '<td>'+json[i].finalidade+'</td>';
           html += '<td><a href="'+BASE_URL+'imovel/ver/'+json[i].id+'" title="Ver">';

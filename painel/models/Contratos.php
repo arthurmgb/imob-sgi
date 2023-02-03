@@ -45,15 +45,22 @@ class Contratos extends Model {
 	}
 
 	public function getlist($offset, $limit, $filtros=array()){
+		
 		$where = $this->blwhere($filtros);
 		$array = array();
-		$sql = "SELECT con.*, inq.nome,
-		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario, 
-		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) AS end_imv 
-		FROM contratos con LEFT JOIN inquilinos inq ON inq.referencia = con.cod_inquilino 
-		WHERE '1'='1' ".implode(' OR ', $where)."
-		ORDER BY inq.nome ASC
-		LIMIT 0, 99999";
+
+		$sql = "SELECT con.*, 
+				inq.nome, 
+				prop.nome AS nome_proprietario, 
+				imv.endereco AS end_imv
+				FROM contratos con 
+				LEFT JOIN inquilinos inq ON inq.referencia = con.cod_inquilino
+				INNER JOIN imoveis imv ON con.cod_imovel = imv.referencia
+				INNER JOIN proprietario prop ON con.cod_proprietario = prop.referencia
+				WHERE '1'='1' ".implode(' OR ', $where)."
+				ORDER BY inq.nome ASC
+				LIMIT 0, 99999";
+
 		$sql = $this->db->prepare($sql);
 		$this->bnwhere($sql, $filtros);
 		$sql->execute();
@@ -410,7 +417,8 @@ class Contratos extends Model {
 		$where = array();
 
 		if(!empty($filtros['search'])) {
-			$where[] = 'AND (inq.nome LIKE :nome)';
+			$where[] = 'AND (inq.nome LIKE :nome_inq';
+			$where[] = 'prop.nome LIKE :nome_prop)';
 		}
 
 		return $where;
@@ -418,7 +426,8 @@ class Contratos extends Model {
 
 	private function bnwhere(&$sql, $filtros) {
 		if(!empty($filtros['search'])) {
-			$sql->bindvalue(':nome', '%'.$filtros['search'].'%');
+			$sql->bindvalue(':nome_inq', '%'.$filtros['search'].'%');
+			$sql->bindvalue(':nome_prop', '%'.$filtros['search'].'%');
 		}
 	}
 

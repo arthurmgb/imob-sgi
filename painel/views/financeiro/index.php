@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Financeiro
+      Receber do Inquilino
       <small>Sistema de Gerenciamento Imobiliário</small>
     </h1>
     <!-- search form -->
@@ -26,7 +26,7 @@
         <?php if (count($parcelas) > 0): ?>
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Titulos</h3>
+            <h3 class="box-title">Área de Recebimento do Inquilino</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">

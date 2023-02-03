@@ -26,6 +26,10 @@
             <!-- form start -->
             <form role="form" method="POST" enctype="multipart/form-data">
               <div class="box-body">
+                <div class="form-group">
+                  <label for="" style="color: green; font-size: 16px;">CEMIG</label>
+                  <input name="cemig" type="text" class="form-control" id="" placeholder="">
+                </div>
                  <div class="form-group">
                   <label for=""> * Código do proprietário</label>                                        
                     <input type="text" class="form-control" name="codigo_proprietario" required="required">
@@ -55,10 +59,6 @@
                  <div class="form-group">
                   <label for=""> * Endereço / N°</label>
                   <input name="endereco" type="text" required="required" class="form-control" id="" placeholder="">
-                </div>
-                 <div class="form-group">
-                  <label for="">CEMIG</label>
-                  <input name="cemig" type="text" class="form-control" id="" placeholder="">
                 </div>
                 <div class="form-group">
                   <label for=""> * Bairro</label>
@@ -150,7 +150,7 @@
                 </div>
                   <input name="id_user" type="hidden" value="<?php echo $_SESSION['user']['id'];?>">
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
               </div>
               
             </form>

@@ -17,7 +17,7 @@
           <div class="col-xs-12">
             <div class="sidebar-form" style="margin-top: 0">
               <div class="input-group">
-                <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_contratos(this)" class="form-control" placeholder="Buscar pelo nome do inquilino">
+                <input type="search" name="q" autofocus autocomplete="off" onkeyup="buscar_contratos(this)" class="form-control" placeholder="Buscar pelo nome do inquilino ou do proprietário">
                 <span class="input-group-btn">
                   <button type="button" name="search" id="search-btn" class="btn btn-flat">
                     <i class="fa fa-search"></i>

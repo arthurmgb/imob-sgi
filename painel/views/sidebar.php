@@ -86,12 +86,12 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>financeiro"><i class="fa fa-circle-o"></i>Receber</a></li>
+					<li><a href="<?php echo BASE_URL; ?>financeiro"><i class="fa fa-circle-o"></i>Receber do Inquilino</a></li>
+					<li><a href="<?php echo BASE_URL; ?>financeiro/repasse"><i class="fa fa-circle-o"></i>Repasse do Proprietário</a></li>
 					<li><a href="<?php echo BASE_URL; ?>financeiro/gerarecibo"><i class="fa fa-circle-o"></i>Gerar Recibos por Datas</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/caixa"><i class="fa fa-circle-o"></i>Caixa</a></li>
 					<li><a href="<?php echo BASE_URL; ?>financeiro/recb"><i class="fa fa-circle-o"></i>Recibo em Branco</a></li>
+					<li><a href="<?php echo BASE_URL; ?>financeiro/caixa"><i class="fa fa-circle-o"></i>Caixa</a></li>
 					<li><a href="<?php echo BASE_URL; ?>financeiro/lancamentos"><i class="fa fa-circle-o"></i>Lançamentos</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/repasse"><i class="fa fa-circle-o"></i>Repasse do Proprietario</a></li>
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo']=='relatorios') ? 'active':''; ?>">

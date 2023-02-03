@@ -34,9 +34,9 @@
                   <th>#COD</th>
                   <th>Tipo</th>
                   <th>Endereço</th>
+                  <th>Proprietário</th>
                   <th>CEMIG</th>
                   <th>Bairro</th>
-                  <th>Cidade</th>
                   <th>Valor</th>
                   <th>Finalidade</th>
                   <th>Ações</th>
@@ -53,11 +53,11 @@
                   <td><?php echo $imovel['referencia'];?></td>
                   <td><?php echo $imovel['tipo']; ?></td>
                   <td><?php echo $imovel['endereco']; ?></td>
-                  <td>
+                  <td><?php echo $imovel['nome_prop']; ?></td>
+                  <td style="<?php echo !is_null($imovel['cemig']) ? ' color: green; font-weight: bold;' : ' color: red;'; ?>">
                     <?php echo !is_null($imovel['cemig']) ? $imovel['cemig'] : 'Não cadastrado'; ?>
                   </td>
                   <td><?php echo $imovel['bairro']; ?></td>
-                  <td><?php echo $imovel['cidade']; ?></td>
                   <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
                   <td><?php echo ($imovel['finalidade']=='1') ? 'Aluguel':'Venda'; ?></td>
                   <td>

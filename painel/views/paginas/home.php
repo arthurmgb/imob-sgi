@@ -74,7 +74,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Imóveis Diponiveis para Aluguel</h3>
+            <h3 style="font-size: 21px;" class="box-title">Imóveis Disponíveis para Aluguel: <b style="color: green;"><?php echo count($disponiveis)?></b></h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -135,7 +135,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Aluguel Vencido</h3>
+            <h3 style="font-size: 21px;" class="box-title">Aluguel Vencido</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -183,7 +183,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Contratos Vencidos</h3>
+            <h3 style="font-size: 21px;" class="box-title">Contratos Vencidos</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
