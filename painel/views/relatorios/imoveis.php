@@ -14,6 +14,8 @@
       padding: 0px;
       font-family: sans-serif;
       margin-top: 30px;
+      -webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact;
     }
 
     .container {
@@ -149,7 +151,7 @@
             ";
           else:
             echo "
-            <span style='color: black; font-weight: 500; font-size: 14px;'>
+            <span style='color: red; font-weight: 500; font-size: 14px;'>
               Não cadastrado
             </span>
             ";

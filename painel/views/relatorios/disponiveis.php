@@ -14,6 +14,8 @@
       padding: 0px;
       font-family: sans-serif;
       margin-top: 30px;
+      -webkit-print-color-adjust: exact !important;
+			print-color-adjust: exact;
     }
 
     .container {
