@@ -71,7 +71,7 @@ class Proprietarios extends Model{
 	public function getTotalProprietarios() {
 		$q = 0;
 
-		$sql = "SELECT COUNT(*) as c FROM proprietario where status = '1'";
+		$sql = "SELECT COUNT(*) as c FROM proprietario";
 		$sql = $this->db->query($sql);
 
 		if($sql->rowCount() > 0) {
@@ -103,7 +103,7 @@ class Proprietarios extends Model{
 
 		$q = 0;
 		
-		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE tipo_conta = '0' and status = '1'";
+		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE tipo_conta = '0'";
 
 		$sql = $this->db->query($sql);
 

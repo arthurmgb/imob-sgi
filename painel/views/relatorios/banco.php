@@ -87,6 +87,9 @@
 
         <div class="content">
             <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS COM BANCO</h3>
+            <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários cadastrados: <b style="font-size: 22px; color: blue;">
+                <?php echo count($proprietarios) + $nobank ?></b>
+            </p>
             <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Proprietários <b>COM</b> banco cadastrado: <b style="font-size: 22px; color: green;">
                 <?php echo count($proprietarios) ?></b>
             </p>

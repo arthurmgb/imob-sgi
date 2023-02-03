@@ -78,7 +78,7 @@
 
   <div class="content">
     <h3 class="rel_title">RELATÓRIO DE INQUILINOS</h3>
-    <p class="sub_title">Hoje temos <?php echo $TotalInquilinos; ?> inquilinos cadastrados</p>
+    <p class="sub_title">Total de inquilinos cadastrados: <b style="color: green;"><?php echo $TotalInquilinos; ?></b></p>
     <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>

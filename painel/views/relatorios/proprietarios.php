@@ -76,9 +76,25 @@
     </div>		
   </div>
 
+  <?php 
+
+    $prop_active = 0;
+    $prop_inactive = 0;
+
+    foreach ($proprietarios as $proprietario){
+      if($proprietario['status'] == '2'){
+        $prop_inactive += 1;
+      }else{
+        $prop_active += 1;
+      }
+    }
+  ?>
+
   <div class="content">
     <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS</h3>
-    <p class="sub_title">Hoje temos <?php echo $TotalProprietarios; ?> proprietários cadastrados</p>
+    <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários cadastrados: <b style="color: blue;"><?php echo $TotalProprietarios; ?></b></p>
+    <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários ativos: <b style="color: green;"><?php echo $prop_active; ?></b></p>
+    <p class="sub_title">Total de proprietários inativos: <b style="color: red;"><?php echo $prop_inactive; ?></b></p>
     <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
@@ -91,8 +107,14 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($proprietarios as $proprietario): ?>
-                  <tr>
+                <?php foreach ($proprietarios as $proprietario): 
+                  if($proprietario['status'] == '2'){
+                    $class = 'danger';
+                  }else{
+                    $class = '';
+                  }
+                ?>
+                  <tr class="<?= $class ?>">
                     <td><?php echo $proprietario['referencia'];?></td>
                     <td><?php echo $proprietario['nome'];?></td>
                     <td id="cpf"><?php echo $proprietario['cpf'];?></td>
