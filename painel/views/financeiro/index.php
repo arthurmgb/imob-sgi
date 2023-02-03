@@ -6,9 +6,14 @@
       <small>Sistema de Gerenciamento Imobiliário</small>
     </h1>
 
+    <?php 
+        $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
+        
+     ?>
+
     <div class="toggle-financeiro">
         <button style="pointer-events: none;" class="btn btn-lg btn-success btn-fin-inq" disabled>Receber do Inquilino</button>
-        <a href="<?php echo BASE_URL ?>financeiro/repasse" class="btn btn-lg btn-primary btn-fin-prop">Repasse do Proprietário</a>
+        <a href="<?php echo BASE_URL ?>financeiro/repasse?contrato=<?= $finid ?>" class="btn btn-lg btn-primary btn-fin-prop">Repasse do Proprietário</a>
     </div>
 
     <!-- search form -->
