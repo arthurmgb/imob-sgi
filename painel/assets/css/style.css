@@ -153,3 +153,27 @@ table thead th:last-child {
 	border-top-left-radius: 0;
 	border-left: none;
 }
+.toggle-financeiro{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.toggle-financeiro button{
+	flex-grow: 1;
+	margin-top: 10px;
+}
+.toggle-financeiro a{
+	flex-grow: 1;
+	margin-top: 10px;
+}
+.btn-fin-inq{
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: none;
+}
+.btn-fin-prop{
+	border-left: none;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
