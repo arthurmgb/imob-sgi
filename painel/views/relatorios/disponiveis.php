@@ -149,7 +149,7 @@
             ";
           else:
             echo "
-            <span style='color: black; font-weight: 500; font-size: 14px;'>
+            <span style='color: red; font-weight: 500; font-size: 14px;'>
               Não cadastrado
             </span>
             ";

@@ -74,7 +74,12 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 style="font-size: 21px;" class="box-title">Imóveis Disponíveis para Aluguel: <b style="color: green;"><?php echo count($disponiveis)?></b></h3>
+            <h3 style="font-size: 21px; padding: 10px;" class="box-title">Imóveis Disponíveis para Aluguel: <b style="color: green;"><?php echo count($disponiveis)?></b></h3>
+
+            <div class="home-flex-btns pull-right">
+              <a class="btn btn-primary" href="<?= BASE_URL ?>relatorios/disponiveis" target="_blank">Relatório de Imóveis Disponíveis</a>
+            </div>
+
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -85,7 +90,7 @@
                   <th>Tipo</th>
                   <th>Endereço</th>
                   <th>Bairro</th>
-                  <th>Cidade</th>
+                  <th style="color: #fff; background-color: green;">CEMIG</th>
                   <th>Valor</th>
                   <th>Ações</th>
                 </tr>
@@ -111,7 +116,27 @@
                   </td>
                   <td><?php echo $disponivel['endereco'];?></td>
                   <td><?php echo $disponivel['bairro'];?></td>
-                  <td><?php echo $disponivel['cidade'];?></td>
+                  
+                  <td style="vertical-align: middle; background-color: #dcfce7;" class="text-center">
+                    <?php 
+                    
+                    if(!is_null($disponivel['cemig'])):
+                      echo "
+                      <span style='color: green; font-weight: 700; font-size: 16px;'>"
+                      .$disponivel['cemig'].
+                      "</span>
+                      ";
+                    else:
+                      echo "
+                      <span style='color: red; font-weight: 500; font-size: 14px;'>
+                        Não cadastrado
+                      </span>
+                      ";
+                    endif;
+                    
+                    ?>
+                  </td>
+
                   <td>R$ <?php echo number_format($disponivel['valor'],2,",",".");?></td>
                   <td>
                     <a href="imovel/ver/<?php echo $disponivel['id'];?>" title="Ver" style="margin:0 10px;"><i class="fa fa-eye fa-1x fa-border"></i></a>
@@ -120,12 +145,8 @@
                 </tr>
               <?php endforeach ;?>
             </table>
-            <?php if (!empty($disponivel['id'])): ?>
-            <div class="" style="margin: 10px 0; float:right; margin-right:10px;">
-                <a class="btn btn-primary btn-flat" href="<?php echo BASE_URL;?>relatorios/disponiveis" target="_blank">Ver Mais</a>
+              
             </div>
-            <?php endif; ?>
-          </div>
 
           <!-- /.box-body -->
         </div>
@@ -135,7 +156,10 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 style="font-size: 21px;" class="box-title">Aluguel Vencido</h3>
+            <h3 style="font-size: 21px; padding: 10px;" class="box-title">Aluguel Vencido: <b style="color: red;"><?php echo count($atrasado)?></b></h3>
+            <div class="home-flex-btns pull-right">
+              <a class="btn btn-primary" href="<?= BASE_URL ?>relatorios/clientes" target="_blank">Relatório de Parcelas de Clientes</a>
+            </div>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -169,11 +193,6 @@
                 </tr>
               <?php endforeach;?>
             </table>
-            <?php if (!empty($vencido['id'])): ?>
-            <div class="" style="margin: 10px 0; float:right; margin-right:10px;">
-                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo BASE_URL;?>financeiro">Ver Mais</a>
-            </div>
-            <?php endif; ?>
           </div>
           <!-- /.box-body -->
         </div>
@@ -183,7 +202,10 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 style="font-size: 21px;" class="box-title">Contratos Vencidos</h3>
+            <h3 style="font-size: 21px; padding: 10px;" class="box-title">Contratos Vencidos: <b style="color: red;"><?php echo count($contrato)?></b></h3>
+            <div class="home-flex-btns pull-right">
+              <a class="btn btn-primary" href="<?= BASE_URL ?>contratos?status=3" target="_blank">Todos os Contratos Vencidos</a>
+            </div>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
@@ -194,8 +216,8 @@
                   <th>Inquilino</th>
                   <th>Proprietário</th>
                   <th>Imóvel</th>
-                  <th>Inicio</th>
-                  <th>Termino</th>  
+                  <th>Início</th>
+                  <th>Término</th>  
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -228,12 +250,7 @@
                  </td>
               </tr>
             <?php endforeach ;?>
-          </table>
-           <?php if (!empty($vencido['id'])): ?>
-            <div class="" style="margin: 10px 0; float:right; margin-right:10px;">
-                <a class="btn btn-primary btn-flat" target="_blank" href="<?php echo BASE_URL;?>contratos">Ver Mais</a>
-            </div>
-            <?php endif; ?>
+          </table>   
           </div>
         </div>
       </div>

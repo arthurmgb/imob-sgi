@@ -158,7 +158,7 @@ class Parcelas extends Model {
 		$hoje = date('Y-m-d');
 		$sql = "SELECT *,
 		(SELECT inq.nome AS nome_inquilino FROM inquilinos inq, contratos con WHERE con.id = parcelas.id_contrato AND con.cod_inquilino = inq.referencia) AS nome_inquilino
-		FROM parcelas WHERE data_fim <= '$hoje' AND status = '0' ORDER BY data_fim ASC";
+		FROM parcelas WHERE data_fim <= '$hoje' AND status = '0' ORDER BY nome_inquilino ASC";
 		$sql = $this->db->query($sql);
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
