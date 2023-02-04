@@ -55,7 +55,7 @@ table thead th:last-child {
 .view p {
 	font-family: sans-serif;
 	font-size: 1.25rem;
-	letter-space: .8;
+	letter-spacing: .8;
 	line-height: 13px;
 	color: #000;
 }
@@ -135,12 +135,6 @@ table thead th:last-child {
 	font-size: 20px;
 	color: #666;
 }
-.custom-ifb{
-	transition: all 0.2s ease;
-}
-.custom-ifb:hover {
-	background-color: rgb(236, 236, 236) !important;
-}
 .div-new-flex{
 	display: flex;
 	flex-direction: row;
@@ -176,4 +170,60 @@ table thead th:last-child {
 	border-left: none;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+.custom-imob-box{
+	user-select: none;
+	min-height: 90px;
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 15px;
+	border: 1px solid #c5c5c5;
+	border-bottom: 2px solid #ccc;
+	transition: all 0.2s;
+	box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.15);
+	color: #000 !important;
+}
+.custom-imob-box:hover{
+	background-color: #f5f5f5;
+	border-color: #9a9a9a;
+	cursor: pointer;
+}
+.custom-imob-box:hover  > .custom-block-ifb{
+	background-color: #f2f2f2;
+	border-color: #646464;
+	cursor: pointer;
+}
+.custom-imob-box:hover .custom-imob-box-icon i{
+	transform: scale(1.2);
+}
+.custom-imob-box:hover .custom-imob-box-icon{
+	filter: brightness(110%);
+}
+.custom-imob-box-icon i{
+	transition: all 0.3s;
+}
+.custom-imob-box-icon{
+	font-size: 45px;
+	color: #fff;
+	width: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.custom-block-ifb{
+	align-self: flex-start;
+	padding: 10px 0px 15px 15px;
+	width: 100%;
+	font-size: 16px;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: column;
+	word-wrap: break-word;
+	transition: all 0.2s;
+}
+.custom-imob-box-num{
+	font-weight: bold;
+	font-size: 20px;
 }

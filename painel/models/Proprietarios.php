@@ -82,6 +82,34 @@ class Proprietarios extends Model{
 		return $q;
 	}
 
+	public function qtdProprietariosAtivos(){
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE status = '1'";
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+	}
+
+	public function qtdProprietariosInativos(){
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE status = '2'";
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+	}
+
 	public function getProprietariosBanco(){
 
 		$array = array();

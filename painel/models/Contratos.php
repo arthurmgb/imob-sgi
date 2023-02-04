@@ -378,10 +378,10 @@ class Contratos extends Model {
 					$where[] = 'data_final > :agora';
 				break;
 				case 2:
-					$where[] = 'data_final >= :agora AND data_final <= :um_mes_frente';
+					$where[] = 'data_final > :agora AND data_final <= :um_mes_frente';
 				break;
 				case 3:
-					$where[] = 'data_final < :agora';
+					$where[] = 'data_final <= :agora';
 				break;
 			}
 

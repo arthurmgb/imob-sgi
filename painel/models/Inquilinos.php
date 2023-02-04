@@ -119,6 +119,20 @@ class Inquilinos extends Model {
 		return $q;
 	}
 
+	public function qtdInquilinoInativos() {
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) as c FROM inquilinos WHERE status = '2'";
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+	}
+
 	public function cadImovel($codImovel, $cod_inquilino) {
 		$sql = "UPDATE inquilinos SET cod_imovel = :cod_imovel WHERE referencia = :referencia";
 		$sql = $this->db->prepare($sql);

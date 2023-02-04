@@ -13,6 +13,22 @@ class Imoveis extends Model {
 		return $array;
 	}
 
+	public function ocupados() {
+		
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) AS c FROM imoveis WHERE status != '2'";
+		
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+	}
+
 	public function getValorComissao($codigo) {
 		$sql = "SELECT comissao FROM imoveis WHERE referencia = '$codigo'";
 		$sql = $this->db->query($sql);
@@ -43,7 +59,7 @@ class Imoveis extends Model {
 		return $array;
 	}
 	
-		public function relatorio(){
+	public function relatorio(){
 		$array = array();
 		$sql = "SELECT * FROM imoveis ORDER BY endereco ASC";
 			
@@ -55,7 +71,6 @@ class Imoveis extends Model {
 		}
 		return $array;
 	}
-	
 
 	public function imovel($id){
 		$array = array();
@@ -77,7 +92,6 @@ class Imoveis extends Model {
 		}
 		return $array;
 	}
-
 
 	/*
 	* Utilizado quando clicado no link na pagina de visualizacao
@@ -294,8 +308,6 @@ class Imoveis extends Model {
 				return false;
 			}
 	}
-
-	
 
 	public function removerImovel($id) {
 
