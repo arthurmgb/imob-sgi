@@ -17,7 +17,7 @@ class Imoveis extends Model {
 		
 		$q = 0;
 
-		$sql = "SELECT COUNT(*) AS c FROM imoveis WHERE status != '2'";
+		$sql = "SELECT COUNT(*) AS c FROM imoveis WHERE referencia IN (SELECT cod_imovel FROM contratos);";
 		
 		$sql = $this->db->query($sql);
 

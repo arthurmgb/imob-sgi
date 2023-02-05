@@ -93,7 +93,7 @@
   ?>
 
   <div class="content">
-    <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS</h3>
+    <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS CADASTRADOS</h3>
     <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários cadastrados: <b style="color: blue;"><?php echo $TotalProprietarios; ?></b></p>
     <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários ativos: <b style="color: green;"><?php echo $prop_active; ?></b></p>
     <p class="sub_title">Total de proprietários inativos: <b style="color: red;"><?php echo $prop_inactive; ?></b></p>

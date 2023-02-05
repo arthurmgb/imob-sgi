@@ -128,7 +128,7 @@
                 <b style="font-size: 22px; color: blue;"><?= $num_avencer ?></b>
             </p>
             <p class="sub_title">
-                Contratos <b>INATIVOS</b>: 
+                Contratos <b>VENCIDOS</b>: 
                 <b style="font-size: 22px; color: red;"><?= $num_inativos ?></b>
             </p>
             <table id="example2" class="table table-bordered table-hover">

@@ -97,7 +97,7 @@
     <h3 class="rel_title">RELATÓRIO DE IMÓVEIS DISPONÍVEIS</h3>
     <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">
       Imóveis disponíveis no momento:
-      <b style="color: green; font-size: 22px;"><?php echo $TotalImoveis; ?></b>
+      <b style="color: green; font-size: 22px;"><?php echo count($disponiveis); ?></b>
     </p>
     <p style="margin: 0; padding-bottom: 0;" class="sub_title">
       Imóveis disponíves <b style="color: blue;">com</b> <b style="color: green;">CEMIG</b> cadastrados:
@@ -116,7 +116,6 @@
           <th>Endereço</th>
           <th style="color: #fff; background-color: green;">CEMIG</th>
           <th>Bairro</th>
-          <th>Cidade</th>
           <th>Valor</th>
         </tr>
       </thead>
@@ -160,8 +159,7 @@
           ?>
         </td>
        <td><?php echo $imovel['bairro']; ?></td>
-       <td><?php echo $imovel['cidade']; ?></td>
-       <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
+       <td style="font-weight: bold;">R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
      </tr>
    <?php endforeach ; ?>
  </table>

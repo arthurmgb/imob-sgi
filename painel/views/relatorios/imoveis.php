@@ -116,7 +116,6 @@
           <th>Endereço</th>
           <th style="color: #fff; background-color: green;">CEMIG</th>
           <th>Bairro</th>
-          <th>Cidade</th>
           <th>Valor</th>
         </tr>
       </thead>
@@ -160,8 +159,7 @@
           ?>
         </td>
        <td><?php echo $imovel['bairro']; ?></td>
-       <td><?php echo $imovel['cidade']; ?></td>
-       <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
+       <td style="font-weight: bold;">R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
      </tr>
    <?php endforeach ; ?>
  </table>
