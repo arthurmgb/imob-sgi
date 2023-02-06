@@ -2,22 +2,30 @@
 
 class Imoveis extends Model {
 
-	public function disponiveis($limit) {
+	public function disponiveis() {
+
 		$array = array();
-		$sql = "SELECT * FROM imoveis WHERE status = '2' ORDER BY endereco ASC";
+
+		$sql = "SELECT *
+		FROM imoveis
+		WHERE referencia NOT IN (SELECT cod_imovel FROM contratos)
+		AND status = '2' ORDER BY endereco ASC";
+
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
+
 		return $array;
+
 	}
 
-	public function ocupados() {
-		
+	public function count_total_imoveis(){
+
 		$q = 0;
 
-		$sql = "SELECT COUNT(*) AS c FROM imoveis WHERE referencia IN (SELECT cod_imovel FROM contratos);";
+		$sql = "SELECT COUNT(*) AS c FROM imoveis";
 		
 		$sql = $this->db->query($sql);
 
@@ -27,6 +35,47 @@ class Imoveis extends Model {
 		}
 
 		return $q;
+
+	}
+
+	public function count_alugados() {
+		
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) AS c 
+				FROM imoveis 
+				WHERE referencia IN (SELECT cod_imovel FROM contratos)
+				AND status = '1';";
+		
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+
+	}
+
+	public function count_disponiveis(){
+
+		$q = 0;
+
+		$sql = "SELECT COUNT(*) AS c
+				FROM imoveis
+				WHERE referencia NOT IN (SELECT cod_imovel FROM contratos)
+				AND status = '2'";
+		
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			$q = $sql->fetch();
+			$q = $q['c'];
+		}
+
+		return $q;
+
 	}
 
 	public function getValorComissao($codigo) {

@@ -1,14 +1,14 @@
 <aside class="main-sidebar">
 	<section class="sidebar">
-		<div class="user-panel" style="margin-bottom: 20px; margin-top: 10px">
+		<div class="user-panel" style="margin-bottom: 10px; margin-top: 0px; display: flex; align-items: center; justify-content: center; padding: 5px;">
 			<a href="<?php echo BASE_URL; ?>">
-				<img src="<?php echo BASE_URL;?>assets/images/logo.png" width="205" >
+				<img style="width: 154px;" src="<?php echo BASE_URL;?>assets/images/logo.png">
 			</a>	
 		</div>
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class=" <?php echo ($viewData['menu_ativo']=='dashboard')? 'active': ''; ?>">
 				<a href="<?php echo BASE_URL; ?>" title="Dashboard" > 
-					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+					<i class="fa fa-dashboard"></i> <span>Página inicial</span>
 				</a>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo']=='proprietarios')? 'active': ''; ?>">

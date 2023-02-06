@@ -20,21 +20,21 @@
                   Imóveis cadastrados
                 </span>
                 <span class="custom-imob-box-num">
-                  <?php echo $totalImoveis; ?>
+                  <?php echo $count_total_imoveis; ?>
                 </span>
 
                 <span>
                   Imóveis disponíveis
                 </span>
                 <span style="color: green;" class="custom-imob-box-num">
-                  <?php echo count($disponiveis); ?>
+                  <?php echo $count_disponiveis; ?>
                 </span>
 
                 <span>
-                  Imóveis ocupados
+                  Imóveis alugados
                 </span>
                 <span style="color: red;" class="custom-imob-box-num">
-                  <?php echo $ocupados; ?>
+                  <?php echo $count_alugados; ?>
                 </span>
 
               </div>
@@ -79,6 +79,10 @@
             </div>
           </a>
         </div>
+
+      </div>
+
+      <div class="row">
 
         <div class="col-md-6 col-sm-6 col-xs-12">
           <a href="<?= BASE_URL ?>proprietarios" title="Ir para proprietários">

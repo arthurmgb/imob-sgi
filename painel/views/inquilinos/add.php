@@ -23,7 +23,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+          <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatórios!</p>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -63,7 +63,7 @@
            <textarea name="info" class="form-control"></textarea>
          </div>
          <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
         </div>
       </form>
     </div>

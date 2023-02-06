@@ -20,7 +20,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <p class="box-title">Preencha as informações abaixo para realizar a edição, campos com * são obrigatorios!</p>
+            <p class="box-title">Preencha as informações abaixo para realizar a edição, campos com * são obrigatórios!</p>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -35,14 +35,14 @@
               <input name="cemig" type="text"  class="form-control" id="" value="<?php echo $imoveis['cemig']; ?>" >
             </div>
             <div class="form-group">
-              <label for=""> * Código do proprietário</label>                                        
+              <label for="">* Código do Proprietário</label>                                        
               <input type="text" class="form-control" name="codigo_proprietario" value="<?php echo $imoveis['cod_proprietario']; ?>">  
             </div>
              <div class="form-group">                                        
               <input type="text" class="form-control" id="nome_proprietario" value="<?php echo $nome_proprietario; ?>" readonly>  
             </div>
             <div class="form-group">
-              <label for=""> *Tipo</label>
+              <label for="">* Tipo</label>
               <select required="required" name="tipo" class="form-control">
                 <option value="1" <?php echo ($imoveis['tipo']=='1')? 'selected="selected"':''; ?>>Casa</option>
                 <option value="2" <?php echo ($imoveis['tipo']=='2')? 'selected="selected"':''; ?>>Apartamento</option>
@@ -50,18 +50,18 @@
               </select>
             </div>
             <div class="form-group">
-              <label for=""> *Finalidade</label>
+              <label for="">* Finalidade</label>
               <select required="required"  name="finalidade" class="form-control">
                 <option value="1" <?php echo ($imoveis['finalidade']=='1')? 'selected="selected"':''; ?>>Locação</option>
                 <option value="2" <?php echo ($imoveis['finalidade']=='2')? 'selected="selected"':''; ?>>Venda</option>
               </select>
             </div>
             <div class="form-group">
-              <label for=""> Foto</label>
+              <label for="">Fotos</label>
               <input type="file" name="fotos[]" multiple class="form-control" id="" placeholder=""><br />
 
               <div class="panel panel-default">
-               <div class="panel-heading">Fotos do Imovel</div>
+               <div class="panel-heading">Fotos do Imóvel</div>
 
                <div class="panel-body" style="padding: 20px"> 
 
@@ -84,29 +84,29 @@
 
         </div>
         <div class="form-group">
-          <label for=""> *CEP</label>
+          <label for="">* CEP</label>
             <!--input name="cep" type="text"  class="form-control" id="cep" onkeyup="buscar_cep()" required ="required" placeholder=""-->
             <input name="cep" type="text"  class="form-control" id="cep" placeholder="" value="<?php echo $imoveis['cep'] ?>">  
         </div>
         <div class="form-group">
-          <label for=""> *Endereço / N°</label>
+          <label for="">* Endereço / N°</label>
           <input required="required" name="endereco" type="text"  class="form-control" id="" value="<?php echo $imoveis['endereco']; ?>" >
         </div>
         <div class="form-group">
-          <label for=""> *Bairro</label>
+          <label for="">* Bairro</label>
           <input required="required" name="bairro" type="text"  class="form-control" id="" value="<?php echo $imoveis['bairro']; ?>">
         </div>
         <div class="form-group">
-          <label for=""> *Cidade</label>
+          <label for="">* Cidade</label>
           <input required="required" name="cidade" type="text"  class="form-control" id="" value="<?php echo $imoveis['cidade']; ?>"p>
         </div>
         
         <div class="form-group">
-          <label for=""> *Estado</label>
+          <label for="">* Estado</label>
           <input required="required"name="uf" type="text"  class="form-control" id="" value="<?php echo $imoveis['uf']; ?>">
         </div>
         <div class="form-group">
-          <label for=""> *Quartos</label>
+          <label for="">* Quartos</label>
           <select required="required" name="dormitorios" class="form-control">
             <option value="1" <?php echo ($imoveis['dormitorios']=='1')? 'selected="selected"':''; ?>>1</option>
             <option value="2" <?php echo ($imoveis['dormitorios']=='2')? 'selected="selected"':''; ?>>2</option>
@@ -116,7 +116,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for=""> *Suites</label>
+          <label for="">* Suítes</label>
           <select required="required" name="suites"class="form-control">
             <option value="0" <?php echo ($imoveis['suites']=='0')? 'selected="selected"':''; ?>>0</option>
             <option value="1" <?php echo ($imoveis['suites']=='1')? 'selected="selected"':''; ?>>1</option>
@@ -127,7 +127,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for=""> *Banheiros</label>
+          <label for="">* Banheiros</label>
           <select required="required" name="banheiros" class="form-control">
             <option value="1" <?php echo ($imoveis['banheiros']=='1')? 'selected="selected"':''; ?>>1</option>
             <option value="2" <?php echo ($imoveis['banheiros']=='2')? 'selected="selected"':''; ?>>2</option>
@@ -137,7 +137,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label  for=""> *Vagas na Garagem</label>
+          <label  for="">* Vagas na Garagem</label>
           <select required="required" name="garagem"class="form-control">
             <option value="0" <?php echo ($imoveis['garagem']=='0')? 'selected="selected"':''; ?>>0</option>
             <option value="1" <?php echo ($imoveis['garagem']=='1')? 'selected="selected"':''; ?>>1</option>
@@ -148,41 +148,41 @@
           </select>
         </div>
         <div class="form-group">
-          <label for=""> Informações Adicionais</label>
+          <label for="">Informações Adicionais</label>
           <textarea name="outros" class="form-control" id=""><?php echo $imoveis['outros'];?></textarea>
         </div>
         <div class="form-group">
-          <label for=""> *Area em M²</label>
+          <label for="">* Área em M²</label>
           <input required="required"name="tamanho" type="text" class="form-control" id="" value="<?php echo $imoveis['tamanho'];?>" placeholder="">
         </div>
         <div class="form-group">
-          <label for=""> * IPTU</label>
+          <label for="">* IPTU</label>
           <select  required="required" name="iptu" class="form-control">
             <option value="1" <?php echo ($imoveis['iptu']=='1')? 'selected="selected"':''; ?>>Sim</option>
             <option value="2" <?php echo ($imoveis['iptu']=='2')? 'selected="selected"':''; ?>>Não</option>
           </select>
         </div>
         <div class="form-group">
-          <label for=""> * Rejuste</label>
+          <label for="">* Rejuste</label>
           <input name="reajuste" type="text" required="required" class="form-control" id="" placeholder="" value="<?php echo $imoveis['reajuste'];?>">
         </div>
         <div class="form-group">
-          <label for=""> *Valor</label>
+          <label for="">* Valor</label>
           <input required="required"name="valor" type="text" class="form-control" id="" value="<?php echo $imoveis['valor'];?>"placeholder="">
         </div>
         <div class="form-group">
-          <label for=""> *Comissão</label>
+          <label for="">* Comissão</label>
           <input required="required"name="comissao" type="text" class="form-control" id="" value="<?php echo $imoveis['comissao'];?>"placeholder="">
         </div>
         <div class="form-group">
-          <label for=""> *status</label>
-          <select required="required" name="status" class="form-control">
-            <option value="1" <?php echo ($imoveis['status'] == '1')? 'selected="selected"':''; ?>>Ativo</option>
-            <option value="2" <?php echo ($imoveis['status'] == '2')? 'selected="selected"':''; ?>>Inativo</option>
+          <label for="">* Status</label>
+          <select required="required" name="status" class="form-control" readonly="readonly" tabindex="-1" aria-disabled="true" style="pointer-events: none; touch-action: none;">
+            <option value="1" <?php echo ($imoveis['status'] == '1')? 'selected="selected"':''; ?>>Alugado</option>
+            <option value="2" <?php echo ($imoveis['status'] == '2')? 'selected="selected"':''; ?>>Disponível</option>
           </select>
         </div>
         <div class="form-group">
-          <label for=""> *Mostrar no site</label>
+          <label for="">* Mostrar no site</label>
           <select required="required" name="site" class="form-control">
             <option value="1" <?php echo ($imoveis['site'] == '1')? 'selected="selected"':''; ?>>Sim</option>
             <option value="2" <?php echo ($imoveis['site'] == '2')? 'selected="selected"':''; ?>>Não</option>

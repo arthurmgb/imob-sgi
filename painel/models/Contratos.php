@@ -224,7 +224,7 @@ class Contratos extends Model {
 
 	public function busca($valor) {
 
-		$sql = "SELECT cod_proprietario, tipo, endereco, bairro, cidade, cep, finalidade, valor, iptu, reajuste FROM imoveis WHERE NOT(status IN ('2', '3')) AND referencia LIKE ?";
+		$sql = "SELECT cod_proprietario, tipo, endereco, bairro, cidade, cep, finalidade, valor, iptu, reajuste FROM imoveis WHERE NOT(status IN ('1')) AND referencia LIKE ?";
 	 	$stm = $this->db->prepare($sql);
 		$stm->bindValue(1, '%'.$valor.'%');
 		$stm->execute();
@@ -273,7 +273,7 @@ class Contratos extends Model {
 		$id_contrato = $this->db->lastInsertId();
 
 		// Marca status do imovel
-		$sql = "UPDATE imoveis SET status = '3' WHERE referencia = ?";
+		$sql = "UPDATE imoveis SET status = '1' WHERE referencia = ?";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(1, $cod_imovel);
 		$sql->execute();
@@ -328,7 +328,7 @@ class Contratos extends Model {
 		if ($sql->rowCount() == 1) {
 			$data = $sql->fetch();
 
-			$sql = "UPDATE imoveis SET status = '1' WHERE referencia = ".$data['cod_imovel'];
+			$sql = "UPDATE imoveis SET status = '2' WHERE referencia = ".$data['cod_imovel'];
 			$sql = $this->db->query($sql);
 
 			$sql = "UPDATE inquilinos SET cod_imovel = '0' WHERE cod_imovel = ".$data['cod_imovel'];

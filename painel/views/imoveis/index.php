@@ -38,14 +38,14 @@
                   <th>CEMIG</th>
                   <th>Bairro</th>
                   <th>Valor</th>
-                  <th>Finalidade</th>
+                  <th>Status</th>
                   <th>Ações</th>
                 </tr>
               </thead>
                 <?php foreach ($imob as $imovel):
                 $highligthers = array(
                   1 => '',
-                  2 => 'danger',
+                  2 => 'success',
                   3 => 'success'
                 );
                 ?>
@@ -59,7 +59,9 @@
                   </td>
                   <td><?php echo $imovel['bairro']; ?></td>
                   <td>R$ <?php echo number_format($imovel['valor'],2,",",".");?></td>
-                  <td><?php echo ($imovel['finalidade']=='1') ? 'Aluguel':'Venda'; ?></td>
+                  <td>
+                    <?php if($imovel['status'] == '1'){echo 'Alugado';}elseif($imovel['status'] == '2'){echo 'Disponível';} ?>
+                  </td>
                   <td>
                     <a href="<?php echo BASE_URL ;?>imovel/ver/<?php echo $imovel['id'];?>" title="Ver" ><i class="fa fa-eye fa-1x fa-border"></i></a>
                     <a href="<?php echo BASE_URL ;?>imovel/editar/<?php echo $imovel['id'];?>" title="Editar" style="margin:0 10px;"><i class="fa fa-file-text fa-1x fa-border"></i></a>

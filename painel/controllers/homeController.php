@@ -26,8 +26,11 @@ class homeController extends Controller
         //IMÓVEIS
         $imovel = new Imoveis();
         $dados['totalImoveis'] = $imovel->getTotalImoveis();
-        $dados['disponiveis'] = $imovel->disponiveis(10);
-        $dados['ocupados'] = $imovel->ocupados();
+        $dados['disponiveis'] = $imovel->disponiveis();
+
+        $dados['count_total_imoveis'] = $imovel->count_total_imoveis();
+        $dados['count_disponiveis'] = $imovel->count_disponiveis();
+        $dados['count_alugados'] = $imovel->count_alugados();
 
         //INQUILINOS
         $inquilinos = new Inquilinos();

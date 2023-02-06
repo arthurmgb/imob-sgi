@@ -18,7 +18,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+          <p class="box-title">Preencha as informações abaixo para realizar a edição, campos com * são obrigatórios!</p>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -91,7 +91,7 @@
               <input name="cep" type="text"  class="form-control" id="cep" placeholder="">    
             </div>
           <div class="form-group">
-            <label for="">* Endereço</label>
+            <label for="">* Endereço / N°</label>
             <input name="endereco" type="text" required="required"  class="form-control" id="" placeholder="" value="<?php echo $proprietario['endereco'];?>">
           </div>
           <div class="form-group">
@@ -125,14 +125,14 @@
           </div>
 
           <div class="form-group">
-            <label for="">* status</label>
+            <label for="">* Status</label>
             <select name="status" class="form-control">
               <option value="1" <?php echo ($proprietario['status'] == '1')? 'selected="selected"':''; ?>>Ativo</option>
               <option value="2" <?php echo ($proprietario['status'] == '2')? 'selected="selected"':''; ?>>Inativo</option>
             </select>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Atualizar</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Atualizar</button>
           </div>
         </form>
       </div>

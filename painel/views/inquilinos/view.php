@@ -29,11 +29,11 @@
                 <input type="text" readonly="true" class="form-control" value="<?php echo $inquilino['rg'];?>">
               </div>
               <div class="form-group">
-                <label for="">* Nacionalidade</label>
+                <label for="">Nacionalidade</label>
                 <input name="nacionalidade" readonly="true" type="text" required="required" class="form-control" value="<?php echo $inquilino['nacionalidade'];?>">
               </div>
               <div class="form-group">
-                <label for="">* Estado Civil</label>
+                <label for="">Estado Civil</label>
                 <input name="estado_civil" readonly="true" type="text" required="required" class="form-control" value="<?php echo $inquilino['estado_civil'];?>">
               </div>
               <div class="form-group">

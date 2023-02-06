@@ -20,7 +20,7 @@
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo !is_null($imoveis['cemig']) ? $imoveis['cemig'] : 'Não cadastrado'; ?>"  placeholder="">
           </div>
              <div class="form-group">
-              <label for="">Proprietário do imóvel</label>      
+              <label for="">Proprietário do Imóvel</label>      
               <input class="form-control" value="<?php echo $imoveis['nome_prop'] . ' - ' . 'Código: ' . $imoveis['cod_proprietario']; ?>" readonly="true">
             </select>
           </div>
@@ -69,11 +69,11 @@
             <input type="text"  class="form-control" id="" value="<?php echo $imoveis['uf']; ?>" placeholder="">
           </div>
           <div class="form-group">
-            <label for="">Dormitorios</label>
+            <label for="">Quartos</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['dormitorios'];?>" placeholder="">
           </div>
           <div class="form-group">
-            <label for="">Suites</label>
+            <label for="">Suítes</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['suites'];?>" placeholder="">
           </div>
           <div class="form-group">
@@ -81,7 +81,7 @@
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['banheiros'];?>" placeholder="">
           </div>
           <div class="form-group">
-            <label for="">Garagem</label>
+            <label for="">Vagas na Garagem</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['garagem'];?>" placeholder="">
           </div>
           <div class="form-group">
@@ -89,7 +89,7 @@
             <textarea class="form-control" id="" readonly="true"><?php echo $imoveis['outros'];?></textarea>
           </div>
           <div class="form-group">
-            <label for="">Area em M²</label>
+            <label for="">Área em M²</label>
             <input type="text" readonly="true" class="form-control" id="" value="<?php echo $imoveis['tamanho'];?>" placeholder="">
           </div>
           <div class="form-group">
@@ -110,7 +110,7 @@
           </div>
           <div class="form-group">
             <label for="">Status</label>
-            <input type="text" readonly="true" class="form-control" id="" value="<?php echo ($imoveis['status']==1) ? 'Ativo' : 'Inativo' ;?>" placeholder="">
+            <input type="text" readonly="true" class="form-control" id="" value="<?php echo ($imoveis['status'] == 1) ? 'Alugado' : 'Disponível' ;?>" placeholder="">
           </div>
           <div class="form-group">
             <label for="">Mostar no site</label>

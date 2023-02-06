@@ -20,7 +20,7 @@ $imovel = $contrato['imovel'];
 				<!-- general form elements -->
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+						<p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatórios!</p>
 					</div>
 					<!-- /.box-header -->
 					<!-- form start -->
@@ -32,7 +32,7 @@ $imovel = $contrato['imovel'];
 				<form role="form" method="POST">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="busca">* Código de Imóvel</label>
+							<label for="busca">* Código do Imóvel</label>
 							<input  readonly="true" name="referencia_imovel" class="form-control" id="busca" value="<?php echo $imovel['referencia'];?>">
 						</div>
 						<div class="form-group">
@@ -56,7 +56,7 @@ $imovel = $contrato['imovel'];
 						</div>
 
 						<div class="form-group">
-							<label for="valor">Novo Valor</label>
+							<label for="valor">* Novo Valor</label>
 							<input id="n_valor" name="n_valor" required="required" class="form-control" value="">
 						</div>
 
@@ -68,35 +68,34 @@ $imovel = $contrato['imovel'];
 						<div class="row">
 							<div class="col-xs-5 col-md-4">
 								<div class="form-group">
-									<label>Código do inquilino</label>
+									<label>Código do Inquilino</label>
 									<input type="text" readonly="true" name="cod_inquilino" class="form-control" value="<?php echo $inquilino['referencia'];?>">
 								</div>
 							</div>
 							<div class="col-xs-7 col-md-8">
 								<div class="form-group">
-									<label>Nome do inquilino</label>
+									<label>Nome do Inquilino</label>
 									<input type="text" id="nInquilino" readonly="true" value="<?php echo $inquilino['nome'];?>" class="form-control">
 								</div> 
 							</div>
 						</div><!-- row -->
 						
 						<div class="form-group">
-							<label>* Data de incio do contrato</label>
+							<label>* Data de Início do Contrato</label>
 
-							<input type="date" name="data_inicio" class="form-control" 
-							value="<?php echo Date('Y-m-d');?>">
+							<input type="date" name="data_inicio" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>* Periodo</label>
-							<select name="periodo" required="required" class="form-control">
-								<option value="12">1 ano</option>
+							<label>* Período</label>
+							<select name="periodo" required="required" class="form-control" readonly="readonly" tabindex="-1" aria-disabled="true" style="pointer-events: none; touch-action: none;">
+								<option value="12" selected>1 ano</option>
 							</select>	
 						</div>
 						<div class="form-group">
 							<input type="hidden" name="id_contrato" class="form-control" value="<?php echo $contrato['id']; ?>">
 						</div>
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">Cadastrar</button>
+							<button type="submit" class="btn btn-success btn-lg btn-block">Renovar</button>
 						</div>
 					</form>
 				</div>

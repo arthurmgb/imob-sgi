@@ -67,7 +67,7 @@ class relatoriosController extends Controller {
 		$imoveis = new Imoveis();
 		$dados['imoveis'] = $imoveis->relatorio();
 	
-		$dados['TotalImoveis'] = $imoveis->getTotalImoveis();
+		$dados['TotalImoveis'] = $imoveis->count_total_imoveis();
 		
 		$this->loadView('relatorios/imoveis', $dados);
 	}

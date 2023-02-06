@@ -23,7 +23,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+          <p class="box-title">Preencha as informações abaixo para realizar a edição, campos com * são obrigatórios!</p>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -70,7 +70,7 @@
           </select>
         </div>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Atualizar</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Atualizar</button>
         </div>
       </form>
     </div>

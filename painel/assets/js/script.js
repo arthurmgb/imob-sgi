@@ -177,20 +177,20 @@ function buscar_imoveis() {
             style_cemig = 'style="color: green; font-weight: bold;"';
           }
 
-          if(json[i].finalidade == 1){
-            json[i].finalidade = 'Aluguel';
-          }else{
-            json[i].finalidade = 'Venda';
+          if(json[i].status == 1){
+            json[i].status = 'Alugado';
+          }else if(json[i].status == 2){
+            json[i].status = 'Disponível';
           }
 
-          html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'"><td>'+json[i].referencia+'</td>';
+          html += '<tr class="'+(json[i].status == 'Disponível' ? 'success':'')+'"><td>'+json[i].referencia+'</td>';
           html += '<td>'+json[i].tipo+'</td>';
           html += '<td>'+json[i].endereco+'</td>';
           html += '<td>'+json[i].nome_prop+'</td>';
           html += `<td ${style_cemig}>`+json[i].cemig+`</td>`;
           html += '<td>'+json[i].bairro+'</td>';
           html += '<td> R$ '+json[i].valor+'</td>';
-          html += '<td>'+json[i].finalidade+'</td>';
+          html += '<td>'+json[i].status+'</td>';
           html += '<td><a href="'+BASE_URL+'imovel/ver/'+json[i].id+'" title="Ver">';
           html += '<i class="fa fa-eye fa-1x fa-border"></i></a>';
           html += '<a href="'+BASE_URL+'imovel/editar/'+json[i].id+'" title="Editar" style="margin:0 10px;">';

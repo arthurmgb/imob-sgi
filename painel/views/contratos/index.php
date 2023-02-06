@@ -13,13 +13,13 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
-        <div class="row">
+        <div class="row" style="margin-bottom: 10px;">
           <div class="col-xs-12">
             <form>
               <select name="status" onchange="this.form.submit()" class="form-control" style="border-radius: 3px; border: 1px solid #374850; height:37px">
                 <option value="" <?php echo (!empty($_GET['status']) && $_GET['status'] == '')? 'selected="selected"':''; ?>>Todos</option>
                 <option value="1" <?php echo (!empty($_GET['status']) && $_GET['status'] == '1')? 'selected="selected"':''; ?>>Ativos</option>
-                <option value="2" <?php echo (!empty($_GET['status']) && $_GET['status'] == '2')? 'selected="selected"':''; ?>>A vencer</option>
+                <option value="2" <?php echo (!empty($_GET['status']) && $_GET['status'] == '2')? 'selected="selected"':''; ?>>À vencer</option>
                 <option value="3" <?php echo (!empty($_GET['status']) && $_GET['status'] == '3')? 'selected="selected"':''; ?>>Vencidos</option>
               </select>
             </form>

@@ -20,7 +20,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatorios!</p>
+              <p class="box-title">Preencha as informações abaixo para realizar o cadastro, campos com * são obrigatórios!</p>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -31,14 +31,14 @@
                   <input name="cemig" type="text" class="form-control" id="" placeholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * Código do proprietário</label>                                        
+                  <label for="">* Código do Proprietário</label>                                        
                     <input type="text" class="form-control" name="codigo_proprietario" required="required">
                   </div>
                   <div class="form-group">                                        
                     <input type="text" id="nome_proprietario" class="form-control" readonly>
                   </div>
                  <div class="form-group">
-                  <label for=""> * Tipo</label>
+                  <label for="">* Tipo</label>
                    <select name="tipo" class="form-control">
                       <option value="1" >Casa</option>
                       <option value="2" >Apartamento</option>
@@ -46,34 +46,34 @@
                     </select>
                 </div>
                  <div class="form-group">
-                  <label for=""> * Finalidade</label>
+                  <label for="">* Finalidade</label>
                    <select name="finalidade" class="form-control">
                       <option value="1">Locação</option>
                       <option value="2">Venda</option>
                     </select>
                 </div>
                 <div class="form-group">
-                  <label for=""> * CEP</label>
+                  <label for="">* CEP</label>
                      <input name="cep" type="text"  class="form-control" id="cep" onkeyup="buscar_cep()" required ="required" placeholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * Endereço / N°</label>
+                  <label for="">* Endereço / N°</label>
                   <input name="endereco" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
                 <div class="form-group">
-                  <label for=""> * Bairro</label>
+                  <label for="">* Bairro</label>
                   <input name="bairro" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * Cidade</label>
+                  <label for="">* Cidade</label>
                   <input name="cidade" type="text" required="required" class="form-control" id="" pplaceholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * Estado</label>
+                  <label for="">* Estado</label>
                   <input name="uf" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * Quartos</label>
+                  <label for="">* Quartos</label>
                     <select name="dormitorios" class="form-control">
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -83,7 +83,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                  <label for="">  Suites</label>
+                  <label for="">Suítes</label>
                     <select name="suites"class="form-control">
                       <option value="0">0</option>
                       <option value="1">1</option>
@@ -94,7 +94,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                  <label for=""> * Banheiros</label>
+                  <label for="">* Banheiros</label>
                     <select name="banheiros" class="form-control">
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -104,7 +104,7 @@
                     </select>
                 </div>
                  <div class="form-group">
-                  <label  for="">  Vagas na Garagem</label>
+                  <label  for="">Vagas na Garagem</label>
                     <select name="garagem"class="form-control">
                       <option value="0">0</option>
                       <option value="1">1</option>
@@ -115,34 +115,34 @@
                     </select>
                 </div>
                  <div class="form-group">
-                  <label for="">  Informações Adicionais</label>
+                  <label for="">Informações Adicionais</label>
                   <textarea name="outros" class="form-control" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="">  Area em M²</label>
+                  <label for="">Área em M²</label>
                   <input name="tamanho" type="text" class="form-control" id="" placeholder="">
                 </div>
                  <div class="form-group">
-                  <label for=""> * IPTU</label>
+                  <label for="">* IPTU</label>
                      <select name="iptu" class="form-control">
                       <option value="1">Sim</option>
                       <option value="2">Não</option>
                     </select>
                 </div>
                <div class="form-group">
-                  <label for=""> * Rejuste</label>
+                  <label for="">* Rejuste</label>
                   <input name="reajuste" type="text" required="required" class="form-control" value="6" placeholder="">
                 </div>
                 <div class="form-group">
-                  <label for=""> * Valor</label>
+                  <label for="">* Valor</label>
                   <input name="valor" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
                 <div class="form-group">
-                  <label for=""> * Comissão</label>
+                  <label for="">* Comissão</label>
                   <input name="comissao" type="text" required="required" class="form-control" id="" placeholder="">
                 </div>
                 <div class="form-group">
-                  <label for=""> *Mostrar no site</label>
+                  <label for="">* Mostrar no site</label>
                   <select required="required" name="site" class="form-control">
                     <option value="1">Sim</option>
                     <option value="2">Não</option>
