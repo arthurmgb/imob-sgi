@@ -127,6 +127,8 @@
                                     $vl_pendentes = 0;
                                     $vl_a_vencer = 0;
 
+                                    $valor_a_rcb = 0;
+
                                     foreach($parcelas as $parcela){
 
                                         $r_data_fim = strtotime($parcela['data_fim']);
@@ -146,12 +148,15 @@
                                            $vl_a_vencer += $parcela['valor'];
                                         }
 
+                                        $valor_a_rcb += $parcela['valor'] * $parcela['imv_comissao'] / 100;
+
                                     }
 
                                     $vl_pagas = number_format($vl_pagas, 2, ',', '.');
                                     $vl_vencidas = number_format($vl_vencidas, 2, ',', '.');
                                     $vl_pendentes = number_format($vl_pendentes, 2, ',', '.');
                                     $vl_a_vencer = number_format($vl_a_vencer, 2, ',', '.');
+                                    $valor_a_rcb = number_format($valor_a_rcb, 2, ',', '.');
 
                                 ?>
                                 
@@ -209,6 +214,10 @@
                                     <b>Valor total:</b>
                                     <b style="color: green;">R$ <?= $valor_total ?></b>
                                 </h4>
+                                <h4 style="margin-bottom: 0; font-size: 22px;">
+                                    <b>Valor à receber:</b>
+                                    <b style="color: green;">R$ <?= $valor_a_rcb ?></b>
+                                </h4>
                                 <hr style="margin-bottom: 0;">
                             </div>
                             <!-- /.box-header -->
@@ -220,11 +229,13 @@
                                             <th>Inquilino</th>
                                             <th>N° Parc.</th>
                                             <th>Valor</th>
+                                            <th>Comissão</th>
                                             <th>Data Início</th>
                                             <th>Data Venc.</th>
                                             <th>Data Pag.</th>
                                         </tr>
                                     </thead>
+
                                     <?php foreach ($parcelas as $parcela) :
                                         $data_fim = strtotime($parcela['data_fim']);
                                         $um_mes_frente = strtotime('+1 month');
@@ -244,6 +255,7 @@
                                             <td><?php echo $parcela['nome_inquilino']; ?></td>
                                             <td><?php echo $parcela['n_parcela']; ?></td>
                                             <td>R$ <?php echo number_format($parcela['valor'], 2, ',', '.'); ?></td>
+                                            <td style="text-align: center;"><?php echo $parcela['imv_comissao']; ?>%</td>
                                             <td><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
                                             <td><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
                                             <?php if ($parcela['data_pag'] > 0) : ?>

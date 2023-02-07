@@ -212,12 +212,16 @@ class Parcelas extends Model {
 
 		//SQL'S
 		if($data_situacao == '3'){
-			$sql = "SELECT p.*, inq.nome AS nome_inquilino 
+			$sql = "SELECT p.*, 
+					inq.nome AS nome_inquilino,
+					imv.comissao AS imv_comissao
 					FROM parcelas AS p
 					INNER JOIN contratos AS con 
 					ON p.id_contrato = con.id
 					INNER JOIN inquilinos AS inq 
 					ON con.cod_inquilino = inq.referencia
+					INNER JOIN imoveis AS imv
+					ON con.cod_imovel = imv.referencia
 					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
 					AND p.status = '0'
 					AND p.data_fim <= '$hoje'
@@ -225,12 +229,16 @@ class Parcelas extends Model {
 					ORDER BY nome_inquilino ASC, p.data_inicio ASC";
 		}
 		elseif($data_situacao == '0'){
-			$sql = "SELECT p.*, inq.nome AS nome_inquilino 
+			$sql = "SELECT p.*, 
+					inq.nome AS nome_inquilino,
+					imv.comissao AS imv_comissao
 					FROM parcelas AS p
 					INNER JOIN contratos AS con 
 					ON p.id_contrato = con.id
 					INNER JOIN inquilinos AS inq 
 					ON con.cod_inquilino = inq.referencia
+					INNER JOIN imoveis AS imv
+					ON con.cod_imovel = imv.referencia
 					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
 					AND p.status = '0'
 					AND p.data_fim > '$hoje'
@@ -239,12 +247,15 @@ class Parcelas extends Model {
 		}
 		else{
 			$sql = "SELECT p.*, 
-					inq.nome AS nome_inquilino				
+					inq.nome AS nome_inquilino,
+					imv.comissao AS imv_comissao				
 					FROM parcelas AS p
 					INNER JOIN contratos AS con 
 					ON p.id_contrato = con.id
 					INNER JOIN inquilinos AS inq 
 					ON con.cod_inquilino = inq.referencia
+					INNER JOIN imoveis AS imv
+					ON con.cod_imovel = imv.referencia
 					WHERE p.data_inicio >= '$data_inicio' AND p.data_fim <= '$data_fim'
 					AND p.status IN ($data_situacao)
 					AND inq.referencia IN ('$data_cliente')
