@@ -87,6 +87,17 @@ class relatoriosController extends Controller {
 		$this->loadView('relatorios/disponiveis', $dados);
 	}
 
+	public function blocosDisponiveis(){
+
+		$dados = $this->dados;
+
+		$imoveis = new Imoveis;
+
+		$dados['imoveis'] = $imoveis->blocosDisponiveis();
+		
+		$this->loadView('relatorios/blocosDisponiveis', $dados);
+	}
+
 	public function banco(){
 
 		$dados = $this->dados;

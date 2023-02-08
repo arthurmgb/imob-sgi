@@ -167,7 +167,8 @@
               <h3 style="font-size: 21px; padding: 10px;" class="box-title">Imóveis Disponíveis para Aluguel: <b style="color: green;"><?php echo count($disponiveis) ?></b></h3>
 
               <div class="home-flex-btns pull-right">
-                <a class="btn btn-primary" href="<?= BASE_URL ?>relatorios/disponiveis" target="_blank">Relatório de Imóveis Disponíveis</a>
+                <a class="btn btn-primary" href="<?= BASE_URL ?>relatorios/disponiveis" target="_blank">Relatório de Imóveis Disponíveis (Lista)</a>
+                <a class="btn btn-success" href="<?= BASE_URL ?>relatorios/blocosDisponiveis" target="_blank">Relatório de Imóveis Disponíveis (Blocos)</a>
               </div>
 
             </div>

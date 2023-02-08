@@ -148,8 +148,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="">Informações Adicionais</label>
-          <textarea name="outros" class="form-control" id=""><?php echo $imoveis['outros'];?></textarea>
+          <label for="" style="color: blue; text-transform: uppercase;">Informações do Imóvel</label>
+          <textarea placeholder="Digite o texto e aperte ENTER para quebrar a linha" name="outros" class="form-control" id="" cols="30" rows="10"><?php echo $imoveis['outros'];?></textarea>
         </div>
         <div class="form-group">
           <label for="">* Área em M²</label>

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
-  <title>Imóveis Disponíveis</title>
+  <title>Imóveis Disponíveis (Lista)</title>
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
   <style>

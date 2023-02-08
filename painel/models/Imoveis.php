@@ -21,6 +21,26 @@ class Imoveis extends Model {
 
 	}
 
+	public function blocosDisponiveis(){
+
+		$array = array();
+
+		$sql = "SELECT imv.*, prop.nome AS nome_prop
+		FROM imoveis imv
+		INNER JOIN proprietario prop ON prop.referencia = imv.cod_proprietario
+		WHERE imv.referencia NOT IN (SELECT cod_imovel FROM contratos)
+		AND imv.status = '2' ORDER BY imv.endereco ASC";
+
+		$sql = $this->db->query($sql);
+		
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+
+	}
+
 	public function count_total_imoveis(){
 
 		$q = 0;
