@@ -118,7 +118,8 @@ class Contratos extends Model {
 		$sql = "SELECT con.*, 
 				prop.nome AS nome_proprietario, 
 				inq.nome AS nome_inquilino, 
-				imv.endereco AS end_imv 
+				imv.endereco AS end_imv,
+				imv.cemig AS end_cemig 
 				FROM contratos con
 				INNER JOIN proprietario AS prop ON con.cod_proprietario = prop.referencia
 				INNER JOIN inquilinos AS inq ON con.cod_inquilino = inq.referencia
