@@ -94,6 +94,7 @@ class proprietariosController extends Controller {
         $proprietario = new Proprietarios();
         $dados['proprietario'] = $proprietario->proprietario($id);
         $dados['getImoveis'] = $proprietario->getListImoveis($id);
+        $dados['getInqs'] = $proprietario->getListInqs($id);
 
         $this->loadTemplate('proprietarios/view', $dados);
     }

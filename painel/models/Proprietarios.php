@@ -1,80 +1,117 @@
 <?php
 
-class Proprietarios extends Model{
+class Proprietarios extends Model
+{
 
-	public function getList($offset, $limit, $filtros=array()){
+	public function getList($offset, $limit, $filtros = array())
+	{
 		$array = array();
 
 		$where = $this->buildwhere($filtros);
 		$sql = "SELECT *,
 		(SELECT count(id) FROM imoveis WHERE proprietario.referencia = imoveis.cod_proprietario) AS qtd_imoveis
-		FROM proprietario where '1'='1'".implode(' or ', $where)." ORDER BY nome ASC LIMIT $offset, $limit";
+		FROM proprietario where '1'='1'" . implode(' or ', $where) . " ORDER BY nome ASC LIMIT $offset, $limit";
 		$sql = $this->db->prepare($sql);
 		$this->bindwhere($sql, $filtros);
 		$sql->execute();
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		return $array;
 	}
 
-	public function getListImoveis($id){
+	public function getListImoveis($id)
+	{
 		$array = array();
 		$sql = "SELECT imoveis.id AS id_imovel, imoveis.cod_proprietario, imoveis.endereco, imoveis.bairro, imoveis.cidade FROM imoveis LEFT JOIN proprietario ON imoveis.cod_proprietario = proprietario.referencia WHERE proprietario.id = $id";
 		$sql = $this->db->prepare($sql);
 		$sql->execute();
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		return $array;
 	}
 
-	public function getNome($codigo) {
+	public function getListInqs($id)
+	{
+		$array = array();
+
+		$sql = "SELECT 
+				con.cod_proprietario, 
+				con.cod_inquilino, 
+				con.cod_imovel, 
+				con.data_final AS final_date,
+				prop.nome AS nome_prop, 
+				inq.nome AS nome_inq,
+				inq.id AS id_inq,
+				imv.endereco AS end_imv
+				FROM contratos con 
+				INNER JOIN proprietario prop ON con.cod_proprietario = prop.referencia 
+				INNER JOIN inquilinos inq ON con.cod_inquilino = inq.referencia
+				INNER JOIN imoveis imv ON con.cod_imovel = imv.referencia
+				WHERE prop.id = $id
+				ORDER BY nome_inq ASC";
+
+		$sql = $this->db->prepare($sql);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+	}
+
+	public function getNome($codigo)
+	{
 		$sql = "SELECT nome FROM proprietario WHERE referencia = '$codigo'";
 		$sql = $this->db->query($sql);
-		
-		if($sql->rowCount() == 1) {
+
+		if ($sql->rowCount() == 1) {
 			$data = $sql->fetch();
 			return $data['nome'];
 		}
 		return '';
 	}
 
-	public function proprietario($id){
+	public function proprietario($id)
+	{
 		$array = array();
 		$sql = "SELECT * FROM proprietario WHERE id = '$id'";
 		$sql = $this->db->query($sql);
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetch(PDO::FETCH_ASSOC);
 		}
 		return $array;
 	}
 
-	public function getInfoByCode($codigo){
+	public function getInfoByCode($codigo)
+	{
 		$array = array();
 		$sql = "SELECT * FROM proprietario WHERE referencia = :codigo";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':codigo', $codigo);
 		$sql->execute();
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetch(PDO::FETCH_ASSOC);
 		}
 		return $array;
 	}
 
-	public function getTotalProprietarios() {
+	public function getTotalProprietarios()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM proprietario";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -82,13 +119,14 @@ class Proprietarios extends Model{
 		return $q;
 	}
 
-	public function qtdProprietariosAtivos(){
+	public function qtdProprietariosAtivos()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE status = '1'";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -96,13 +134,14 @@ class Proprietarios extends Model{
 		return $q;
 	}
 
-	public function qtdProprietariosInativos(){
+	public function qtdProprietariosInativos()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE status = '2'";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -110,41 +149,42 @@ class Proprietarios extends Model{
 		return $q;
 	}
 
-	public function getProprietariosBanco(){
+	public function getProprietariosBanco()
+	{
 
 		$array = array();
-		
+
 		$sql = "SELECT * FROM proprietario WHERE tipo_conta != 0 ORDER BY nome ASC";
 
 		$sql = $this->db->prepare($sql);
 
 		$sql->execute();
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		return $array;
-
 	}
-	public function getProprietariosSemBanco(){
+	public function getProprietariosSemBanco()
+	{
 
 		$q = 0;
-		
+
 		$sql = "SELECT COUNT(*) as c FROM proprietario WHERE tipo_conta = '0'";
 
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
 
 		return $q;
-
 	}
 
-	public function repasse($id_contrato, $n_parcela) {
+	public function repasse($id_contrato, $n_parcela)
+	{
 		$sql = "UPDATE parcelas SET repasse = '1', data_repasse = :data_repasse, id_user = :id_user WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
 
 		print_r($sql);
@@ -160,13 +200,13 @@ class Proprietarios extends Model{
 
 	public function cadProprietario(
 		$nome,
-		$cpf,	
+		$cpf,
 		$rg,
-		$banco, 
-		$tipo_conta, 
-		$agencia, 
-		$conta, 
-		$operacao, 
+		$banco,
+		$tipo_conta,
+		$agencia,
+		$conta,
+		$operacao,
 		$pix,
 		$nacionalidade,
 		$estado_civil,
@@ -178,7 +218,8 @@ class Proprietarios extends Model{
 		$cep,
 		$telefone,
 		$info,
-		$pagamento){
+		$pagamento
+	) {
 
 		$id_user = $_SESSION['user']['id'];
 
@@ -211,7 +252,7 @@ class Proprietarios extends Model{
 
 		$id = $this->db->lastInsertId();
 
-		$codigo = $id.rand(1000, 9999);
+		$codigo = $id . rand(1000, 9999);
 
 		$sql = "UPDATE proprietario SET referencia = '$codigo' WHERE id = '$id'";
 		$this->db->query($sql);
@@ -225,11 +266,11 @@ class Proprietarios extends Model{
 		$nome,
 		$cpf,
 		$rg,
-		$banco, 
-		$tipo_conta, 
-		$agencia, 
-		$conta, 
-		$operacao, 
+		$banco,
+		$tipo_conta,
+		$agencia,
+		$conta,
+		$operacao,
 		$pix,
 		$nacionalidade,
 		$estado_civil,
@@ -242,8 +283,9 @@ class Proprietarios extends Model{
 		$telefone,
 		$info,
 		$status,
-		$pagamento){
-			
+		$pagamento
+	) {
+
 		$sql = "UPDATE proprietario SET
 			nome 			= 	'$nome',
 			cpf				=	'$cpf',	
@@ -268,10 +310,10 @@ class Proprietarios extends Model{
 			pagamento 		= 	'$pagamento'
 			WHERE id  = '$id'";
 		$this->db->query($sql);
-		
 	}
 
-	public function removerProprietario($id) {
+	public function removerProprietario($id)
+	{
 
 		// pega o codigo do proprietario
 		$sql = "SELECT referencia FROM proprietario WHERE id = :id";
@@ -289,7 +331,7 @@ class Proprietarios extends Model{
 			$sql->bindValue(':cp', $cod_proprietario);
 			$sql->execute();
 
-			if($sql->rowCount() > 0) {
+			if ($sql->rowCount() > 0) {
 				$rows = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 				$ids = array();
@@ -298,19 +340,19 @@ class Proprietarios extends Model{
 				}
 
 				// pega todas as fotos dos imoveis que serao apagados
-				$sql = "SELECT url_img FROM galeria WHERE id_imovel IN ('".implode("', '", $ids)."')";
+				$sql = "SELECT url_img FROM galeria WHERE id_imovel IN ('" . implode("', '", $ids) . "')";
 				$sql = $this->db->query($sql);
 
 				if ($sql->rowCount() > 0) {
 					$rows = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-					foreach($rows as $foto) {
-						unlink('upload/'.$foto['url_img']);
-					} 
+					foreach ($rows as $foto) {
+						unlink('upload/' . $foto['url_img']);
+					}
 
 
 					// Apaga as fotos da tabela galeria
-					$sql = "DELETE FROM galeria WHERE id_imovel IN ('".implode("', '", $ids)."')";
+					$sql = "DELETE FROM galeria WHERE id_imovel IN ('" . implode("', '", $ids) . "')";
 					$sql = $this->db->query($sql);
 				}
 			}
@@ -325,27 +367,25 @@ class Proprietarios extends Model{
 			$sql = "DELETE FROM proprietario WHERE id = '$id'";
 			$sql = $this->db->query($sql);
 		}
-
-		
-		
 	}
 
-	private function buildwhere($filtros) {
+	private function buildwhere($filtros)
+	{
 		$where = array();
 
-		if(!empty($filtros['search'])) {
+		if (!empty($filtros['search'])) {
 			$where[] = 'AND (nome LIKE :nome';
-			$where[] = 'rg LIKE :rg)'; 
+			$where[] = 'rg LIKE :rg)';
 		}
 
 		return $where;
 	}
 
-	private function bindwhere(&$sql, $filtros) {
-		if(!empty($filtros['search'])) {
-			$sql->bindvalue(':nome', '%'.$filtros['search'].'%');
-			$sql->bindvalue(':rg', '%'.$filtros['search'].'%');
+	private function bindwhere(&$sql, $filtros)
+	{
+		if (!empty($filtros['search'])) {
+			$sql->bindvalue(':nome', '%' . $filtros['search'] . '%');
+			$sql->bindvalue(':rg', '%' . $filtros['search'] . '%');
 		}
 	}
-	
 }

@@ -74,6 +74,67 @@
                  <hr style="margin: 15px 0px; border-color: #888;">
                </div>
                <div class="form-group">
+                 <label style="color: green;" for="">
+                   Inquilinos de <span style="font-size: 16px;"><?= $proprietario['nome'] ?></span>
+                 </label>
+                 <hr style="margin: 10px 0px; border-color: #888;">
+                 <div class="row">
+                   <div class="col-md-12">
+                     <table class="table table-hover">
+                       <thead>
+                         <tr>
+                           <th width="33.3%">Nome</th>
+                           <th width="33.3%">Endereço</th>
+                           <th width="33.3%">Situação do Contrato</th>
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <?php if (count($getInqs)) : ?>
+                           <?php foreach ($getInqs as $singleInq) :
+
+                              $hoje = date('Y-m-d');
+
+                              if ($singleInq['final_date'] <= $hoje) {
+                                $tr_class = 'danger';
+                                $tr_stats = 'Vencido';
+                              } else {
+                                $tr_class = 'success';
+                                $tr_stats = 'Ativo';
+                              }
+
+                            ?>
+                             <tr onclick="window.open('<?= BASE_URL ?>inquilinos/ver/<?= $singleInq['id_inq'] ?>', '_blank')" class="<?= $tr_class ?>" style="cursor: pointer;" title="Clique para visualizar este inquilino.">
+                               <td style="font-size: 16px; font-weight: 600;">
+                                 <?= $singleInq['nome_inq'] ?>
+                               </td>
+                               <td>
+                                 <?= $singleInq['end_imv'] ?>
+                               </td>
+                               <td>
+                                 <span style="font-weight: bold;" class="text-<?= $tr_class ?>">
+                                   <?= $tr_stats ?>
+                                 </span>
+                               </td>
+                             </tr>
+                           <?php endforeach; ?>
+                         <?php else : ?>
+                           <tr class="info">
+                             <td style="width: 40% !important;">
+                               <span style="font-weight: bold;" class="text-info">
+                                 Este proprietário não possui nenhum contrato ativo.
+                               </span>
+                             </td>
+                             <td></td>
+                             <td></td>
+                           </tr>
+                         <?php endif; ?>
+                       </tbody>
+                     </table>
+                     <hr style="margin: 15px 0px 0px 0px; border-color: #888;">
+                   </div>
+                 </div>
+               </div>
+               <div class="form-group">
                  <label for="">Nacionalidade</label>
                  <input name="nacionalidade" readonly="true" type="text" value="<?php echo $proprietario['nacionalidade']; ?>" required="required" class="form-control" id="">
                </div>
