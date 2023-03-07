@@ -142,8 +142,7 @@ class relatoriosController extends Controller {
 		$dados['empresa'] = $config->getEmpresa();
 
 		$inquilinos	= new Inquilinos();
-		$dados['inquilinos'] = $inquilinos->getIptu(500);
-		//echo ('<pre>'); print_r($inquilinos); 
+		$dados['inquilinos'] = $inquilinos->getIptu(999);
 
 		$this->loadView('relatorios/iptu', $dados);
 	}

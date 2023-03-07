@@ -22,20 +22,42 @@ class Inquilinos extends Model {
 	}
 
 	public function getIptu($limit) {
+
 		$array = array();
-		$sql = "SELECT inq.*, 
-		    imo.endereco, 
-		    imo.bairro, 
-		    imo.iptu 
-		FROM inquilinos inq 
-		LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE imo.iptu = '1' 
-		ORDER BY inq.nome ASC
-		LIMIT $limit";
+
+		// $sql = "SELECT inq.*, 
+		// 		imo.endereco, 
+		// 		imo.bairro, 
+		// 		imo.iptu 
+		// 		FROM inquilinos inq 
+		// 		LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia 
+		// 		WHERE imo.iptu = '1' 
+		// 		ORDER BY inq.nome ASC
+		// 		LIMIT $limit";
+
+		$sql = "SELECT con.*, 
+				imv.endereco, 
+				imv.bairro, 
+				imv.iptu, 
+				inq.nome,
+				inq.cpf,
+				inq.status,
+				prop.nome AS prop_nome,
+				prop.cpf AS prop_cpf
+				FROM contratos con
+				INNER JOIN inquilinos inq ON con.cod_inquilino = inq.referencia
+				INNER JOIN proprietario prop ON con.cod_proprietario = prop.referencia
+				INNER JOIN imoveis imv ON con.cod_imovel = imv.referencia
+				WHERE imv.iptu = '1'
+				ORDER BY inq.nome ASC
+				LIMIT $limit";
+
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
+
 		return $array;
 	}
 	
@@ -248,5 +270,3 @@ private function bindwhere(&$sql, $filtros) {
 	}
 }
 }
-
-?>
