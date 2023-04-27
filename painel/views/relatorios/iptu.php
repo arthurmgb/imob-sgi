@@ -150,10 +150,26 @@
         td.style.fontWeight = "bold";
         td.style.fontSize = "18px";
         td.innerHTML = "SIM";
-       
-     
+
+
       });
     })
+    window.addEventListener('beforeprint', () => {
+      let payx = document.querySelectorAll('.pay');
+      alert('ATENÇÃO: Todos os inquilinos que não foram marcados como "PAGO: SIM", serão coloridos em vermelho e serão atualizados para "PAGO: NÃO". Para desfazer quaisquer alterações, atualize a página ou pressione [F5] no teclado.')
+      payx.forEach((payt) => {
+
+        let trnode = payt.parentNode.parentNode;
+        trnode.style.backgroundColor = "#fee2e2";
+
+        let tdnode = payt.parentNode;
+        tdnode.style.backgroundColor = "#fee2e2";
+        tdnode.style.color = "red";
+        tdnode.style.fontWeight = "bold";
+        tdnode.style.fontSize = "18px";
+        tdnode.innerHTML = "NÃO";
+      })
+    });
   </script>
 </body>
 
