@@ -33,8 +33,9 @@
           <input name="nome" type="text" required="required" class="form-control" id="" >
         </div>
         <div class="form-group">
-          <label for="">* CPF</label>
-          <input name="cpf" type="text"  required="required"class="form-control" id="cpf" >
+          <label for="">* CPF / CNPJ</label>
+          <!-- <input name="cpf" type="text"  required="required"class="form-control" id="cpf" > -->
+          <input name="cpf" type="text"  required="required"class="form-control">
         </div>
         <div class="form-group">
           <label for="">* Nacionalidade</label>

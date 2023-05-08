@@ -35,12 +35,12 @@ $imovel = $contrato['imovel'];
             </p>
             <p>
               Locador: <?php echo $proprietario['nome']; ?>
-              <span class="ml">CPF: <?php echo $proprietario['cpf']; ?></span>
+              <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
               Locatario: <?php echo $inquilino['nome']; ?>
-              <span class="ml">
-                CPF: <?php echo $inquilino['cpf']; ?>
+              <span class="ml text-bold">
+              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>
@@ -71,7 +71,7 @@ $imovel = $contrato['imovel'];
             <hr style="margin: 10px 0; border-color: #aaa;">
             <p>
               Locador: <?php echo $proprietario['nome']; ?>
-              <span class="ml">CPF: <?php echo $proprietario['cpf']; ?></span>
+              <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
               <?php 
@@ -103,8 +103,8 @@ $imovel = $contrato['imovel'];
             <hr style="margin: 10px 0; border-color: #aaa;">
             <p>
               Locatario: <?php echo $inquilino['nome']; ?>
-              <span class="ml">
-                CPF: <?php echo $inquilino['cpf']; ?>
+              <span class="ml text-bold">
+              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>
@@ -154,12 +154,12 @@ $imovel = $contrato['imovel'];
             </p>
             <p>
               Locador: <?php echo $proprietario['nome']; ?>
-              <span class="ml">CPF: <?php echo $proprietario['cpf']; ?></span>
+              <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
               Locatario: <?php echo $inquilino['nome']; ?>
-              <span class="ml">
-                CPF: <?php echo $inquilino['cpf']; ?>
+              <span class="ml text-bold">
+              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>

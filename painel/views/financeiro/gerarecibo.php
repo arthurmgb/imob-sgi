@@ -187,12 +187,12 @@
                                 </p>
                                 <p>
                                     Locador: <?php echo $recibo['nome_pro']; ?>
-                                    <span class="ml">CPF: <?php echo $recibo['cpf_pro']; ?></span>
+                                    <span class="ml text-bold">CPF/CNPJ: <?php echo $recibo['cpf_pro']; ?></span>
                                 </p>
                                 <p>
                                     Locatario: <?php echo $recibo['nome_inq']; ?>
-                                    <span class="ml">
-                                        CPF: <?php echo $recibo['cpf_inq']; ?>
+                                    <span class="ml text-bold">
+                                        CPF/CNPJ: <?php echo $recibo['cpf_inq']; ?>
                                         <span class="ml">CODIGO: <?php echo $recibo['ref_inq']; ?></span>
                                     </span>
                                 </p>
@@ -223,7 +223,7 @@
                                 <hr style="margin: 10px 0; border-color: #aaa;">
                                 <p>
                                     Locador: <?php echo $recibo['nome_pro']; ?>
-                                    <span class="ml">CPF: <?php echo $recibo['cpf_pro']; ?></span>
+                                    <span class="ml text-bold">CPF/CNPJ: <?php echo $recibo['cpf_pro']; ?></span>
                                 </p>
                                 <p>
                                     <?php
@@ -255,8 +255,8 @@
                                 <hr style="margin: 10px 0; border-color: #aaa;">
                                 <p>
                                     Locatario: <?php echo $recibo['nome_inq']; ?>
-                                    <span class="ml">
-                                        CPF: <?php echo $recibo['cpf_inq']; ?>
+                                    <span class="ml text-bold">
+                                        CPF/CNPJ: <?php echo $recibo['cpf_inq']; ?>
                                         <span class="ml">CODIGO: <?php echo $recibo['ref_inq']; ?></span>
                                     </span>
                                 </p>
@@ -306,12 +306,12 @@
                                 </p>
                                 <p>
                                     Locador: <?php echo $recibo['nome_pro']; ?>
-                                    <span class="ml">CPF: <?php echo $recibo['cpf_pro']; ?></span>
+                                    <span class="ml text-bold">CPF/CNPJ: <?php echo $recibo['cpf_pro']; ?></span>
                                 </p>
                                 <p>
                                     Locatario: <?php echo $recibo['nome_inq']; ?>
-                                    <span class="ml">
-                                        CPF: <?php echo $recibo['cpf_inq']; ?>
+                                    <span class="ml text-bold">
+                                        CPF/CNPJ: <?php echo $recibo['cpf_inq']; ?>
                                         <span class="ml">CODIGO: <?php echo $recibo['ref_inq']; ?></span>
                                     </span>
                                 </p>

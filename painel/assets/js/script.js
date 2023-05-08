@@ -47,7 +47,7 @@ function buscar_proprietario() {
         for(var i in json) {
           html += '<tr class="'+(json[i].status == 2 ? 'danger':'')+'"><td>'+json[i].referencia+'</td>';
           html += '<td>'+json[i].nome+'</td>';
-          html += '<td>'+json[i].cpf+'</td>';
+          html += '<td style="word-break: break-all;">'+json[i].cpf+'</td>';
           html += '<td>'+json[i].endereco+'</td>';
           html += '<td>'+json[i].bairro+'</td>';
           html += '<td>'+json[i].cidade+'</td>';

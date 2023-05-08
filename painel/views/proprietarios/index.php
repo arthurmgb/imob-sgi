@@ -35,7 +35,7 @@
                 <tr>
                   <th>Cod</th>
                   <th>Nome</th>
-                  <th>CPF</th>
+                  <th>CPF / CNPJ</th>
                   <th>Endereço</th>
                   <th>Bairro</th>
                   <th>Cidade</th>
@@ -49,7 +49,7 @@
                   <tr class="<?php echo ($dono['status'] == '2') ? 'danger' : ''; ?>">
                     <td><?php echo $dono['referencia'];?></td>
                     <td><?php echo $dono['nome'];?></td>
-                    <td id="cpf"><?php echo $dono['cpf'];?></td>
+                    <td style="word-break: break-all;"><?php echo $dono['cpf'];?></td>
                     <td><?php echo $dono['endereco'];?></td>
                     <td><?php echo $dono['bairro'];?></td>
                     <td><?php echo $dono['cidade'];?></td>

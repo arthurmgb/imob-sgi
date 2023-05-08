@@ -29,8 +29,9 @@
             <input name="nome" type="text" required="required"  class="form-control" id="" placeholder="" value="<?php echo $proprietario['nome'];?>">
           </div>
           <div class="form-group">
-            <label for="">* CPF</label>
-            <input name="cpf" type="text" required="required"  class="form-control" id="cpf" placeholder="" value="<?php echo $proprietario['cpf'];?>">
+            <label for="">* CPF / CNPJ</label>
+            <!-- <input name="cpf" type="text" required="required"  class="form-control" id="cpf" placeholder="" value="<?php echo $proprietario['cpf'];?>"> -->
+            <input name="cpf" type="text" required="required"  class="form-control" placeholder="" value="<?php echo $proprietario['cpf'];?>">
           </div>
           <div class="form-group">
             <label for="">* RG</label>

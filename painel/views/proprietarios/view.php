@@ -20,8 +20,8 @@
                  <input type="text" readonly="true" class="form-control" id="" value="<?php echo $proprietario['nome']; ?>" placeholder="">
                </div>
                <div class="form-group">
-                 <label for="">CPF</label>
-                 <input type="text" readonly="true" class="form-control" id="cpf" value="<?php echo $proprietario['cpf']; ?>" placeholder="">
+                 <label for="">CPF / CNPJ</label>
+                 <input type="text" readonly="true" class="form-control" value="<?php echo $proprietario['cpf']; ?>" placeholder="">
                </div>
                <div class="form-group">
                  <label for="">RG</label>
