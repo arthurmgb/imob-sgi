@@ -97,6 +97,8 @@
       <h3 class="rel_title" style="margin-bottom: 20px;">
         Quantidade: <span style="color: green;"><?= count($inquilinos); ?></span>
       </h3>
+      <button id="reset-all" style="margin-bottom: 5px" type="button" class="btn btn-danger pull-right">Resetar alterações</button>
+      <button id="print-all" style="margin-bottom: 5px; margin-right: 5px;" type="button" class="btn btn-primary pull-right">Imprimir</button>
       <table id="example2" class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -111,7 +113,7 @@
         </thead>
 
         <?php foreach ($inquilinos as $inquilino) : ?>
-          <tr class="<?php echo ($inquilino['status'] == 2) ? 'danger' : ''; ?>">
+          <tr id="<?php echo $inquilino['id'] ?>" class="<?php echo ($inquilino['status'] == 2) ? 'danger' : ''; ?>">
             <td><?php echo $inquilino['nome']; ?></td>
             <td style="font-weight: bold;"><?php echo $inquilino['cpf']; ?></td>
             <td><?php echo $inquilino['prop_nome']; ?></td>
@@ -135,11 +137,26 @@
   </div>
   <script>
     let pay = document.querySelectorAll('.pay');
+    let reset = document.querySelector('#reset-all');
+    let imprimir = document.querySelector('#print-all');
+
+    imprimir.addEventListener('click', () => {
+      window.print();
+    });
+
+    reset.addEventListener('click', () => {
+      const confirmation = window.confirm("Deseja realmente resetar? Você perderá todo o progresso!");
+      if (confirmation) {
+        localStorage.clear();
+        location.reload();
+      }
+    });
 
     pay.forEach(payb => {
-      payb.addEventListener('click', () => {
+      let tr = payb.parentNode.parentNode;
+      let rowStatus = localStorage.getItem(`rowStatus_${tr.id}`);
 
-        let tr = payb.parentNode.parentNode;
+      if (rowStatus === "SIM") {
         //definir a cor de fundo da tr
         tr.style.backgroundColor = "#dcfce7";
 
@@ -150,13 +167,43 @@
         td.style.fontWeight = "bold";
         td.style.fontSize = "18px";
         td.innerHTML = "SIM";
+      }
+    });
 
+    pay.forEach(payb => {
+      payb.addEventListener('click', () => {
+        const confirmation = window.confirm("Deseja realmente dar baixa neste IPTU?");
+        if (confirmation) {
+
+
+          let tr = payb.parentNode.parentNode;
+          let isMarkedAsSim = localStorage.getItem(`rowStatus_${tr.id}`) === "SIM";
+
+          if (!isMarkedAsSim) {
+
+            //definir a cor de fundo da tr
+            tr.style.backgroundColor = "#dcfce7";
+
+            let td = payb.parentNode;
+            //definir a cor de fundo da td
+            td.style.backgroundColor = "#dcfce7";
+            td.style.color = "green";
+            td.style.fontWeight = "bold";
+            td.style.fontSize = "18px";
+            td.innerHTML = "SIM";
+
+            // Marca a linha como "SIM" no localStorage
+            localStorage.setItem(`rowStatus_${tr.id}`, "SIM");
+          }
+
+
+        }
 
       });
     })
     window.addEventListener('beforeprint', () => {
       let payx = document.querySelectorAll('.pay');
-      alert('ATENÇÃO: Todos os inquilinos que não foram marcados como "PAGO: SIM", serão coloridos em vermelho e serão atualizados para "PAGO: NÃO". Para desfazer quaisquer alterações, atualize a página ou pressione [F5] no teclado.')
+      alert('ATENÇÃO: Todos os inquilinos que não foram marcados como "PAGO: SIM", serão coloridos em vermelho e serão atualizados para "PAGO: NÃO". Para desfazer quaisquer alterações, clique no botão "Resetar alterações".')
       payx.forEach((payt) => {
 
         let trnode = payt.parentNode.parentNode;
