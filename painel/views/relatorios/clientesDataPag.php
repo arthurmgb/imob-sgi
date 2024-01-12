@@ -5,8 +5,8 @@
         <h1>
             Relatório de Parcelas de Clientes
             <small> - Sistema de Gerenciamento Imobiliario</small>
-            <a href="<?php echo BASE_URL;?>relatorios/clientesDataPag" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-success btn-sm pull-right">
-                Buscar por Data de Pagamento
+            <a href="<?php echo BASE_URL; ?>relatorios/clientes" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-primary btn-sm pull-right">
+                Buscar por Período
             </a>
         </h1>
 
@@ -14,17 +14,37 @@
 
             <div style="margin-top: 2rem;" class="row">
 
-                <div class="col-xs-6">
+                <div class="col-xs-9">
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon text-bold" id="sizing-addon1">Início</span>
-                        <input style="cursor: pointer;" onfocus="this.showPicker()" class="form-control" type="date" name="data-inicio" value="<?= $get_input_data['data-inicio'] ?>" required>
+                        <span class="input-group-addon text-bold" id="sizing-addon1">Mês de pagamento</span>
+                        <select style="cursor: pointer;" class="form-control" name="selected-mes" required>
+                            <option value="01" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '01' ? 'selected' : ''; ?>>Janeiro</option>
+                            <option value="02" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '02' ? 'selected' : ''; ?>>Fevereiro</option>
+                            <option value="03" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '03' ? 'selected' : ''; ?>>Março</option>
+                            <option value="04" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '04' ? 'selected' : ''; ?>>Abril</option>
+                            <option value="05" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '05' ? 'selected' : ''; ?>>Maio</option>
+                            <option value="06" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '06' ? 'selected' : ''; ?>>Junho</option>
+                            <option value="07" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '07' ? 'selected' : ''; ?>>Julho</option>
+                            <option value="08" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '08' ? 'selected' : ''; ?>>Agosto</option>
+                            <option value="09" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '09' ? 'selected' : ''; ?>>Setembro</option>
+                            <option value="10" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '10' ? 'selected' : ''; ?>>Outubro</option>
+                            <option value="11" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '11' ? 'selected' : ''; ?>>Novembro</option>
+                            <option value="12" <?= isset($get_input_data['selected-mes']) && $get_input_data['selected-mes'] == '12' ? 'selected' : ''; ?>>Dezembro</option>
+
+                        </select>
                     </div>
                 </div>
-
-                <div class="col-xs-6">
+                <div class="col-xs-3">
+                    <style>
+                        #ano-pag::-webkit-outer-spin-button,
+                        #ano-pag::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                        }
+                    </style>
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon text-bold" id="sizing-addon2">Venc.</span>
-                        <input style="cursor: pointer;" onfocus="this.showPicker()" class="form-control" type="date" name="data-fim" value="<?= $get_input_data['data-fim'] ?>" required>
+                        <span class="input-group-addon text-bold" id="sizing-addon1">Ano</span>
+                        <input style="font-weight: bold;" id="ano-pag" min="2000" class="form-control" type="number" name="ano-pag" value="<?= isset($get_input_data['ano-pag']) ? $get_input_data['ano-pag'] : date('Y'); ?>" required>
+
                     </div>
                 </div>
 
@@ -32,36 +52,7 @@
 
             <div style="margin-top: 2rem;" class="row">
 
-                <div class="col-xs-6">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-addon text-bold" id="sizing-addon3">Situação</span>
-                        <?php
-
-                        $option_sit = '';
-
-                        if (isset($get_input_data['selected-situacao'])) {
-                            $option_sit = $get_input_data['selected-situacao'];
-                        }
-
-                        ?>
-                        <select style="cursor: pointer;" class="form-control" name="selected-situacao">
-                            <option value="all" <?= ($option_sit == 'all') ? 'selected' : '' ?>>
-                                🟣 Todas
-                            </option>
-                            <option value="1" <?= ($option_sit == '1') ? 'selected' : '' ?>>
-                                🟢 Pagas
-                            </option>
-                            <option value="0" <?= ($option_sit == '0') ? 'selected' : '' ?>>
-                                🔵 Pendentes
-                            </option>
-                            <option value="3" <?= ($option_sit == '3') ? 'selected' : '' ?>>
-                                🔴 Vencidas
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-xs-6">
+                <div class="col-xs-12">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon text-bold" id="sizing-addon4">Inquilinos</span>
                         <?php
@@ -113,7 +104,7 @@
                                     <i style="margin-right: 1rem;" class="fa fa-print" aria-hidden="true"></i>
                                     Imprimir
                                 </button>
-                                <a href="<?= BASE_URL ?>relatorios/clientes" role="button" class="btn btn-default pull-right noPrint-rel" style="margin-right: 1rem;">
+                                <a href="<?= BASE_URL ?>relatorios/clientesDataPag" role="button" class="btn btn-default pull-right noPrint-rel" style="margin-right: 1rem;">
                                     <i style="margin-right: 1rem;" class="fa fa-undo" aria-hidden="true"></i>
                                     Limpar busca
                                 </a>
@@ -121,15 +112,6 @@
                                 <?php
 
                                 $r_pagas = 0;
-                                $r_vencidas = 0;
-                                $r_pendentes = 0;
-                                $r_a_vencer = 0;
-
-                                $vl_pagas = 0;
-                                $vl_vencidas = 0;
-                                $vl_pendentes = 0;
-                                $vl_a_vencer = 0;
-
                                 $valor_a_rcb = 0;
 
                                 foreach ($parcelas as $parcela) {
@@ -139,25 +121,11 @@
 
                                     if ($parcela['status'] == 1) {
                                         $r_pagas += 1;
-                                        $vl_pagas += $parcela['valor'];
-                                    } else if (time() > $r_data_fim) {
-                                        $r_vencidas += 1;
-                                        $vl_vencidas += $parcela['valor'];
-                                    } elseif ($r_data_fim >= time() && $r_data_fim <= $r_um_mes_frente) {
-                                        $r_pendentes += 1;
-                                        $vl_pendentes += $parcela['valor'];
-                                    } else {
-                                        $r_a_vencer += 1;
-                                        $vl_a_vencer += $parcela['valor'];
                                     }
 
                                     $valor_a_rcb += $parcela['valor'] * $parcela['imv_comissao'] / 100;
                                 }
 
-                                $vl_pagas = number_format($vl_pagas, 2, ',', '.');
-                                $vl_vencidas = number_format($vl_vencidas, 2, ',', '.');
-                                $vl_pendentes = number_format($vl_pendentes, 2, ',', '.');
-                                $vl_a_vencer = number_format($vl_a_vencer, 2, ',', '.');
                                 $valor_a_rcb = number_format($valor_a_rcb, 2, ',', '.');
 
                                 ?>
@@ -167,49 +135,9 @@
                                 </h3>
                                 <hr>
                                 <h4>
-                                    Total de parcelas encontradas:
-                                    <b style="color: #3C8DBC;"> <?= count($parcelas); ?> </b>
-                                </h4>
-                                <h4>
                                     <i style="margin-right: 0.5rem; color: #22c55e;" class="fa fa-circle" aria-hidden="true"></i>
                                     Parcelas pagas:
                                     <b style="color: #3C8DBC;"> <?= $r_pagas ?> </b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #3b82f6;" class="fa fa-circle" aria-hidden="true"></i>
-                                    Parcelas pendentes:
-                                    <b style="color: #3C8DBC;"> <?= $r_pendentes ?> </b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #ef4444;" class="fa fa-circle" aria-hidden="true"></i>
-                                    Parcelas vencidas:
-                                    <b style="color: #3C8DBC;"> <?= $r_vencidas ?> </b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #333;" class="fa fa-circle-o" aria-hidden="true"></i>
-                                    Parcelas à vencer (daqui a mais de um mês):
-                                    <b style="color: #3C8DBC;"> <?= $r_a_vencer ?> </b>
-                                </h4>
-                                <hr>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #22c55e;" class="fa fa-circle" aria-hidden="true"></i>
-                                    Valor total pagas:
-                                    <b style="color: green;">R$ <?= $vl_pagas ?></b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #3b82f6;" class="fa fa-circle" aria-hidden="true"></i>
-                                    Valor total pendentes:
-                                    <b style="color: green;">R$ <?= $vl_pendentes ?></b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #ef4444;" class="fa fa-circle" aria-hidden="true"></i>
-                                    Valor total vencidas:
-                                    <b style="color: green;">R$ <?= $vl_vencidas ?></b>
-                                </h4>
-                                <h4>
-                                    <i style="margin-right: 0.5rem; color: #333;" class="fa fa-circle-o" aria-hidden="true"></i>
-                                    Valor total à vencer (daqui a mais de um mês):
-                                    <b style="color: green;">R$ <?= $vl_a_vencer ?></b>
                                 </h4>
                                 <hr>
                                 <h4 style="margin-bottom: 0; font-size: 22px;">
@@ -244,12 +172,6 @@
                                         $um_mes_frente = strtotime('+1 month');
                                         if ($parcela['status'] == 1) {
                                             $status = 'success';
-                                        } else if (time() > $data_fim) {
-                                            $status = 'danger';
-                                        } elseif ($data_fim >= time() && $data_fim <= $um_mes_frente) {
-                                            $status = 'info';
-                                        } else {
-                                            $status = '';
                                         }
                                     ?>
                                         <!-- danger info -->
