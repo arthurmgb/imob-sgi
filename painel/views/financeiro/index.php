@@ -6,14 +6,14 @@
       <small>Sistema de Gerenciamento Imobiliário</small>
     </h1>
 
-    <?php 
-        $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
-        
-     ?>
+    <?php
+    $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
+
+    ?>
 
     <div class="toggle-financeiro">
-        <button style="pointer-events: none;" class="btn btn-lg btn-success btn-fin-inq" disabled>Receber do Inquilino</button>
-        <a href="<?php echo BASE_URL ?>financeiro/repasse?contrato=<?= $finid ?>" class="btn btn-lg btn-primary btn-fin-prop">Repasse do Proprietário</a>
+      <button style="pointer-events: none;" class="btn btn-lg btn-success btn-fin-inq" disabled>Receber do Inquilino</button>
+      <a href="<?php echo BASE_URL ?>financeiro/repasse?contrato=<?= $finid ?>" class="btn btn-lg btn-primary btn-fin-prop">Repasse do Proprietário</a>
     </div>
 
     <!-- search form -->
@@ -51,6 +51,7 @@
                     <th>Data Incio</th>
                     <th>Data Venc.</th>
                     <th>Data Pag.</th>
+                    <th>Origem</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -80,14 +81,67 @@
                     <?php else : ?>
                       <td></td>
                     <?php endif; ?>
+                    <td style="text-align: center;">
+                      <?php
+                      $origem = null;
+                      switch ($parcela['origem']) {
+                        case null:
+                          $origem = "Indefinida";
+                          break;
+                        case 1:
+                          $origem = "CAIXA";
+                          break;
+                        case 2:
+                          $origem = "BANCO";
+                          break;
+                        case 3:
+                          $origem = "CAIXA/BANCO";
+                          break;
+                        default:
+                          $origem = "---";
+                          break;
+                      }
+                      ?>
+                      <span style="<?= ($origem === 'Indefinida') ? 'color: red;' : 'font-weight: bold'; ?>">
+                        <?= $origem  ?>
+                      </span>
+                    </td>
                     <td>
                       <?php if ($parcela['status'] != 1) : ?>
-                        <a href="#" onclick="confirm('Tem certeza que deseja pagar esta parcela?') ? window.location.href='<?php echo BASE_URL; ?>financeiro/pagar/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>' : ''" title="Pagar" style="margin-left: 5px;"><i class="fa fa-money fa-1x fa-border"></i></a>
+
+                        <div class="dropdown" style="margin-bottom: 10px;">
+                          <button title="Pagar" style="padding: 5px" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i style="color: green;" class="fa fa-money fa-lg"></i>
+                            <span class="caret"></span>
+                          </button>
+                          <ul style="position: relative; margin-bottom: 10px; border: 2px solid green;" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li class="dropdown-header">De onde foi recebido? </li>
+                            <li style="background-color: darkgreen;" role="separator" class="divider"></li>
+                            <li>
+                              <a style="font-weight: bold;" href="#" onclick="confirm('Tem certeza que deseja pagar esta parcela?') ? window.location.href='<?php echo BASE_URL; ?>financeiro/pagar/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>/1' : ''">
+                                CAIXA
+                              </a>
+                            </li>
+                            <li style="background-color: darkgreen;" role="separator" class="divider"></li>
+                            <li>
+                              <a style="font-weight: bold;" href="#" onclick="confirm('Tem certeza que deseja pagar esta parcela?') ? window.location.href='<?php echo BASE_URL; ?>financeiro/pagar/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>/2' : ''">
+                                BANCO
+                              </a>
+                            </li>
+                            <li style="background-color: darkgreen;" role="separator" class="divider"></li>
+                            <li>
+                              <a style="font-weight: bold;" href="#" onclick="confirm('Tem certeza que deseja pagar esta parcela?') ? window.location.href='<?php echo BASE_URL; ?>financeiro/pagar/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>/3' : ''">
+                                CAIXA/BANCO
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
                       <?php else : ?>
 
                       <?php endif; ?>
 
-                      <a href="<?php echo BASE_URL; ?>financeiro/recibo/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>" title="Recibo" style="margin: 0 5px;"><i class="fa fa-print fa-1x fa-border"></i></a>
+                      <a href="<?php echo BASE_URL; ?>financeiro/recibo/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>" title="Recibo" style="margin: 0 10px;"><i class="fa fa-print fa-lg"></i></a>
 
                     </td>
                   </tr>

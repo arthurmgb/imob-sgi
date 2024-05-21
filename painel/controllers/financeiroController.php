@@ -1,23 +1,26 @@
 <?php
-class financeiroController extends Controller {
+class financeiroController extends Controller
+{
 
- 	private $dados = array(
-        'menu_ativo' => 'financeiro'
-    );
+	private $dados = array(
+		'menu_ativo' => 'financeiro'
+	);
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->user = new Usuarios();
-		if(!$this->user->checkLogin()) {
-			header("Location: ".BASE_URL."login");
+		if (!$this->user->checkLogin()) {
+			header("Location: " . BASE_URL . "login");
 			exit;
-		}   
+		}
 	}
 
-	public function index() {
+	public function index()
+	{
 		$dados = $this->dados;
-		$dados['parcelas'] = array(); 
-		
+		$dados['parcelas'] = array();
+
 		$filtros = array();
 
 		if (!empty($_GET['contrato'])) {
@@ -27,21 +30,23 @@ class financeiroController extends Controller {
 			$dados['parcelas'] = $parcelas->getLista($filtros);
 			$dados['searchText'] = $filtros['contrato'];
 		}
- 
+
 		$this->loadTemplate('financeiro/index', $dados);
 	}
 
-	public function pagar($id_contrato, $id_parcela) {
+	public function pagar($id_contrato, $id_parcela, $origem)
+	{
 		if (!empty($id_contrato) && !empty($id_parcela)) {
 			$parcelas = new Parcelas;
-			$parcelas->pagar($id_contrato, $id_parcela);
-			header('Location: '.BASE_URL.'financeiro?contrato='.$id_contrato);
+			$parcelas->pagar($id_contrato, $id_parcela, $origem);
+			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato);
 			exit;
 		}
-		header('Location: '.BASE_URL.'financeiro');
+		header('Location: ' . BASE_URL . 'financeiro');
 	}
 
-	public function recb(){
+	public function recb()
+	{
 		$dados = $this->dados;
 
 		$empresa = new Config();
@@ -50,7 +55,8 @@ class financeiroController extends Controller {
 		$this->loadTemplate('financeiro/recibo-branco', $dados);
 	}
 
-	public function recibo($id_contrato, $id_parcela) {
+	public function recibo($id_contrato, $id_parcela)
+	{
 		$dados = $this->dados;
 		if (!empty($id_contrato) && !empty($id_parcela)) {
 
@@ -58,17 +64,18 @@ class financeiroController extends Controller {
 			$parcela = new Parcelas;
 
 			$dados['parcela'] = $parcela->getInfo($id_parcela, $id_contrato);
-			
+
 			/*if (count($dados['parcela']) == 0) { header('Location: '.BASE_URL.'financeiro');exit; }*/
 			$dados['contrato'] = $contratos->contrato($id_contrato);
-			
+
 			$this->loadTemplate('financeiro/recibo', $dados);
 			exit;
 		}
-		header('Location: '.BASE_URL.'financeiro');
+		header('Location: ' . BASE_URL . 'financeiro');
 	}
 
-	public function gerarecibo(){
+	public function gerarecibo()
+	{
 
 		$dados = $this->dados;
 
@@ -76,7 +83,7 @@ class financeiroController extends Controller {
 		$get_input_data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 		//CHECAGEM SE O BOTÃO BUSCAR FOI CLICADO
-        if (!empty($get_input_data['button-generate'])) {
+		if (!empty($get_input_data['button-generate'])) {
 
 			$dados['get_input_data'] = $get_input_data;
 
@@ -85,17 +92,17 @@ class financeiroController extends Controller {
 
 			$empresa = new Config;
 			$dados['empresa'] = $empresa->getEmpresa();
-
 		}
 
 		$this->loadTemplate('financeiro/gerarecibo', $dados);
 	}
 
-	public function caixa() {
+	public function caixa()
+	{
 		$dados = $this->dados;
 
 		$caixaHelper = new CaixaHelper;
-		
+
 		if ($caixaHelper->caixaFechado() == 0) {
 			$this->loadTemplate('financeiro/caixafechado', $dados);
 			exit;
@@ -105,21 +112,22 @@ class financeiroController extends Controller {
 		$this->loadTemplate('financeiro/caixa', $dados);
 	}
 
-	public function repasse($id_contrato = 0, $n_parcela = 0) {
+	public function repasse($id_contrato = 0, $n_parcela = 0)
+	{
 
 		if (!empty($id_contrato) && !empty($n_parcela)) {
 
 			$proprietarios = new Proprietarios;
 			$proprietarios->repasse($id_contrato, $n_parcela);
 
-			header('Location: '.BASE_URL.'financeiro/repasse?contrato='.$id_contrato);
+			header('Location: ' . BASE_URL . 'financeiro/repasse?contrato=' . $id_contrato);
 			exit;
 		}
 
 
 		$dados = $this->dados;
-		$dados['parcelas'] = array(); 
-		
+		$dados['parcelas'] = array();
+
 		$filtros = array();
 
 		if (!empty($_GET['contrato'])) {
@@ -129,11 +137,12 @@ class financeiroController extends Controller {
 			$dados['parcelas'] = $parcelas->getLista($filtros);
 			$dados['searchText'] = $filtros['contrato'];
 		}
- 
+
 		$this->loadTemplate('financeiro/proprietarios', $dados);
 	}
 
-	public function lancamentos($id_lancamento=null, $process=null) {
+	public function lancamentos($id_lancamento = null, $process = null)
+	{
 		$dados = $this->dados;
 		$lancamentos = new Lancamentos;
 
@@ -142,35 +151,35 @@ class financeiroController extends Controller {
 			if ($id_lancamento != null && $process == 'del') {
 				$lancamentos->del($id_lancamento);
 			}
-			
+
 			if (empty($id_lancamento) && $process == 'add' && count($_POST) > 0) {
 
 				/*$valor = addslashes($_POST['valor']);
 				$valor = explode(',', $valor);
 				$valor = str_replace([',', '.'], '', $valor[1]);
 				*/
-				
-				$valor = addslashes($_POST['valor']);
-                $valor = str_replace('.', '', $valor);
-                $valor = str_replace(',', '.', $valor);
 
-                
-                $dados = array(
+				$valor = addslashes($_POST['valor']);
+				$valor = str_replace('.', '', $valor);
+				$valor = str_replace(',', '.', $valor);
+
+
+				$dados = array(
 					'valor' => $valor,
 					'data' => date('Y-m-d'),
 					'tipo' => addslashes($_POST['tipo']),
 					'info' => addslashes($_POST['info']),
 					'id_user' => addslashes($_POST['id_user'])
 				);
-				
-				  /*  echo "<pre>";    
+
+				/*  echo "<pre>";    
 		                print_r($dados); 
 		            exit;
 				 */
 				$lancamentos->add($dados);
 			}
 
-			header('Location: '.BASE_URL.'financeiro/lancamentos');
+			header('Location: ' . BASE_URL . 'financeiro/lancamentos');
 			exit;
 		}
 
@@ -181,7 +190,7 @@ class financeiroController extends Controller {
 			$p = abs(addslashes($_GET['p']));
 			$offset = ($p * $limit) - $limit;
 		}
-		
+
 		$dados['lancamentos'] = $lancamentos->getLista($offset, $limit);
 		$dados['totalLancamentos'] = $lancamentos->getTotal();
 		$dados['limitLancamentos'] = $limit;
@@ -189,17 +198,17 @@ class financeiroController extends Controller {
 		$this->loadTemplate('financeiro/lancamentos', $dados);
 	}
 
-	public function fecharcaixa() {
+	public function fecharcaixa()
+	{
 		$caixaHelper = new CaixaHelper;
 		$caixaHelper->fechar();
-		header('Location: '.BASE_URL.'financeiro/caixa');
+		header('Location: ' . BASE_URL . 'financeiro/caixa');
 	}
 
-	public function reabrircaixa() {
+	public function reabrircaixa()
+	{
 		$caixaHelper = new CaixaHelper;
 		$caixaHelper->reabrir();
-		header('Location: '.BASE_URL.'financeiro/caixa');
+		header('Location: ' . BASE_URL . 'financeiro/caixa');
 	}
 }
-
-?>

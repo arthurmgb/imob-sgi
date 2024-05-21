@@ -127,16 +127,18 @@ class Parcelas extends Model
 		return $array;
 	}
 
-	public function pagar($id_contrato, $n_parcela)
+	public function pagar($id_contrato, $n_parcela, $origem)
 	{
+
 		$data_pag = date('Y-m-d');
 
-		$sql = "UPDATE parcelas SET status = '1', data_pag = :data_pag WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
+		$sql = "UPDATE parcelas SET status = '1', data_pag = :data_pag, origem = :origem WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
 
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':id_contrato', $id_contrato);
 		$sql->bindValue(':n_parcela', $n_parcela);
 		$sql->bindValue(':data_pag', $data_pag);
+		$sql->bindValue(':origem', $origem);
 		$sql->execute();
 
 		$parcela = $this->getInfo($n_parcela, $id_contrato);

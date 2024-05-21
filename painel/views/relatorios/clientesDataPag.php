@@ -164,6 +164,7 @@
                                             <th>Data Início</th>
                                             <th>Data Venc.</th>
                                             <th>Data Pag.</th>
+                                            <th>Origem</th>
                                         </tr>
                                     </thead>
 
@@ -189,6 +190,31 @@
                                             <?php else : ?>
                                                 <td></td>
                                             <?php endif; ?>
+                                            <td style="text-align: center;">
+                                                <?php
+                                                $origem = null;
+                                                switch ($parcela['origem']) {
+                                                    case null:
+                                                        $origem = "Indefinida";
+                                                        break;
+                                                    case 1:
+                                                        $origem = "CAIXA";
+                                                        break;
+                                                    case 2:
+                                                        $origem = "BANCO";
+                                                        break;
+                                                    case 3:
+                                                        $origem = "CAIXA/BANCO";
+                                                        break;
+                                                    default:
+                                                        $origem = "---";
+                                                        break;
+                                                }
+                                                ?>
+                                                <span style="<?= ($origem === 'Indefinida') ? 'color: red;' : 'font-weight: bold'; ?>">
+                                                    <?= $origem  ?>
+                                                </span>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </table>

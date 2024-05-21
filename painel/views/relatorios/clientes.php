@@ -5,7 +5,7 @@
         <h1>
             Relatório de Parcelas de Clientes
             <small> - Sistema de Gerenciamento Imobiliario</small>
-            <a href="<?php echo BASE_URL;?>relatorios/clientesDataPag" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-success btn-sm pull-right">
+            <a href="<?php echo BASE_URL; ?>relatorios/clientesDataPag" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-success btn-sm pull-right">
                 Buscar por Data de Pagamento
             </a>
         </h1>
@@ -236,6 +236,7 @@
                                             <th>Data Início</th>
                                             <th>Data Venc.</th>
                                             <th>Data Pag.</th>
+                                            <th>Origem</th>
                                         </tr>
                                     </thead>
 
@@ -267,6 +268,31 @@
                                             <?php else : ?>
                                                 <td></td>
                                             <?php endif; ?>
+                                            <td style="text-align: center;">
+                                                <?php
+                                                $origem = null;
+                                                switch ($parcela['origem']) {
+                                                    case null:
+                                                        $origem = "Indefinida";
+                                                        break;
+                                                    case 1:
+                                                        $origem = "CAIXA";
+                                                        break;
+                                                    case 2:
+                                                        $origem = "BANCO";
+                                                        break;
+                                                    case 3:
+                                                        $origem = "CAIXA/BANCO";
+                                                        break;
+                                                    default:
+                                                        $origem = "---";
+                                                        break;
+                                                }
+                                                ?>
+                                                <span style="<?= ($origem === 'Indefinida') ? 'color: red;' : 'font-weight: bold'; ?>">
+                                                    <?= $origem  ?>
+                                                </span>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </table>

@@ -6,10 +6,10 @@
        <small>Sistema de Gerenciamento Imobiliário</small>
      </h1>
 
-     <?php 
-        $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
-        
-     ?>
+     <?php
+      $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
+
+      ?>
 
      <div class="toggle-financeiro">
        <a href="<?php echo BASE_URL ?>financeiro?contrato=<?= $finid ?>" class="btn btn-lg btn-success btn-fin-inq">Receber do Inquilino</a>
@@ -86,7 +86,10 @@
                      <td><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
                      <td>
                        <?php if ($parcela['repasse'] == 0) : ?>
-                         <a href="<?php echo BASE_URL; ?>financeiro/repasse/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>" title="Pagar"><i class="fa fa-money fa-1x"></i></a>
+                         <a style="border: 1px solid green; padding: 5px; color: darkgreen; font-weight: bold;" href="<?php echo BASE_URL; ?>financeiro/repasse/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>" title="Repassar">
+                           <i style="color: green; margin-right: 6px;" class="fa fa-money fa-lg"></i>
+                           Repassar
+                         </a>
                        <?php else :
                           echo date('d/m/Y', strtotime($parcela['data_repasse']));
                         endif; ?>
