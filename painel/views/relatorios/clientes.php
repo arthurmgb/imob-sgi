@@ -151,7 +151,7 @@
                                         $vl_a_vencer += $parcela['valor'];
                                     }
 
-                                    $valor_a_rcb += $parcela['valor'] * $parcela['imv_comissao'] / 100;
+                                    $valor_a_rcb += ceil($parcela['valor'] * $parcela['imv_comissao'] / 100);
                                 }
 
                                 $vl_pagas = number_format($vl_pagas, 2, ',', '.');
@@ -217,7 +217,7 @@
                                     <b style="color: green;">R$ <?= $valor_total ?></b>
                                 </h4>
                                 <h4 style="margin-bottom: 0; font-size: 22px;">
-                                    <b>Valor total comissões:</b>
+                                    <b>Valor total de comissões (arredondado):</b>
                                     <b style="color: green;">R$ <?= $valor_a_rcb ?></b>
                                 </h4>
                                 <hr style="margin-bottom: 0;">
@@ -259,7 +259,9 @@
                                             <td><?php echo $parcela['nome_inquilino']; ?></td>
                                             <td><?php echo $parcela['n_parcela']; ?></td>
                                             <td style="white-space: nowrap;">R$ <?php echo number_format($parcela['valor'], 2, ',', '.'); ?></td>
-                                            <td style="text-align: center; font-weight: bold; white-space: nowrap;">R$ <?php echo number_format($parcela['valor'] * $parcela['imv_comissao'] / 100, 2, ',', '.'); ?></td>
+                                            <td style="text-align: center; font-weight: bold; white-space: nowrap;">
+                                                R$ <?php echo number_format(ceil($parcela['valor'] * $parcela['imv_comissao'] / 100), 2, ',', '.'); ?>
+                                            </td>
                                             <td style="text-align: center;"><?php echo $parcela['imv_comissao']; ?>%</td>
                                             <td><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
                                             <td><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
