@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="IMOB- Sistema de Gerenciamento Imobiliario<">
-    <meta name="author" content="Lucas Silva">
+    <meta name="author" content="Lucas Silva | Arthur Oliveira">
     <link rel="icon" type="image/x-icon" href="<?php echo BASE_URL; ?>assets/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css">

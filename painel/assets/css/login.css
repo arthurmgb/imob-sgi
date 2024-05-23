@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(2, 6, 23);
+  background: radial-gradient(
+      circle,
+      rgba(2, 6, 23, 0.93) 0%,
+      rgba(15, 23, 42, 0.93) 35%,
+      rgba(30, 41, 59, 0.93) 100%
+    ),
+    url("../images/login-banner.webp") center center / cover no-repeat;
+}
+.mdn-login-box {
+  background-color: #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 12px;
+  width: 400px;
+  min-height: 220px;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  max-width: 100%;
+  transition: box-shadow 0.3s;
+}
+.mdn-login-box:hover {
+  box-shadow: 0 8px 64px 0 rgba(255, 255, 255, 0.2);
+}
+.mdn-logo {
+  width: 205px;
+  transition: transform 0.2s;
+}
+.mdn-logo:hover {
+  transform: scale(1.05);
+}
+.mdn-login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+.mdn-login-form * {
+  background-color: #fff;
+  padding: 15px !important;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+}
+.mdn-password-box {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mdn-toggler {
+  padding: 0 !important;
+  width: 20%;
+  height: 100%;
+  border: 1px solid #0f172a !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0 !important;
+  color: #020617;
+  transition: border 0.1s;
+}
+.mdn-toggler i {
+  font-size: 20px !important;
+  color: #0f172a;
+}
+.mdn-login-form input {
+  border: 1px solid #0f172a;
+  transition: border 0.1s;
+  color: #020617;
+}
+.mdn-login-form input:focus {
+  border-bottom: 5px solid #0f172a !important;
+}
+.mdn-login-form .mdn-password-input:focus ~ .mdn-toggler {
+  border-bottom: 5px solid #0f172a !important;
+}
+.mdn-login-form input::placeholder {
+  color: #64748b;
+}
+.mdn-btn {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-weight: 600;
+  font-style: normal;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.mdn-btn:hover {
+  background-color: #1e293b;
+  transform: scale(0.95);
+}
+.mdn-alert {
+  padding: 10px !important;
+  border-radius: 6px !important;
+}
+.mdn-password-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0 !important;
+}
+#mdn-sign-in {
+  background-color: transparent;
+  font-size: 20px;
+  padding: 0 !important;
+  width: 1.28571429em;
+  margin-top: -3px !important;
+}

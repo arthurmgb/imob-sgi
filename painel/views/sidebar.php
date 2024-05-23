@@ -2,7 +2,7 @@
 	<section class="sidebar">
 		<div class="user-panel" style="margin-bottom: 10px; margin-top: 0px; display: flex; align-items: center; justify-content: center; padding: 5px;">
 			<a href="<?php echo BASE_URL; ?>">
-				<img style="width: 154px;" src="<?php echo BASE_URL;?>assets/images/logo.png">
+				<img class="mdn-dash-logo" style="width: 154px;" src="<?php echo BASE_URL;?>assets/images/logo.png">
 			</a>	
 		</div>
 		<ul class="sidebar-menu" data-widget="tree">
