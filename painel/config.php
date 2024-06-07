@@ -13,7 +13,7 @@ if(ENVIRONMENT == 'development') {
 	$config['dbuser'] = 'imobsolelua_admin';
 	$config['dbpass'] = 'P@ssw0rd90';
 } else {
-	define("BASE_URL", "http://localhost/solelua/painel/");
+	define("BASE_URL", "http://localhost/imob-sgi/painel/");
 	$config['dbname'] = 'imobsolelua_db';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
