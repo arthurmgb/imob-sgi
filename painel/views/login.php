@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="IMOB- Sistema de Gerenciamento Imobiliario<">
   <meta name="author" content="Lucas Silva | Arthur Oliveira">
-  <link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/home-4990196-4158270.png">
+  <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>assets/images/home.png">
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">

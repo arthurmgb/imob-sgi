@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="IMOB- Sistema de Gerenciamento Imobiliario<">
 	<meta name="author" content="Lucas Silva | Arthur Oliveira">
-	<link rel="icon" type="image/png" href="https://cdn3d.iconscout.com/3d/premium/thumb/home-4990196-4158270.png">
+	<link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>assets/images/home.png">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">
@@ -59,7 +59,7 @@
 			<a href="<?php echo BASE_URL; ?>" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini">
-					<img width="32" height="32" src="https://cdn3d.iconscout.com/3d/premium/thumb/home-4990196-4158270.png">
+					<img width="32" height="32" src="#">
 				</span>
 				<!-- logo for regular state and mobile devices -->
 				<span style="font-family: 'Source Sans Pro',sans-serif; font-weight: 400;" class="logo-lg">Sol & Lua Imobiliária</span>
