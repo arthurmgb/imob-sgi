@@ -187,8 +187,6 @@ class Proprietarios extends Model
 	{
 		$sql = "UPDATE parcelas SET repasse = '1', data_repasse = :data_repasse, id_user = :id_user WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
 
-		print_r($sql);
-
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':data_repasse', date('Y-m-d'));
 		$sql->bindValue(':id_user', $_SESSION['user']['id']);
