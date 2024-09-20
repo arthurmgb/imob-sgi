@@ -5,8 +5,9 @@
         <h1>
             Relatório de Parcelas de Clientes
             <small> - Sistema de Gerenciamento Imobiliario</small>
-            <a href="<?php echo BASE_URL; ?>relatorios/clientesDataPag" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-success btn-sm pull-right">
-                Buscar por Data de Pagamento
+            <a href="<?php echo BASE_URL; ?>relatorios/parcelasClientes" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-primary pull-right">
+                <i class="fa fa-undo fa-fw"></i>
+                Alterar tipo de relatório
             </a>
         </h1>
 

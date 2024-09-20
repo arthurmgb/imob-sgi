@@ -1,0 +1,51 @@
+<div class="content-wrapper">
+
+    <section class="content-header">
+
+        <h1>
+            Relatório de Parcelas de Clientes
+            <small> - Sistema de Gerenciamento Imobiliario</small>
+            <!-- <a href="<?php echo BASE_URL; ?>relatorios/clientes" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-primary btn-sm pull-right">
+                Buscar por Período
+            </a> -->
+        </h1>
+
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 flex-col-center">
+                <h1>
+                    <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>
+                    Escolha o <b>tipo</b> de relatório
+                </h1>
+                <hr style="border: 1px solid #bcbcbc; width: 100%; margin: 0px 0px">
+                <div class="item-flex">
+                    <a style="font-size: 22px; padding: 15px;" href="<?php echo BASE_URL; ?>relatorios/clientes" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-lg btn-block btn-primary">
+                        <i style="margin-right: 8px;" class="fa fa-calendar fa-fw"></i>
+                        Relatório de Parcelas de Clientes por | <b>Período</b>
+                    </a>
+                    <p style="font-size: 18px;">
+                        <i class="fa fa-exclamation-circle fa-fw"></i>
+                        Este relatório filtra por <b>TODAS</b> as situações de parcela
+                        (<b class="text-success">PAGAS</b>, <b class="text-primary">PENDENTES</b> e <b class="text-danger">VENCIDAS</b>).
+                    </p>
+                </div>
+                <hr style="border: 1px solid #bcbcbc; width: 100%; margin: 0px 0px">
+                <div class="item-flex">
+                    <a style="font-size: 22px; padding: 15px;" href="<?php echo BASE_URL; ?>relatorios/clientesDataPag" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-lg btn-block btn-success">
+                        <i style="margin-right: 8px;" class="fa fa-money fa-fw"></i>
+                        Relatório de Parcelas de Clientes por | <b>Data de Pagamento</b>
+                    </a>
+                    <p style="font-size: 18px;">
+                        <i class="fa fa-exclamation-circle fa-fw"></i>
+                        Este relatório filtra <b>APENAS</b> por parcelas <b class="text-success">PAGAS</b>.
+                    </p>
+                </div>
+                <hr style="border: 1px solid #bcbcbc; width: 100%; margin: 0px 0px">
+            </div>
+        </div>
+
+    </section>
+
+</div>

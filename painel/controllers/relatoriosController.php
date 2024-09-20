@@ -16,6 +16,12 @@ class relatoriosController extends Controller
 		}
 	}
 
+	public function parcelasClientes()
+	{
+		$dados = $this->dados;
+		$this->loadTemplate('relatorios/parcelasClientes', $dados);
+	}
+
 	public function clientes()
 	{
 
