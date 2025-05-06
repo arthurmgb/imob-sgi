@@ -1,27 +1,47 @@
 <?php
 
-class Inquilinos extends Model {
+class Inquilinos extends Model
+{
 
-	public function getList($offset, $limit, $filtros=array()){
+	public function getList($offset, $limit, $filtros = array())
+	{
 		$array = array();
 
 		$where = $this->buildwhere($filtros);
 
 		$sql = "SELECT inq.*, imo.endereco, imo.bairro
-		FROM inquilinos inq LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE '1'='1' ".implode(' OR ', $where)." ORDER BY nome ASC  LIMIT $offset, $limit";
+		FROM inquilinos inq LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE '1'='1' " . implode(' OR ', $where) . " ORDER BY nome ASC  LIMIT $offset, $limit";
 
 		$sql = $this->db->prepare($sql);
 		$this->bindwhere($sql, $filtros);
 		$sql->execute();
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
 
 		return $array;
 	}
 
-	public function getIptu($limit) {
+	public function inquilinosForContrato()
+	{
+		$array = array();
+
+		$sql = "SELECT referencia, nome
+				FROM inquilinos
+				ORDER BY nome ASC";
+
+		$sql = $this->db->query($sql);
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+		return $array;
+	}
+
+	public function getIptu($limit)
+	{
 
 		$array = array();
 
@@ -53,32 +73,34 @@ class Inquilinos extends Model {
 				LIMIT $limit";
 
 		$sql = $this->db->query($sql);
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
 
 		return $array;
 	}
-	
-	public function getIptu1($limit) {
+
+	public function getIptu1($limit)
+	{
 		$array = array();
 		$sql = "SELECT * FROM imoveis 
 		WHERE iptu = '1' 
 		LIMIT $limit";
 		$sql = $this->db->query($sql);
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
 		return $array;
 	}
 
-	public function getNome($codigo) {
+	public function getNome($codigo)
+	{
 		$sql = "SELECT nome FROM inquilinos WHERE referencia = '$codigo'";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() == 1) {
+		if ($sql->rowCount() == 1) {
 			$data = $sql->fetch();
 			$nome = $data['nome'];
 			return $nome;
@@ -86,40 +108,43 @@ class Inquilinos extends Model {
 		return '';
 	}
 
-	public function inquilino($id){
+	public function inquilino($id)
+	{
 		$array = array();
 		$sql = "SELECT inq.*,
 		imo.endereco, imo.bairro, imo.cidade, imo.uf, imo.cep
 		FROM inquilinos inq LEFT JOIN imoveis imo ON inq.cod_imovel = imo.referencia WHERE inq.id = '$id'";
 		$sql = $this->db->query($sql);
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetch(PDO::FETCH_ASSOC);
 		}
 
 		return $array;
 	}
 
-	public function getInfoByCode($codigo){
+	public function getInfoByCode($codigo)
+	{
 		$array = array();
 		$sql = "SELECT * FROM inquilinos WHERE referencia = :codigo";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':codigo', $codigo);
 		$sql->execute();
-		
-		if($sql->rowCount() > 0) {
+
+		if ($sql->rowCount() > 0) {
 			$array = $sql->fetch(PDO::FETCH_ASSOC);
 		}
 		return $array;
 	}
 
-	public function getTotalInquilinos() {
+	public function getTotalInquilinos()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM inquilinos";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -127,13 +152,14 @@ class Inquilinos extends Model {
 		return $q;
 	}
 
-	public function qtdInquilinoAtivos() {
+	public function qtdInquilinoAtivos()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM inquilinos WHERE status = '1'";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -141,13 +167,14 @@ class Inquilinos extends Model {
 		return $q;
 	}
 
-	public function qtdInquilinoInativos() {
+	public function qtdInquilinoInativos()
+	{
 		$q = 0;
 
 		$sql = "SELECT COUNT(*) as c FROM inquilinos WHERE status = '2'";
 		$sql = $this->db->query($sql);
 
-		if($sql->rowCount() > 0) {
+		if ($sql->rowCount() > 0) {
 			$q = $sql->fetch();
 			$q = $q['c'];
 		}
@@ -155,7 +182,8 @@ class Inquilinos extends Model {
 		return $q;
 	}
 
-	public function cadImovel($codImovel, $cod_inquilino) {
+	public function cadImovel($codImovel, $cod_inquilino)
+	{
 		$sql = "UPDATE inquilinos SET cod_imovel = :cod_imovel WHERE referencia = :referencia";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':cod_imovel', $codImovel);
@@ -163,23 +191,23 @@ class Inquilinos extends Model {
 		$sql->execute();
 	}
 
-	public function removerInquilinos($id) {
+	public function removerInquilinos($id)
+	{
 
 		$sql = "DELETE FROM inquilinos WHERE id = '$id'";
 		$sql = $this->db->query($sql);
-		
 	}
 
 	public function CadInq(
-		$nome, 
-		$cpf, 
+		$nome,
+		$cpf,
 		$rg,
 		$nacionalidade,
-		$estado_civil, 
-		$profissao, 
-		$telefone, 
+		$estado_civil,
+		$profissao,
+		$telefone,
 		$info
-		){
+	) {
 
 		$cod_inquilino = 0;
 		$sql = "SELECT COUNT(id) AS c FROM fiadores WHERE cod_inquilino = :cod_inquilino";
@@ -207,7 +235,7 @@ class Inquilinos extends Model {
 			$this->db->query($sql);
 			$id = $this->db->lastInsertId();
 
-			$codigo = $id.rand(1000, 9999);
+			$codigo = $id . rand(1000, 9999);
 
 			$sql = "UPDATE inquilinos SET referencia = ? WHERE id = ?";
 			$sql = $this->db->prepare($sql);
@@ -223,17 +251,17 @@ class Inquilinos extends Model {
 
 
 	public function updateInquilinos(
-		$id, 
-		$nome, 
-		$cpf, 
-		$rg, 
+		$id,
+		$nome,
+		$cpf,
+		$rg,
 		$nacionalidade,
 		$estado_civil,
-		$profissao, 
-		$telefone, 
-		$info, 
+		$profissao,
+		$telefone,
+		$info,
 		$status
-		){
+	) {
 
 		$sql = "UPDATE inquilinos SET 
 		nome 	  		= '$nome', 
@@ -249,24 +277,26 @@ class Inquilinos extends Model {
 		$this->db->query($sql);
 	}
 
-	private function buildwhere($filtros) {
+	private function buildwhere($filtros)
+	{
 		$where = array();
 
-		if(!empty($filtros['search'])) {
+		if (!empty($filtros['search'])) {
 			$where[] = 'AND (inq.nome LIKE :nome OR imo.endereco LIKE :endereco';
 			$where[] = 'inq.referencia LIKE :referencia OR imo.endereco LIKE :endereco';
 			$where[] = 'inq.rg LIKE :rg OR imo.endereco LIKE :endereco)';
 		}
 
 		return $where;
-}
-
-private function bindwhere(&$sql, $filtros) {
-	if(!empty($filtros['search'])) {
-		$sql->bindvalue(':nome', $filtros['search'].'%');
-		$sql->bindvalue(':referencia', '%'.$filtros['search'].'%');
-		$sql->bindvalue(':rg', '%'.$filtros['search'].'%');
-		$sql->bindvalue(':endereco', '%'.$filtros['search'].'%');
 	}
-}
+
+	private function bindwhere(&$sql, $filtros)
+	{
+		if (!empty($filtros['search'])) {
+			$sql->bindvalue(':nome', $filtros['search'] . '%');
+			$sql->bindvalue(':referencia', '%' . $filtros['search'] . '%');
+			$sql->bindvalue(':rg', '%' . $filtros['search'] . '%');
+			$sql->bindvalue(':endereco', '%' . $filtros['search'] . '%');
+		}
+	}
 }

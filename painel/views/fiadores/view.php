@@ -1,8 +1,8 @@
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->
    <section class="content-header">
-     <h1>
-       Sistema de Gerenciamento Imobiliário - Fiadores
+     <h1 class="imob-custom-h1">
+       <?php echo $fiador['nome']; ?>
      </h1>
    </section>
 

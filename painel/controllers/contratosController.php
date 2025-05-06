@@ -24,13 +24,14 @@ class contratosController extends Controller
 
             $info = addslashes($_POST['info']);
             $cod_proprietario = addslashes($_POST['cod_proprietario']);
-            $cod_imovel = addslashes(($_POST['cod_imovel']));
+            $cod_imovel = addslashes($_POST['cod_imovel']);
             $cod_inquilino = addslashes($_POST['cod_inquilino']);
             $fiador1 = addslashes($_POST['fiador1']);
             $fiador2 = addslashes($_POST['fiador2']);
             $data_inicio = addslashes($_POST['data_inicio']);
             $periodo = addslashes($_POST['periodo']);
-            $valor = addslashes($_POST['valor']);
+            // $valor = addslashes($_POST['valor']);
+            $valor = floatval(str_replace(['.', ','], ['', '.'], addslashes($_POST['valor'])));
 
             $data_inicio = strtotime($data_inicio);
             $data_final = strtotime('+ ' . $periodo . ' months', $data_inicio);
@@ -64,7 +65,7 @@ class contratosController extends Controller
                 );
                 $data = http_build_query($data);
                 header('Location: ' . BASE_URL . 'contratos/adicionar?' . $data);
-                
+
                 exit;
             }
         }
@@ -74,11 +75,13 @@ class contratosController extends Controller
             $dados['error']['type'] = addslashes($_GET['type']);
         }
 
-        if (!empty($_GET['imovel'])) {
-            $imoveis = new Imoveis;
-            $id = addslashes($_GET['imovel']);
-            $dados['imovel'] = $imoveis->getInfoImovelValido($id);
-        }
+        // Lista de imóveis disponíveis
+        $get_imoveis = new Imoveis;
+        $dados['imoveis_disponiveis'] = $get_imoveis->disponiveisForContrato();
+
+        // Lista de inquilinos
+        $get_inquilinos = new Inquilinos;
+        $dados['inquilinos_list'] = $get_inquilinos->inquilinosForContrato();
 
         $this->loadTemplate('contratos/add', $dados);
     }
@@ -123,6 +126,7 @@ class contratosController extends Controller
 
     public function getInfoContrato()
     {
+
         $m = $_SERVER['REQUEST_METHOD'];
 
         if ($m == 'POST') {
@@ -141,8 +145,23 @@ class contratosController extends Controller
     public function del($id)
     {
         $contratos = new Contratos;
-        $contratos->del($id);
-        header('Location: ' . BASE_URL . 'contratos');
+        $status = $contratos->del($id);
+
+        if ($status == 'approval') {
+            $data = array(
+                'type' => 'success',
+                'msg' => 'Exclusão do contrato ' . $id . ' aguardando aprovação do administrador.'
+            );
+            $data = http_build_query($data);
+            header('Location: ' . BASE_URL . 'contratos/buscar?' . $data);
+        } elseif ($status == 'approved') {
+            $data = array(
+                'type' => 'success',
+                'msg' => 'Contrato ' . $id . ' excluído com sucesso. Um registro foi gerado no histórico de contratos excluídos.'
+            );
+            $data = http_build_query($data);
+            header('Location: ' . BASE_URL . 'contratos/buscar?' . $data);
+        }
     }
 
     public function getlista()
@@ -170,7 +189,7 @@ class contratosController extends Controller
     {
         $dados = $this->dados;
         $offset = 0;
-        $limit = 16;
+        $limit = 12;
 
 
         if (isset($_GET['p']) && !empty($_GET['p'])) {
@@ -202,14 +221,14 @@ class contratosController extends Controller
             $data_inicio = addslashes($_POST['data_inicio']);
             $periodo = addslashes($_POST['periodo']);
             $id_contrato =  addslashes($_POST['id_contrato']);
-
             $id_user = $_SESSION['user']['id'];
             $data_inicio = strtotime($data_inicio);
             $data_final = strtotime('+ ' . $periodo . ' months', $data_inicio);
 
+            // formatar n_valor para salvar no banco
+            $n_valor = floatval(str_replace(['.', ','], ['', '.'], $n_valor));
+
             $renovar = $contratos->update($id_contrato, $referencia_imovel, $reajuste, $iptu, $n_valor, $periodo, $data_inicio, $data_final, $id_user);
-
-
 
             if ($renovar > 0) {
                 $data = array(
@@ -222,7 +241,7 @@ class contratosController extends Controller
             } else {
                 $data = array(
                     'type' => 'success',
-                    'msg' => 'Sucesso! Contrato renovado para mais 1 ano.'
+                    'msg' => 'Contrato renovado para mais 01 ano e novas parcelas geradas com sucesso!'
                 );
                 $data = http_build_query($data);
                 header('Location: ' . BASE_URL . 'contratos/renovar/' . $id . '?' . $data);

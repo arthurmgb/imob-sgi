@@ -26,8 +26,6 @@ class Parcelas extends Model
 	public function renovar($qt, $id_contrato, $data_inicio, $n_valor)
 	{
 
-		$n_valor = str_replace(['R$', ' ', '.'], '', $n_valor);
-
 		for ($q = 1; $q <= $qt; $q++) {
 			if ($q > 1) {
 				$data_inicio = Date('Y-m-d', strtotime('+ 1 month', strtotime($data_inicio)));
@@ -164,13 +162,23 @@ class Parcelas extends Model
 	{
 		$array = array();
 		$hoje = date('Y-m-d');
-		$sql = "SELECT *,
-		(SELECT inq.nome AS nome_inquilino FROM inquilinos inq, contratos con WHERE con.id = parcelas.id_contrato AND con.cod_inquilino = inq.referencia) AS nome_inquilino
-		FROM parcelas WHERE data_fim <= '$hoje' AND status = '0' ORDER BY nome_inquilino ASC";
+
+		$sql = "SELECT parcelas.*, inq.nome AS nome_inquilino, prop.nome AS nome_proprietario 
+				FROM parcelas
+				LEFT JOIN contratos con ON con.id = parcelas.id_contrato
+				LEFT JOIN inquilinos inq ON con.cod_inquilino = inq.referencia
+				LEFT JOIN proprietario prop ON con.cod_proprietario = prop.referencia
+				WHERE parcelas.data_fim <= '$hoje' 
+				AND parcelas.status = '0'
+				ORDER BY inq.nome ASC;
+				";
+
 		$sql = $this->db->query($sql);
+
 		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
+
 		return $array;
 	}
 
@@ -332,8 +340,25 @@ class Parcelas extends Model
 	{
 		$where = array('1=1');
 
+
 		if (!empty($filtros['contrato'])) {
 			$where[] = 'id_contrato = :contrato';
+		}
+
+		if (!empty($filtros['pagas'])) {
+			if ($filtros['pagas'] == 'false') {
+				$where[] = 'status = 0';
+			} elseif ($filtros['pagas'] == 'true') {
+				$where[] = 'status IN (0, 1)';
+			}
+		}
+
+		if (!empty($filtros['repassadas'])) {
+			if ($filtros['repassadas'] == 'false') {
+				$where[] = 'repasse = 0';
+			} elseif ($filtros['repassadas'] == 'true') {
+				$where[] = 'repasse IN (0, 1)';
+			}
 		}
 
 		return $where;

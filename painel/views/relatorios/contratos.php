@@ -80,7 +80,7 @@
                 <img src="<?php echo BASE_URL; ?>upload/<?php echo $empresa['logo']; ?>" style="width:190px; float: left;  " alt="">
             </div>
             <div style="margin-top: 20px;">
-                <p><?php echo strtoupper($empresa['razao_social']); ?></p>
+                <p><?php echo mb_strtoupper($empresa['razao_social'], 'UTF-8'); ?></p>
                 <p>
                     CNPJ: <?php echo $empresa['cnpj']; ?>
                     <span class="ml">CRECI: <?php echo $empresa['creci']; ?></span>

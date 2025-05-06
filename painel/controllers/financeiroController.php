@@ -25,7 +25,7 @@ class financeiroController extends Controller
 
 		if (!empty($_GET['contrato'])) {
 			$filtros['contrato'] = abs(addslashes($_GET['contrato']));
-
+			$filtros['pagas'] = isset($_GET['pagas']) ? $_GET['pagas'] : 'true';
 			$parcelas = new Parcelas();
 			$dados['parcelas'] = $parcelas->getLista($filtros);
 			$dados['searchText'] = $filtros['contrato'];
@@ -39,7 +39,11 @@ class financeiroController extends Controller
 		if (!empty($id_contrato) && !empty($id_parcela)) {
 			$parcelas = new Parcelas;
 			$parcelas->pagar($id_contrato, $id_parcela, $origem);
-			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato);
+			$data = array(
+				'status' => 'ok',
+			);
+			$data = http_build_query($data);
+			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato . '&' . $data);
 			exit;
 		}
 		header('Location: ' . BASE_URL . 'financeiro');
@@ -119,8 +123,12 @@ class financeiroController extends Controller
 
 			$proprietarios = new Proprietarios;
 			$proprietarios->repasse($id_contrato, $n_parcela);
+			$data = array(
+				'status' => 'ok',
+			);
+			$data = http_build_query($data);
 
-			header('Location: ' . BASE_URL . 'financeiro/repasse?contrato=' . $id_contrato);
+			header('Location: ' . BASE_URL . 'financeiro/repasse?contrato=' . $id_contrato . '&' . $data);
 			exit;
 		}
 
@@ -132,7 +140,7 @@ class financeiroController extends Controller
 
 		if (!empty($_GET['contrato'])) {
 			$filtros['contrato'] = abs(addslashes($_GET['contrato']));
-
+			$filtros['repassadas'] = isset($_GET['rep']) ? $_GET['rep'] : 'true';
 			$parcelas = new Parcelas();
 			$dados['parcelas'] = $parcelas->getLista($filtros);
 			$dados['searchText'] = $filtros['contrato'];

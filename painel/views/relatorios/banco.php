@@ -17,7 +17,7 @@
             font-family: sans-serif;
             margin-top: 30px;
             -webkit-print-color-adjust: exact !important;
-			print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
         .container {
@@ -61,11 +61,13 @@
         .content table.table tbody tr {
             font-size: 1.1rem;
         }
+
         table {
-            table-layout:fixed;
+            table-layout: fixed;
         }
+
         td {
-            word-wrap:break-word;
+            word-wrap: break-word;
             word-break: break-all;
         }
     </style>
@@ -78,7 +80,7 @@
                 <img src="<?php echo BASE_URL; ?>upload/<?php echo $empresa['logo']; ?>" style="width:190px; float: left;  " alt="">
             </div>
             <div style="margin-top: 20px;">
-                <p><?php echo strtoupper($empresa['razao_social']); ?></p>
+                <p><?php echo mb_strtoupper($empresa['razao_social'], 'UTF-8'); ?></p>
                 <p>
                     CNPJ: <?php echo $empresa['cnpj']; ?>
                     <span class="ml">CRECI: <?php echo $empresa['creci']; ?></span>
@@ -90,13 +92,13 @@
         <div class="content">
             <h3 class="rel_title">RELATÓRIO DE PROPRIETÁRIOS COM BANCO</h3>
             <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Total de proprietários cadastrados: <b style="font-size: 22px; color: blue;">
-                <?php echo count($proprietarios) + $nobank ?></b>
+                    <?php echo count($proprietarios) + $nobank ?></b>
             </p>
             <p style="margin-bottom: 0; padding-bottom: 0;" class="sub_title">Proprietários <b>COM</b> banco cadastrado: <b style="font-size: 22px; color: green;">
-                <?php echo count($proprietarios) ?></b>
+                    <?php echo count($proprietarios) ?></b>
             </p>
             <p class="sub_title">Proprietários <b>SEM</b> banco cadastrado: <b style="font-size: 22px; color: red;">
-                <?php echo $nobank ?></b>
+                    <?php echo $nobank ?></b>
             </p>
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
@@ -112,13 +114,13 @@
                     </tr>
                 </thead>
 
-                <?php foreach ($proprietarios as $proprietario) : 
-                    
-                    if($proprietario['tipo_conta'] == 1){
+                <?php foreach ($proprietarios as $proprietario) :
+
+                    if ($proprietario['tipo_conta'] == 1) {
                         $tipo_de_conta = 'Corrente';
-                    }elseif($proprietario['tipo_conta'] == 2)
+                    } elseif ($proprietario['tipo_conta'] == 2)
                         $tipo_de_conta = 'Poupança';
-                    
+
                 ?>
                     <tr>
                         <td><?php echo $proprietario['referencia']; ?></td>

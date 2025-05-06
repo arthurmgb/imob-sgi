@@ -132,7 +132,7 @@ function buscar_contratos() {
           html += '<td><a href="'+BASE_URL+'contratos/ver/'+json[i].id+'" title="Ver">';
           html += '<i class="fa fa-eye fa-1x fa-border"></i></a>';
           html += '<a href="'+BASE_URL+'contratos/del/'+json[i].id+'" title="Excluir">';
-          html += '<i class="fa fa-trash fa-1x fa-border"></i></a></td></tr>';
+          html += '<i class="fa fa-trash fa-1x fa-border text-danger"></i></a></td></tr>';
         }
 
         var botaovoltar = '<a style="float: right; margin-right: 10px; margin-top: 10px" href="'+BASE_URL+'contratos" class="btn btn-default btn-sm">Ver todos</a>'

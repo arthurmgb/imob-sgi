@@ -5,24 +5,40 @@ $inquilino = $contrato['inquilino'];
 $imovel = $contrato['imovel'];
 ?>
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
+
   <section class="content-header">
-    <h1>
-      Comprovante de pagamento - N° <?php echo $parcela['n_parcela']; ?>
+    <h1 class="imob-custom-h1">
+      Recibo - N° <?php echo $parcela['n_parcela']; ?>
     </h1>
   </section>
+
   <section class="content">
     <div class="row">
-      <!-- left column -->
       <div class="col-md-12">
-        <!-- general form elements -->
+        <div class="div-btn-print noPrint-rel">
+          <a href="<?= BASE_URL ?>financeiro?contrato=<?= $parcela['id_contrato'] ?>" class="btn btn-primary btn-lg">
+            <i style="margin-right: 5px;" class="fa fa-angle-left" aria-hidden="true"></i>
+            Voltar
+          </a>
+          <button onclick="window.print();" class="btn btn-success btn-lg">
+            <i style="margin-right: 5px;" class="fa fa-print"></i>
+            Imprimir recibo
+          </button>
+        </div>
+        <hr class="noPrint-rel" style="margin: 0px 0 10px 0; border-color: #999;">
+        <h4 style="margin: 10px 0 0px 0;">
+          <b>Proprietário:</b> <?php echo $proprietario['nome'] ?>
+        </h4>
+        <h4>
+          <b>Inquilino:</b> <?php echo $inquilino['nome'] ?> - <b> N° <?php echo $parcela['n_parcela']; ?> </b>
+        </h4>
         <div style="margin-bottom: 0;" class="box box-primary">
           <div class="view no-shadow" style="position: relative;">
             <div style="position: absolute; top: 10px; right: 10px; ">
               <div>1° via <br />Inquilino</div>
             </div>
             <p>
-              <span><?php echo strtoupper($config['razao_social']); ?></span>
+              <span><?php echo mb_strtoupper($config['razao_social'], 'UTF-8'); ?></span>
               <span class="ml">N°. Contrato: <?php echo $parcela['id_contrato'] ?></span>
             </p>
             <p>End:
@@ -38,9 +54,9 @@ $imovel = $contrato['imovel'];
               <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
-              Locatario: <?php echo $inquilino['nome']; ?>
+              Locatário: <?php echo $inquilino['nome']; ?>
               <span class="ml text-bold">
-              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
+                CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>
@@ -57,7 +73,7 @@ $imovel = $contrato['imovel'];
             <div style="position: absolute; top: 10px; right: 10px">
               <div>2° via <br />Imobiliária</div>
             </div>
-            <p><?php echo strtoupper($config['razao_social']); ?>
+            <p><?php echo mb_strtoupper($config['razao_social'], 'UTF-8'); ?>
               <span class="ml">N°. Contrato: <?php echo $parcela['id_contrato'] ?></span>
             </p>
             <p>End:
@@ -74,24 +90,24 @@ $imovel = $contrato['imovel'];
               <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
-              <?php 
-                switch($proprietario['tipo_conta']){
-                  case 0:
-                    $proprietario['tipo_conta'] = '---';
+              <?php
+              switch ($proprietario['tipo_conta']) {
+                case 0:
+                  $proprietario['tipo_conta'] = '---';
                   break;
-                  case 1:
-                    $proprietario['tipo_conta'] = 'Conta corrente';
+                case 1:
+                  $proprietario['tipo_conta'] = 'Conta corrente';
                   break;
-                  case 2:
-                    $proprietario['tipo_conta'] = 'Conta poupança';
+                case 2:
+                  $proprietario['tipo_conta'] = 'Conta poupança';
                   break;
-                }
+              }
               ?>
               <b>Informações bancárias:</b>
             </p>
             <p>
               <span><b>Banco:</b> <?= is_null($proprietario['banco']) ? '---' : $proprietario['banco'] ?> |</span>
-              <span><b>Tipo:</b> <?= $proprietario['tipo_conta'] ?> |</span>
+              <span><b>Tipo:</b> <span style="text-transform: uppercase; font-weight: bolder;"><?= $proprietario['tipo_conta'] ?></span> |</span>
               <span><b>Agência:</b> <?= is_null($proprietario['agencia']) ? '---' : $proprietario['agencia'] ?> |</span>
               <span><b>Conta:</b> <?= is_null($proprietario['conta']) ? '---' : $proprietario['conta'] ?> |</span>
               <span><b>Operação:</b> <?= is_null($proprietario['operacao']) ? '---' : $proprietario['operacao'] ?> |</span>
@@ -102,9 +118,9 @@ $imovel = $contrato['imovel'];
             </p>
             <hr style="margin: 10px 0; border-color: #aaa;">
             <p>
-              Locatario: <?php echo $inquilino['nome']; ?>
+              Locatário: <?php echo $inquilino['nome']; ?>
               <span class="ml text-bold">
-              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
+                CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>
@@ -135,12 +151,12 @@ $imovel = $contrato['imovel'];
               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspData: ___/___/____</p>
           </div>
           <div style="border-bottom: 1px dashed #999"></div>
-          <!--- 3° via proprietaeio -->
+          <!--- 3° via proprietario -->
           <div class="view no-shadow" style="position: relative;">
             <div style="position: absolute; top: 10px; right: 10px">
               <div>3° via <br />Proprietário</div>
             </div>
-            <p><?php echo strtoupper($config['razao_social']); ?>
+            <p><?php echo mb_strtoupper($config['razao_social'], 'UTF-8'); ?>
               <span class="ml">N°. Contrato: <?php echo $parcela['id_contrato'] ?></span>
             </p>
 
@@ -157,9 +173,9 @@ $imovel = $contrato['imovel'];
               <span class="ml text-bold">CPF/CNPJ: <?php echo $proprietario['cpf']; ?></span>
             </p>
             <p>
-              Locatario: <?php echo $inquilino['nome']; ?>
+              Locatário: <?php echo $inquilino['nome']; ?>
               <span class="ml text-bold">
-              CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
+                CPF/CNPJ: <?php echo $inquilino['cpf']; ?>
                 <span class="ml">CODIGO: <?php echo $inquilino['referencia']; ?></span>
               </span>
             </p>
@@ -189,6 +205,7 @@ $imovel = $contrato['imovel'];
 
         </div>
       </div>
+    </div>
   </section>
-</div>
+
 </div>
