@@ -235,6 +235,7 @@ table thead th:last-child {
 }
 .skin-blue .main-header .navbar {
   background-color: #0f172a !important;
+  height: 50px !important;
 }
 .skin-blue .main-header .logo {
   background-color: #0f172a !important;
@@ -322,7 +323,7 @@ table thead th:last-child {
 .scroll-sb {
   max-height: 100vh;
   overflow-y: auto;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }
 .scroll-sb::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -620,12 +621,11 @@ table thead th:last-child {
   border: 1px solid #94a3b8;
 }
 .btn-absolute-shortcut {
-  position: absolute;
-  top: 0px;
-  right: 200px;
   z-index: 999;
   height: 100%;
   border-radius: 0px;
+  float: right;
+  margin-right: 30px;
 }
 .div-btn-print {
   margin-bottom: 15px;
