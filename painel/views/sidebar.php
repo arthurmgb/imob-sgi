@@ -7,22 +7,10 @@
 		</div>
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class=" <?php echo ($viewData['menu_ativo'] == 'dashboard') ? 'active' : ''; ?>">
-				<a href="<?php echo BASE_URL; ?>" title="Dashboard">
-					<i class="fa fa-dashboard"></i> <span>Página inicial</span>
+				<a href="<?php echo BASE_URL; ?>">
+					<i class="fa fa-bar-chart"></i>
+					<span>Dashboard</span>
 				</a>
-			</li>
-			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'proprietarios') ? 'active' : ''; ?>">
-				<a href="#">
-					<i class="fa fa-laptop"></i>
-					<span>Proprietários</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>proprietarios/adicionar"><i class="fa fa-circle-o"></i> Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>proprietarios"><i class="fa fa-circle-o"></i> Listar</a></li>
-				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'imoveis') ? 'active' : ''; ?>">
 				<a href="#">
@@ -33,8 +21,41 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>imovel/adicionar"><i class="fa fa-circle-o"></i> Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>imovel"><i class="fa fa-circle-o"></i> Listar</a></li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>imovel/adicionar">
+							<i class="fa fa-plus-circle"></i>
+							Cadastrar
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>imovel">
+							<i class="fa fa-list-ul"></i>
+							Listar
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'proprietarios') ? 'active' : ''; ?>">
+				<a href="#">
+					<i class="fa fa-users"></i>
+					<span>Proprietários</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li>
+						<a href="<?php echo BASE_URL; ?>proprietarios/adicionar">
+							<i class="fa fa-plus-circle"></i>
+							Cadastrar
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>proprietarios">
+							<i class="fa fa-list-ul"></i>
+							Listar
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'inquilinos') ? 'active' : ''; ?>">
@@ -46,35 +67,64 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>inquilinos/adicionar"><i class="fa fa-circle-o"></i> Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>inquilinos"><i class="fa fa-circle-o"></i> Listar</a></li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>inquilinos/adicionar">
+							<i class="fa fa-plus-circle"></i>
+							Cadastrar
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>inquilinos">
+							<i class="fa fa-list-ul"></i>
+							Listar
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'fiadores') ? 'active' : ''; ?>">
 				<a href="#">
-					<i class="fa fa-laptop"></i>
+					<i class="fa fa-user-o"></i>
 					<span>Fiadores</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>fiadores/adicionar"><i class="fa fa-circle-o"></i> Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>fiadores"><i class="fa fa-circle-o"></i> Listar</a></li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>fiadores/adicionar">
+							<i class="fa fa-plus-circle"></i>
+							Cadastrar
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>fiadores">
+							<i class="fa fa-list-ul"></i>
+							Listar
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'contratos') ? 'active' : ''; ?>">
 				<a href="#">
-					<i class="fa fa-table"></i>
+					<i class="fa fa-list-alt"></i>
 					<span>Contratos</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>contratos/adicionar" target="_blank"><i class="fa fa-circle-o"></i>Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>contratos"><i class="fa fa-circle-o"></i>Listar</a></li>
-					<li><a href="<?php echo BASE_URL; ?>contratos/buscar"><i class="fa fa-circle-o"></i>Buscar</a></li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>contratos/adicionar">
+							<i class="fa fa-plus-circle"></i>
+							Cadastrar
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>contratos/buscar">
+							<i class="fa fa-list-ul"></i>
+							Listar
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'financeiro') ? 'active' : ''; ?>">
@@ -86,12 +136,36 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>financeiro"><i class="fa fa-circle-o"></i>Receber do Inquilino</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/repasse"><i class="fa fa-circle-o"></i>Repasse do Proprietário</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/gerarecibo"><i class="fa fa-circle-o"></i>Gerar Recibos por Datas</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/recb"><i class="fa fa-circle-o"></i>Recibo em Branco</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/caixa"><i class="fa fa-circle-o"></i>Caixa</a></li>
-					<li><a href="<?php echo BASE_URL; ?>financeiro/lancamentos"><i class="fa fa-circle-o"></i>Lançamentos</a></li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>financeiro">
+							<i class="fa fa-usd"></i>
+							Pagamentos
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>financeiro/gerarecibo">
+							<i class="fa fa-files-o"></i>
+							Gerar Recibos
+						</a>
+					</li>
+					<!-- <li>
+						<a href="<?php echo BASE_URL; ?>financeiro/recb">
+							<i class="fa fa-file-o"></i>
+							Recibo em Branco
+						</a>
+					</li> -->
+					<!-- <li>
+						<a href="<?php echo BASE_URL; ?>financeiro/caixa">
+							<i class="fa fa-circle-o"></i>
+							Caixa
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo BASE_URL; ?>financeiro/lancamentos">
+							<i class="fa fa-circle-o"></i>
+							Lançamentos
+						</a>
+					</li> -->
 				</ul>
 			</li>
 			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'relatorios') ? 'active' : ''; ?>">
@@ -106,62 +180,131 @@
 
 					<li>
 						<a href="<?php echo BASE_URL; ?>relatorios/parcelasClientes">
-							<i class="fa fa-circle-o"></i>
-							Relatório de Clientes
+							<i class="fa fa-user-circle-o"></i>
+							Relatórios de Parcelas de Clientes
 						</a>
 					</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/contratos"><i class="fa fa-circle-o"></i>Relatório de Contratos</a></li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-file-powerpoint-o"></i>
+							Relatórios Personalizados
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
 
-					<!-- <li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/financeiro"><i class="fa fa-circle-o"></i>Relatório Mensal</a></li> -->
+						<ul class="treeview-menu">
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/contratos">
+									<i class="fa fa-external-link"></i>
+									Contratos
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/imoveis"><i class="fa fa-circle-o"></i>Imóveis Cadastrados</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/imoveis">
+									<i class="fa fa-external-link"></i>
+									Imóveis
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/disponiveis"><i class="fa fa-circle-o"></i>Imóveis Disponíveis (Lista)</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/disponiveis">
+									<i class="fa fa-external-link"></i>
+									Imóveis Disponíveis <b>(Lista)</b>
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/blocosDisponiveis"><i class="fa fa-circle-o"></i>Imóveis Disponíveis (Blocos)</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/blocosDisponiveis">
+									<i class="fa fa-external-link"></i>
+									Imóveis Disponíveis <b>(Blocos)</b>
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/banco"><i class="fa fa-circle-o"></i>Proprietários com Banco</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/proprietarios">
+									<i class="fa fa-external-link"></i>
+									Proprietários
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/proprietarios"><i class="fa fa-circle-o"></i>Proprietários Cadastrados</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/inquilinos">
+									<i class="fa fa-external-link"></i>
+									Inquilinos
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/inquilinos"><i class="fa fa-circle-o"></i>Inquilinos Cadastrados</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/banco">
+									<i class="fa fa-external-link"></i>
+									Proprietários <b>com Banco</b>
+								</a>
+							</li>
 
-					<li><a target="_blank" href="<?php echo BASE_URL; ?>relatorios/iptu"><i class="fa fa-circle-o"></i>Inquilinos com IPTU</a></li>
+							<li>
+								<a target="_blank" href="<?php echo BASE_URL; ?>relatorios/iptu">
+									<i class="fa fa-external-link"></i>
+									Inquilinos <b>com IPTU</b>
+								</a>
+							</li>
+						</ul>
+
+					</li>
 
 				</ul>
 			</li>
-			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'configuracoes') ? 'active' : ''; ?>">
-				<a href="#">
-					<i class="fa fa-cog"></i>
-					<span>Configurações</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>configuracoes"><i class="fa fa-circle-o"></i>Informações</a></li>
-					<li><a href="<?php echo BASE_URL; ?>configuracoes/empresa"><i class="fa fa-circle-o"></i>Cadastra Empresa</a></li>
-				</ul>
-			</li>
-			<li class="treeview <?php echo ($viewData['menu_ativo'] == 'usuarios') ? 'active' : ''; ?>">
-				<a href="#">
-					<i class="fa fa-user"></i>
-					<span>Usuários</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li><a href="<?php echo BASE_URL; ?>usuarios/adicionar"><i class="fa fa-circle-o"></i> Novo</a></li>
-					<li><a href="<?php echo BASE_URL; ?>usuarios"><i class="fa fa-circle-o"></i> Listar</a></li>
-				</ul>
-			</li>
-			<li class="">
-				<a href="<?php echo BASE_URL; ?>logout">
-					<i class="fa fa-power-off"></i> <span>Sair</span>
-				</a>
-			</li>
+
+			<?php if ($_SESSION['user']['nivel'] == '1'): ?>
+				<li class="treeview <?php echo ($viewData['menu_ativo'] == 'configuracoes' || $viewData['menu_ativo'] == 'usuarios' || $viewData['menu_ativo'] == 'aprovacoes') ? 'active' : ''; ?>">
+					<a href="#">
+						<i class="fa fa-cogs"></i>
+						<span>Configurações</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+					<ul class="treeview-menu">
+						<li>
+							<a href="<?php echo BASE_URL; ?>aprovacoes">
+								<i class="fa fa-gavel"></i>
+								Painel de Aprovação
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo BASE_URL; ?>configuracoes/empresa">
+								<i class="fa fa-briefcase"></i>
+								Gerenciar Imobiliária
+							</a>
+						</li>
+						<li class="treeview <?php echo ($viewData['menu_ativo'] == 'usuarios') ? 'active' : ''; ?>">
+							<a href="#">
+								<i class="fa fa-user-circle"></i>
+								<span>Usuários</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="<?php echo BASE_URL; ?>usuarios/adicionar">
+										<i class="fa fa-plus-circle"></i>
+										Cadastrar
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo BASE_URL; ?>usuarios">
+										<i class="fa fa-list-ul"></i>
+										Listar
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			<?php endif; ?>
 		</ul>
 	</section>
 </aside>

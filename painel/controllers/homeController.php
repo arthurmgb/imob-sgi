@@ -53,7 +53,7 @@ class homeController extends Controller
         $dados['atrasado'] = $vencidos->getPagAtrasado();
 
         $contrato = new Contratos();
-        $dados['contrato'] = $contrato->getContratosAtrasados(0, 15);
+        $dados['contrato'] = $contrato->getContratosAtrasados();
 
         $this->loadTemplate('paginas/home', $dados);
     }

@@ -44,9 +44,18 @@ class relatoriosController extends Controller
 			$parcelas = $parcelas->getParcelasFromInput($dados['get_input_data']);
 			$dados['parcelas'] = $parcelas;
 
-			$valor_total = implode(',', array_column($dados['parcelas'], 'valor'));
-			$valor_total = array_map('intval', explode(',', $valor_total));
-			$valor_total = array_sum($valor_total);
+			// $valor_total = implode(',', array_column($dados['parcelas'], 'valor'));
+			// $valor_total = array_map('intval', explode(',', $valor_total));
+			// $valor_total = array_sum($valor_total);
+			// $dados['valor_total'] = number_format($valor_total, 2, ',', '.');
+			$valores = array_column($dados['parcelas'], 'valor');
+
+			$valores = array_map(function ($valor) {
+				return round(floatval($valor), 0);
+			}, $valores);
+
+			$valor_total = array_sum($valores);
+
 			$dados['valor_total'] = number_format($valor_total, 2, ',', '.');
 		}
 
@@ -74,9 +83,14 @@ class relatoriosController extends Controller
 			$parcelas = $parcelas->getParcelasFromInputDp($dados['get_input_data']);
 			$dados['parcelas'] = $parcelas;
 
-			$valor_total = implode(',', array_column($dados['parcelas'], 'valor'));
-			$valor_total = array_map('intval', explode(',', $valor_total));
-			$valor_total = array_sum($valor_total);
+			$valores = array_column($dados['parcelas'], 'valor');
+
+			$valores = array_map(function ($valor) {
+				return round(floatval($valor), 0);
+			}, $valores);
+
+			$valor_total = array_sum($valores);
+
 			$dados['valor_total'] = number_format($valor_total, 2, ',', '.');
 		}
 

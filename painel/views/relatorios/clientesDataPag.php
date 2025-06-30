@@ -2,9 +2,8 @@
 
     <section class="content-header">
 
-        <h1>
-            Relatório de Parcelas de Clientes
-            <small> - Sistema de Gerenciamento Imobiliario</small>
+        <h1 class="imob-custom-h1">
+            Relatório de Parcelas de Clientes por Data de Pagamento
             <a href="<?php echo BASE_URL; ?>relatorios/parcelasClientes" name="button-toggle-rel" value="button-toggle-rel" class="btn btn-primary pull-right">
                 <i class="fa fa-undo fa-fw"></i>
                 Alterar tipo de relatório
@@ -124,7 +123,10 @@
                                         $r_pagas += 1;
                                     }
 
-                                    $valor_a_rcb += ceil($parcela['valor'] * $parcela['imv_comissao'] / 100);
+                                    $calc_parc_comissao_porcentagem = floatval($parcela['imv_comissao']);
+                                    $calc_parc_comissao_valor = round(($parcela['valor'] / 100) * $calc_parc_comissao_porcentagem);
+
+                                    $valor_a_rcb += $calc_parc_comissao_valor;
                                 }
 
                                 $valor_a_rcb = number_format($valor_a_rcb, 2, ',', '.');
@@ -132,7 +134,36 @@
                                 ?>
 
                                 <h3 style="margin-top: 0;">
-                                    Resultados
+                                    Resultados de
+                                    <!-- Exibir mês e ano selecionados PT-BR -->
+                                    <?php
+                                    $meses = [
+                                        // Primeira letra maiúscula
+                                        1 => 'Janeiro',
+                                        2 => 'Fevereiro',
+                                        3 => 'Março',
+                                        4 => 'Abril',
+                                        5 => 'Maio',
+                                        6 => 'Junho',
+                                        7 => 'Julho',
+                                        8 => 'Agosto',
+                                        9 => 'Setembro',
+                                        10 => 'Outubro',
+                                        11 => 'Novembro',
+                                        12 => 'Dezembro'
+                                    ];
+                                    $mes = $meses[(int)$get_input_data['selected-mes']];
+                                    ?>
+                                    <b>
+                                        <?= $mes . ' de ' . $get_input_data['ano-pag']; ?>
+                                    </b>
+                                    <br>
+                                    <small style="color: #000; font-size: 18px;">
+                                        Relatório impresso em:
+                                        <b>
+                                            <?= date('d/m/Y H:i'); ?>
+                                        </b>
+                                    </small>
                                 </h3>
                                 <hr>
                                 <h4>
@@ -146,7 +177,7 @@
                                     <b style="color: green;">R$ <?= $valor_total ?></b>
                                 </h4>
                                 <h4 style="margin-bottom: 0; font-size: 22px;">
-                                    <b>Valor total de comissões (arredondado):</b>
+                                    <b>Valor total de comissões:</b>
                                     <b style="color: green;">R$ <?= $valor_a_rcb ?></b>
                                 </h4>
                                 <hr style="margin-bottom: 0;">
@@ -176,16 +207,24 @@
                                             $status = 'success';
                                         }
                                     ?>
-                                        <!-- danger info -->
+
+                                        <?php
+                                        $parc_valor = round($parcela['valor']);
+                                        $parc_comissao_porcentagem = floatval($parcela['imv_comissao']);
+                                        $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                                        ?>
+
                                         <tr class="<?php echo $status; ?>">
                                             <td><?php echo $parcela['id_contrato']; ?></td>
                                             <td><?php echo $parcela['nome_inquilino']; ?></td>
                                             <td><?php echo $parcela['n_parcela']; ?></td>
-                                            <td style="white-space: nowrap;">R$ <?php echo number_format($parcela['valor'], 2, ',', '.'); ?></td>
-                                            <td style="text-align: center; font-weight: bold; white-space: nowrap;">
-                                                R$ <?php echo number_format(ceil($parcela['valor'] * $parcela['imv_comissao'] / 100), 2, ',', '.'); ?>
+                                            <td style="white-space: nowrap;">
+                                                R$ <?= number_format($parc_valor, 2, ',', '.'); ?>
                                             </td>
-                                            <td style="text-align: center;"><?php echo $parcela['imv_comissao']; ?>%</td>
+                                            <td style="text-align: center; font-weight: bold; white-space: nowrap;">
+                                                R$ <?= number_format($parc_comissao_valor, 2, ',', '.'); ?>
+                                            </td>
+                                            <td style="text-align: center;"><?= $parc_comissao_porcentagem ?>%</td>
                                             <td><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
                                             <td><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
                                             <?php if ($parcela['data_pag'] > 0) : ?>

@@ -26,8 +26,6 @@ class Parcelas extends Model
 	public function renovar($qt, $id_contrato, $data_inicio, $n_valor)
 	{
 
-		$n_valor = str_replace(['R$', ' ', '.'], '', $n_valor);
-
 		for ($q = 1; $q <= $qt; $q++) {
 			if ($q > 1) {
 				$data_inicio = Date('Y-m-d', strtotime('+ 1 month', strtotime($data_inicio)));
@@ -77,8 +75,6 @@ class Parcelas extends Model
 
 	public function getInfo($n_parcela, $id_contrato)
 	{
-		/*$sql = "SELECT * FROM parcelas WHERE status = '1' AND n_parcela = :n_parcela AND id_contrato = :id_contrato";*/
-
 		$sql = "SELECT * FROM parcelas WHERE n_parcela = :n_parcela AND id_contrato = :id_contrato";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(':n_parcela', $n_parcela);
@@ -93,6 +89,68 @@ class Parcelas extends Model
 		return $array;
 	}
 
+	public function populate($n_parcela, $id_contrato)
+	{
+		$array = array();
+
+		$sql = "SELECT * FROM parcelas WHERE n_parcela = :n_parcela AND id_contrato = :id_contrato";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':n_parcela', $n_parcela);
+		$sql->bindValue(':id_contrato', $id_contrato);
+		$sql->execute();
+
+		if ($sql->rowCount() == 1) {
+			$array = $sql->fetch(PDO::FETCH_ASSOC);
+
+			if (!empty($array['data_inicio'])) {
+				$array['data_inicio'] = date('Y-m-d', strtotime($array['data_inicio']));
+			}
+			if (!empty($array['data_fim'])) {
+				$array['data_fim'] = date('Y-m-d', strtotime($array['data_fim']));
+			}
+			if (!empty($array['data_pag'])) {
+				$array['data_pag'] = date('Y-m-d', strtotime($array['data_pag']));
+			}
+			// Formatando o valor pra chegar certo no mask
+			if (!empty($array['valor'])) {
+				$valor = str_replace(',', '.', $array['valor']); // Caso tenha vindo com vírgula
+				$valor = (float) $valor; // Converte pra número de fato
+				$array['valor'] = number_format($valor, 2, ',', '.'); // Agora sim, formatado corretamente
+			}
+		}
+
+		return $array;
+	}
+
+	public function editar($n_parcela, $id_contrato, $data_inicio, $data_fim, $valor, $data_pag, $data_rep)
+	{
+
+		$valor = str_replace('.', '', $valor);
+		$valor = str_replace(',', '.', $valor);
+
+		// echo "<pre>";
+		// echo "Data Início: $data_inicio\n";
+		// echo "Data Fim: $data_fim\n";
+		// echo "Valor: $valor\n";
+		// echo "Data Pagamento: $data_pag\n";
+		// echo "Data Repasse: $data_rep\n";
+		// echo "Número da Parcela: $n_parcela\n";
+		// echo "ID do Contrato: $id_contrato\n";
+		// echo "</pre>";
+		// exit;
+
+		$sql = "UPDATE parcelas SET data_inicio = :data_inicio, data_fim = :data_fim, valor = :valor, data_pag = :data_pag, data_repasse = :data_rep WHERE n_parcela = :n_parcela AND id_contrato = :id_contrato";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':data_inicio', $data_inicio);
+		$sql->bindValue(':data_fim', $data_fim);
+		$sql->bindValue(':valor', $valor);
+		$sql->bindValue(':data_pag', $data_pag);
+		$sql->bindValue(':data_rep', $data_rep);
+		$sql->bindValue(':n_parcela', $n_parcela);
+		$sql->bindValue(':id_contrato', $id_contrato);
+		return $sql->execute();
+	}
+
 	public function getRecibosByDate($data)
 	{
 
@@ -101,7 +159,7 @@ class Parcelas extends Model
 		$data_inicio = $data['data-inicio'];
 		$data_fim = $data['data-fim'];
 
-		$sql = "SELECT p.id_contrato, p.data_inicio, p.data_fim, p.n_parcela,
+		$sql = "SELECT p.id_contrato, p.data_inicio, p.data_fim, p.n_parcela, p.valor,
 				inq.nome AS nome_inq, inq.cpf AS cpf_inq, inq.referencia AS ref_inq,
 				pro.nome AS nome_pro, pro.cpf AS cpf_pro, pro.banco AS banco_pro, pro.tipo_conta AS tipo_conta_pro, pro.agencia AS agencia_pro, pro.conta AS conta_pro, pro.operacao AS operacao_pro, pro.pix AS pix_pro,
 				imv.endereco AS end_imv, imv.bairro AS bairro_imv, imv.valor AS valor_imv, imv.comissao AS com_imv
@@ -150,6 +208,15 @@ class Parcelas extends Model
 		$sql->execute();
 	}
 
+	public function estornarPagamento($id_contrato, $n_parcela)
+	{
+		$sql = "UPDATE parcelas SET status = '0', data_pag = NULL, origem = NULL, repasse = '0', data_repasse = NULL WHERE id_contrato = :id_contrato AND n_parcela = :n_parcela";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(':id_contrato', $id_contrato);
+		$sql->bindValue(':n_parcela', $n_parcela);
+		$sql->execute();
+	}
+
 	// Apagar todas as parcelas
 	public function apagar($id_contrato)
 	{
@@ -164,13 +231,23 @@ class Parcelas extends Model
 	{
 		$array = array();
 		$hoje = date('Y-m-d');
-		$sql = "SELECT *,
-		(SELECT inq.nome AS nome_inquilino FROM inquilinos inq, contratos con WHERE con.id = parcelas.id_contrato AND con.cod_inquilino = inq.referencia) AS nome_inquilino
-		FROM parcelas WHERE data_fim <= '$hoje' AND status = '0' ORDER BY nome_inquilino ASC";
+
+		$sql = "SELECT parcelas.*, inq.nome AS nome_inquilino, prop.nome AS nome_proprietario 
+				FROM parcelas
+				LEFT JOIN contratos con ON con.id = parcelas.id_contrato
+				LEFT JOIN inquilinos inq ON con.cod_inquilino = inq.referencia
+				LEFT JOIN proprietario prop ON con.cod_proprietario = prop.referencia
+				WHERE parcelas.data_fim <= '$hoje' 
+				AND parcelas.status = '0'
+				ORDER BY inq.nome ASC;
+				";
+
 		$sql = $this->db->query($sql);
+
 		if ($sql->rowCount() > 0) {
 			$array = $sql->fetchAll(PDO::FETCH_ASSOC);
 		}
+
 		return $array;
 	}
 
@@ -332,8 +409,25 @@ class Parcelas extends Model
 	{
 		$where = array('1=1');
 
+
 		if (!empty($filtros['contrato'])) {
 			$where[] = 'id_contrato = :contrato';
+		}
+
+		if (!empty($filtros['pagas'])) {
+			if ($filtros['pagas'] == 'false') {
+				$where[] = 'status = 0';
+			} elseif ($filtros['pagas'] == 'true') {
+				$where[] = 'status IN (0, 1)';
+			}
+		}
+
+		if (!empty($filtros['repassadas'])) {
+			if ($filtros['repassadas'] == 'false') {
+				$where[] = 'repasse = 0';
+			} elseif ($filtros['repassadas'] == 'true') {
+				$where[] = 'repasse IN (0, 1)';
+			}
 		}
 
 		return $where;

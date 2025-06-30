@@ -1,8 +1,8 @@
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->
    <section class="content-header">
-     <h1>
-       Sistema de Gerenciamento Imobiliario - Proprietários
+     <h1 class="imob-custom-h1">
+       <?php echo $proprietario['nome']; ?>
      </h1>
    </section>
 

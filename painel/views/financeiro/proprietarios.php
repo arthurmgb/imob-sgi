@@ -1,107 +1,176 @@
- <div class="content-wrapper">
-   <!-- Content Header (Page header) -->
-   <section class="content-header">
-     <h1>
-       Repasse do Proprietário
-       <small>Sistema de Gerenciamento Imobiliário</small>
-     </h1>
+<div class="content-wrapper">
 
-     <?php
-      $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
+  <section class="content-header">
+    <h1 class="imob-custom-h1">
+      Repassar ao Proprietário
+    </h1>
 
-      ?>
+    <?php
+    $finid = filter_input(INPUT_GET, 'contrato', FILTER_SANITIZE_NUMBER_INT);
+    $repToggler = filter_input(INPUT_GET, 'rep', FILTER_SANITIZE_STRING);
+    ?>
 
-     <div class="toggle-financeiro">
-       <a href="<?php echo BASE_URL ?>financeiro?contrato=<?= $finid ?>" class="btn btn-lg btn-success btn-fin-inq">Receber do Inquilino</a>
-       <button style="pointer-events: none;" class="btn btn-lg btn-primary btn-fin-prop" disabled>Repasse do Proprietário</button>
-     </div>
+    <div class="toggle-financeiro" style="position: relative;">
+      <a href="<?php echo BASE_URL ?>financeiro?contrato=<?= $finid ?>" class="btn btn-lg btn-success btn-fin-inq">
+        <i style="margin-right: 5px;" class="fa fa-user-o"></i>
+        Receber do Inquilino
+      </a>
+      <i class="fa fa-arrow-right arrow-icon" style="margin-left: -30px;"></i>
+      <button style="pointer-events: none;" class="btn btn-lg btn-primary btn-fin-prop" disabled>
+        <i style="margin-right: 5px;" class="fa fa-user"></i>
+        Repassar ao Proprietário
+      </button>
+    </div>
 
-     <!-- search form -->
-     <form method="GET">
-       <div class="div-new-flex">
-         <input style="font-size: 20px; font-weight: 700; padding-top: 18px; padding-bottom: 18px;" type="search" name="contrato" value="<?php echo (!empty($searchText)) ? $searchText : ''; ?>" autocomplete="off" autofocus class="form-control" placeholder="Número do contrato" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+    <form method="GET">
+      <div class="div-new-flex" style="position: relative;">
 
-         <button style="color: #fff; font-size: 16px; height: 100%" type="submit" id="search-btn" class="btn btn-success">
-           Buscar
-           <i style="margin-left: 8px;" class="fa fa-search"></i>
-         </button>
-       </div>
-     </form>
+        <input style="font-size: 22px; font-weight: 700;" type="search" name="contrato" value="<?php echo (!empty($searchText)) ? $searchText : ''; ?>" autocomplete="off" autofocus class="form-control input-lg imob-custom-input h-50 only-num" placeholder="Nº do Contrato" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
 
-     <!-- /.search form -->
-   </section>
+        <button type="submit" id="search-btn" class="btn btn-rcb-search">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+  </section>
 
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <?php if (count($parcelas) > 0) : ?>
+          <div class="box box-primary">
 
-   <section class="content">
-     <div class="row">
-       <div class="col-xs-12">
-         <?php if (count($parcelas) > 0) : ?>
-           <div class="box">
-             <div class="box-header">
-               <h3 class="box-title">Área de Repasse do Proprietário</h3>
-             </div>
-             <!-- /.box-header -->
-             <div class="box-body table-responsive">
-               <table id="example2" class="table table-bordered table-hover">
-                 <thead>
-                   <tr>
-                     <th>N° Cont.</th>
-                     <th>Proprietário</th>
-                     <th>N° Parc.</th>
-                     <th>Valor</th>
-                     <th>Data Incio</th>
-                     <th>Data Venc.</th>
-                     <th>Ações / D.Pag</th>
-                   </tr>
-                 </thead>
-                 <?php foreach ($parcelas['lista'] as $parcela) :
+            <div class="toggler">
+              <?php if ($repToggler): ?>
+                <a href="<?= BASE_URL ?>financeiro/repasse?contrato=<?= $finid ?>" class="toggler-link">
+                  <i class="fa fa-toggle-on fa-fw fa-2x"></i>
+                  <span>Ocultar parcelas repassadas</span>
+                </a>
+              <?php else: ?>
+                <a href="<?= BASE_URL ?>financeiro/repasse?contrato=<?= $finid ?>&rep=false" class="toggler-link">
+                  <i class="fa fa-toggle-off fa-fw fa-2x"></i>
+                  <span>Ocultar parcelas repassadas</span>
+                </a>
+              <?php endif; ?>
+            </div>
 
-                    $data_fim = strtotime($parcela['data_fim']);
-                    $um_mes_frente = strtotime('+1 month');
+            <div class="box-body table-responsive p-0">
+              <table id="example2" class="table table-bordered table-hover fs-16 table-fin">
+                <thead>
+                  <tr>
+                    <th>Proprietário</th>
+                    <th>Valor</th>
+                    <th>Vl. Comissão</th>
+                    <th class="text-center">%</th>
+                    <th>Data Início</th>
+                    <th>Data Venc.</th>
+                    <th>Repasse</th>
+                  </tr>
+                </thead>
+                <?php foreach ($parcelas['lista'] as $parcela) :
 
-                    if ($parcela['repasse'] == 1) {
-                      $status = 'success';
-                    } else if (time() > $data_fim && $parcela['repasse'] == 0) {
-                      $status = 'danger';
-                    } elseif ($data_fim >= time() && $data_fim <= $um_mes_frente) {
-                      $status = 'info';
-                    } else {
-                      $status = '';
-                    }
-                  ?>
-                   <!-- danger info -->
-                   <tr class="<?php echo $status; ?>">
-                     <td><?php echo $parcela['id_contrato']; ?></td>
-                     <td><?php echo $parcelas['nome_proprietario']; ?></td>
-                     <td><?php echo $parcela['n_parcela']; ?></td>
-                     <td>R$ <?php
+                  $data_fim = strtotime($parcela['data_fim']);
+                  $um_mes_frente = strtotime('+1 month');
 
-                            $valor = $parcela['valor'];
-                            $comissao = floatval($parcelas['comissao']);
+                  if ($parcela['repasse'] == 1) {
+                    $status = 'success';
+                  } else if (time() > $data_fim && $parcela['repasse'] == 0) {
+                    $status = 'danger';
+                  } elseif ($data_fim >= time() && $data_fim <= $um_mes_frente) {
+                    $status = 'info';
+                  } else {
+                    $status = '';
+                  }
+                ?>
+                  <tr class="<?php echo $status; ?>">
+                    <td><?php echo $parcelas['nome_proprietario']; ?></td>
 
-                            $total = $valor -= ($valor / 100) * $comissao;
-                            echo number_format($total, 2, ',', '.');
-                            ?></td>
-                     <td><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
-                     <td><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
-                     <td>
-                       <?php if ($parcela['repasse'] == 0) : ?>
-                         <a style="border: 1px solid green; padding: 5px; color: darkgreen; font-weight: bold;" href="<?php echo BASE_URL; ?>financeiro/repasse/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>" title="Repassar">
-                           <i style="color: green; margin-right: 6px;" class="fa fa-money fa-lg"></i>
-                           Repassar
-                         </a>
-                       <?php else :
-                          echo date('d/m/Y', strtotime($parcela['data_repasse']));
-                        endif; ?>
-                     </td>
-                   </tr>
-                 <?php endforeach; ?>
-               </table>
-             </div>
-             <!-- /.box-body -->
-           </div>
-         <?php endif; ?>
-       </div>
-     </div>
-   </section>
- </div>
+                    <?php
+                    $parc_valor = round($parcela['valor']);
+                    $parc_comissao_porcentagem = floatval($parcelas['comissao']);
+                    $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                    $parc_valor_liquido = $parc_valor - $parc_comissao_valor;
+                    ?>
+
+                    <td class="fw-bold nowrap">
+                      R$ <?= number_format($parc_valor_liquido, 2, ',', '.'); ?>
+                    </td>
+                    <td style="color: #0055f3;" class="fw-bold nowrap">
+                      R$ <?= number_format($parc_comissao_valor, 2, ',', '.'); ?>
+                    </td>
+                    <td class="nowrap text-center">
+                      <?= $parc_comissao_porcentagem ?>%
+                    </td>
+                    <td class="fw-bold"><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
+                    <td class="fw-bold"><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
+                    <?php if ($parcela['repasse'] == 0 && $parcela['status'] == 1) : ?>
+                      <td style="text-align: center;">
+                        <a title="Repassar" style="padding: 5px; outline: none;" class="btn btn-primary" href="<?php echo BASE_URL; ?>financeiro/repasse/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>">
+                          <i style="margin-right: 5px;" class="fa fa-exchange fa-lg"></i>
+                          Repassar
+                        </a>
+                      </td>
+                    <?php elseif ($parcela['repasse'] == 1 && $parcela['status'] == 1) : ?>
+                      <td style="color: #1e40af; background-color: #93c5fd;" class="fw-bold nowrap text-center">
+                        <i style="margin-right: 5px;" class="fa fa-check-circle-o"></i>
+                        <?= date('d/m/Y', strtotime($parcela['data_repasse'])); ?>
+                      </td>
+                    <?php else : ?>
+                      <td style="text-align: center;">
+                        <a title="Não pago" style="padding: 5px; outline: none;" class="btn btn-default disabled" href="#">
+                          <i style="margin-right: 5px;" class="fa fa-times fa-lg"></i>
+                          Não pago
+                        </a>
+                      </td>
+                    <?php endif; ?>
+                  </tr>
+                <?php endforeach; ?>
+              </table>
+            </div>
+          </div>
+        <?php elseif (count($parcelas) == 0 && !empty($finid)) : ?>
+          <div style="border-radius: 20px;" class="box box-danger">
+            <div class="no-shadow" style="position: relative; padding: 50px;">
+              <h3 style="margin: 0;" class="text-center">
+                <i style="margin-right: 1rem; color: #DD4B39;" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                Nenhum contrato encontrado com o número <b><?php echo $finid; ?></b>.
+              </h3>
+              <h3 style="margin: 5px 0;" class="text-center">
+                <small>Verifique se o número do contrato está correto.</small>
+              </h3>
+            </div>
+          </div>
+        <?php else : ?>
+          <div style="border-radius: 20px;" class="box box-primary">
+            <div class="no-shadow" style="position: relative; padding: 50px;">
+              <h3 style="margin: 0;" class="text-center">
+                <i style="margin-right: 1rem; color: #3C8DBC;" class="fa fa-info-circle" aria-hidden="true"></i>
+                Digite o <b>número do contrato</b> para consultar.
+              </h3>
+              <h3 style="margin: 5px 0;" class="text-center">
+                <small>O número do contrato pode ser encontrado na parte superior do recibo.</small>
+              </h3>
+            </div>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </section>
+</div>
+
+<?php if (!empty($_GET['status'])): ?>
+  <script>
+    $(document).ready(function() {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Parcela repassada com sucesso! 💸",
+        showConfirmButton: false,
+        timer: 2000,
+        customClass: {
+          title: "popup-title",
+        }
+      });
+    })
+  </script>
+<?php endif; ?>
