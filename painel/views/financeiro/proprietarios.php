@@ -61,7 +61,7 @@
                     <th>Proprietário</th>
                     <th>Valor</th>
                     <th>Vl. Comissão</th>
-                    <th>%</th>
+                    <th class="text-center">%</th>
                     <th>Data Início</th>
                     <th>Data Venc.</th>
                     <th>Repasse</th>
@@ -84,33 +84,43 @@
                 ?>
                   <tr class="<?php echo $status; ?>">
                     <td><?php echo $parcelas['nome_proprietario']; ?></td>
-                    <td class="fw-bold nowrap">R$ <?php
-                                                  $valor = $parcela['valor'];
-                                                  $comissao = floatval($parcelas['comissao']);
-                                                  $com_valor = ($valor / 100) * $comissao;
-                                                  $total = $valor -= ceil($com_valor);
-                                                  echo number_format(round($total), 2, ',', '.');
-                                                  ?>
+
+                    <?php
+                    $parc_valor = round($parcela['valor']);
+                    $parc_comissao_porcentagem = floatval($parcelas['comissao']);
+                    $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                    $parc_valor_liquido = $parc_valor - $parc_comissao_valor;
+                    ?>
+
+                    <td class="fw-bold nowrap">
+                      R$ <?= number_format($parc_valor_liquido, 2, ',', '.'); ?>
                     </td>
                     <td style="color: #0055f3;" class="fw-bold nowrap">
-                      R$ <?php echo number_format(ceil($parcela['valor'] * $parcelas['comissao'] / 100), 2, ',', '.'); ?>
+                      R$ <?= number_format($parc_comissao_valor, 2, ',', '.'); ?>
                     </td>
                     <td class="nowrap text-center">
-                      <?= $parcelas['comissao'] ?>%
+                      <?= $parc_comissao_porcentagem ?>%
                     </td>
                     <td class="fw-bold"><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
                     <td class="fw-bold"><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
-                    <?php if ($parcela['repasse'] == 0) : ?>
+                    <?php if ($parcela['repasse'] == 0 && $parcela['status'] == 1) : ?>
                       <td style="text-align: center;">
                         <a title="Repassar" style="padding: 5px; outline: none;" class="btn btn-primary" href="<?php echo BASE_URL; ?>financeiro/repasse/<?php echo $parcela['id_contrato']; ?>/<?php echo $parcela['n_parcela']; ?>">
                           <i style="margin-right: 5px;" class="fa fa-exchange fa-lg"></i>
                           Repassar
                         </a>
                       </td>
-                    <?php else : ?>
+                    <?php elseif ($parcela['repasse'] == 1 && $parcela['status'] == 1) : ?>
                       <td style="color: #1e40af; background-color: #93c5fd;" class="fw-bold nowrap text-center">
                         <i style="margin-right: 5px;" class="fa fa-check-circle-o"></i>
                         <?= date('d/m/Y', strtotime($parcela['data_repasse'])); ?>
+                      </td>
+                    <?php else : ?>
+                      <td style="text-align: center;">
+                        <a title="Não pago" style="padding: 5px; outline: none;" class="btn btn-default disabled" href="#">
+                          <i style="margin-right: 5px;" class="fa fa-times fa-lg"></i>
+                          Não pago
+                        </a>
                       </td>
                     <?php endif; ?>
                   </tr>
@@ -152,7 +162,7 @@
   <script>
     $(document).ready(function() {
       Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Parcela repassada com sucesso! 💸",
         showConfirmButton: false,

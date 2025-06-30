@@ -15,7 +15,9 @@ class Contratos extends Model
 		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) 
 		AS nome_proprietario,
 		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
-		AS end_imv
+		AS end_imv,
+		(SELECT imv.bairro FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
+		AS bairro_imv
 		FROM contratos con WHERE " . implode(' AND ', $where) . " 
 		ORDER BY nome_inquilino ASC 
 		LIMIT $offset, $limit";
@@ -37,7 +39,9 @@ class Contratos extends Model
 		(SELECT inq.nome FROM inquilinos inq WHERE con.cod_inquilino = inq.referencia) AS nome_inquilino,
 		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario,
 		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
-		AS end_imv
+		AS end_imv,
+		(SELECT imv.bairro FROM imoveis imv WHERE con.cod_imovel = imv.referencia) 
+		AS bairro_imv
 		FROM contratos con ORDER BY nome_inquilino ASC LIMIT $offset, $limit";
 		$sql = $this->db->prepare($sql);
 		$sql->execute();
@@ -161,7 +165,8 @@ class Contratos extends Model
 		$sql = "SELECT con.*, 
 				inq.nome, 
 				prop.nome AS nome_proprietario, 
-				imv.endereco AS end_imv
+				imv.endereco AS end_imv,
+				imv.bairro AS bairro_imv
 				FROM contratos con 
 				LEFT JOIN inquilinos inq ON inq.referencia = con.cod_inquilino
 				INNER JOIN imoveis imv ON con.cod_imovel = imv.referencia
@@ -272,7 +277,8 @@ class Contratos extends Model
 		$sql = "SELECT *,
 		(SELECT inq.nome FROM inquilinos inq WHERE con.cod_inquilino = inq.referencia) AS nome_inquilino,
 		(SELECT prop.nome FROM proprietario prop WHERE con.cod_proprietario = prop.referencia) AS nome_proprietario,
-		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) AS end_imv
+		(SELECT imv.endereco FROM imoveis imv WHERE con.cod_imovel = imv.referencia) AS end_imv,
+		(SELECT imv.bairro FROM imoveis imv WHERE con.cod_imovel = imv.referencia) AS bairro_imv
 		FROM contratos con WHERE data_final <= '$hoje' ORDER BY nome_inquilino ASC";
 
 		$sql = $this->db->prepare($sql);
@@ -443,7 +449,7 @@ class Contratos extends Model
 	public function del($id)
 	{
 
-		if ($_SESSION['user']['nivel'] !== '1') {
+		if ($_SESSION['user']['nivel'] != '1') {
 
 			$user_del = $_SESSION['user']['nome'];
 

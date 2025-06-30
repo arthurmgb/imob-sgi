@@ -180,7 +180,7 @@ function buscar_contratos() {
           "</td>";
         html += "<td>" + json[i].nome + "</td>";
         html += "<td>" + json[i].nome_proprietario + "</td>";
-        html += "<td>" + json[i].end_imv + "</td>";
+        html += "<td>" + json[i].end_imv + " - " + json[i].bairro_imv + "</td>";
         html +=
           "<td>" + json[i].data_inicio.split("-").reverse().join("/") + "</td>";
         html +=
@@ -572,5 +572,78 @@ $(function () {
   $(".sidebar-toggle").click(function (event) {
     event.preventDefault();
     $(".user-panel").show();
+  });
+});
+
+$(".btn-edit-parc").on("click", function () {
+  const id = $(this).data("id");
+  const n = $(this).data("n");
+
+  $.ajax({
+    url: BASE_URL + "financeiro/populareditar/",
+    method: "post",
+    dataType: "json",
+    data: {
+      id: id,
+      n: n,
+    },
+    success: function (res) {
+      if (res.status === "ok") {
+        const p = res.data;
+        const $modal = $("#editarParcela");
+
+        // Preenche os campos principais
+        $modal.find("input[name='id_contrato']").val(p.id_contrato);
+        $modal.find("input[name='n_parcela']").val(p.n_parcela);
+        $modal.find("input[name='valor']").val(p.valor);
+        $modal.find("input[name='data_inicio']").val(p.data_inicio);
+        $modal.find("input[name='data_fim']").val(p.data_fim);
+
+        // Preenche data-n e data-id de #btn-est-pag e #btn-est-rep
+        $("#btn-est-pag").attr("data-n", p.n_parcela);
+        $("#btn-est-pag").attr("data-id", p.id_contrato);
+
+        // Manipula a exibição do campo data_pag
+        if (p.status != 0 && p.data_pag) {
+          $("#actions_th").show();
+          $("#actions_td").show();
+          $("#data_pag_th").show();
+          $("#data_pag_td").show();
+          $("#btn-est-pag").show();
+          $modal.find("input[name='data_pag']").val(p.data_pag);
+        } else {
+          $("#actions_th").hide();
+          $("#actions_td").hide();
+          $("#data_pag_th").hide();
+          $("#data_pag_td").hide();
+          $("#btn-est-pag").hide();
+          $modal.find("input[name='data_pag']").val("");
+        }
+
+        // Manipula a exibição do data_rep
+        if (p.repasse != 0 && p.data_repasse) {
+          $("#data_rep_th").show();
+          $("#data_rep_td").show();
+          $("#btn-est-rep-none").hide();
+          $modal.find("input[name='data_rep']").val(p.data_repasse);
+        } else {
+          $("#data_rep_th").hide();
+          $("#data_rep_td").hide();
+          $("#btn-est-rep-none").show();
+          $modal.find("input[name='data_rep']").val("");
+        }
+
+        // Abre o modal
+        $modal.modal({
+          backdrop: "static",
+          keyboard: false,
+        });
+      } else {
+        alert("Erro ao buscar dados da parcela.");
+      }
+    },
+    error: function (xhr, status, error) {
+      console.log(error);
+    },
   });
 });

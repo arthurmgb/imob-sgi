@@ -68,7 +68,7 @@
                    <td><?php echo $c['id']; ?></td>
                    <td><?php echo $c['nome_inquilino']; ?></td>
                    <td><?php echo $c['nome_proprietario']; ?></td>
-                   <td><?php echo $c['end_imv']; ?></td>
+                   <td><?php echo $c['end_imv'] . ' - ' . $c['bairro_imv']; ?></td>
                    <td><?php echo date("d/m/Y", strtotime($c['data_inicio'])); ?></td>
                    <td><?php echo date("d/m/Y", strtotime($c['data_final'])); ?></td>
                    <td>
@@ -78,7 +78,7 @@
                      <!-- <a style="margin: 0px 10px;" href="<?php echo BASE_URL . 'contratos/ver/' . $c['id']; ?>" title="Ver">
                        <i class="fa fa-eye fa-1x fa-border"></i>
                      </a> -->
-                     <?php if ($c['del_approval'] !== '1'): ?>
+                     <?php if ($c['del_approval'] != '1'): ?>
                        <a href="#" onclick="confirm('Tem certeza que deseja excluir este contrato?')? window.location.href='<?php echo BASE_URL . 'contratos/del/' . $c['id']; ?>':''" title="Excluir">
                          <i class="fa fa-trash fa-1x fa-border text-danger"></i>
                        </a>

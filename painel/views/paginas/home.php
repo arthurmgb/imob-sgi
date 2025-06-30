@@ -332,7 +332,7 @@
                   <!-- <td><?php echo $vencido['n_parcela']; ?></td> -->
                   <td><?php echo $vencido['nome_inquilino']; ?></td>
                   <td><?php echo $vencido['nome_proprietario']; ?></td>
-                  <td class="nowrap fw-bold">R$ <?php echo number_format($vencido['valor'], 2, ",", "."); ?></td>
+                  <td class="nowrap fw-bold">R$ <?= number_format(round($vencido['valor']), 2, ",", "."); ?></td>
                   <td><?php echo date('d/m/Y', strtotime($vencido['data_inicio'])); ?></td>
                   <td><?php echo date('d/m/Y', strtotime($vencido['data_fim'])); ?></td>
                   <td style="vertical-align: middle;" class="text-center nowrap">
@@ -394,7 +394,7 @@
                   <td><?php echo $c['id']; ?></td>
                   <td><?php echo $c['nome_inquilino']; ?></td>
                   <td><?php echo $c['nome_proprietario']; ?></td>
-                  <td><?php echo $c['end_imv']; ?></td>
+                  <td><?php echo $c['end_imv'] . ' - ' . $c['bairro_imv']; ?></td>
                   <td class="fw-bold"><?php echo date("d/m/Y", strtotime($c['data_inicio'])); ?></td>
                   <td class="fw-bold"><?php echo date("d/m/Y", strtotime($c['data_final'])); ?></td>
                   <td style="vertical-align: middle;" class="text-center nowrap">

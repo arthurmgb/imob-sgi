@@ -58,12 +58,14 @@
               <table id="example2" class="table table-bordered table-hover fs-16 table-fin">
                 <thead>
                   <tr>
-                    <th width="20"></th>
+                    <?php if ($_SESSION['user']['nivel'] == '1'): ?>
+                      <th width="20"></th>
+                    <?php endif; ?>
                     <th>Inquilino</th>
                     <!-- <th>N° Parc.</th> -->
                     <th>Valor</th>
                     <th>Vl. Comissão</th>
-                    <th>%</th>
+                    <th class="text-center">%</th>
                     <th>Data Início</th>
                     <th>Data Venc.</th>
                     <th>Data Pag.</th>
@@ -85,20 +87,32 @@
                   }
                 ?>
                   <tr class="<?php echo $status; ?>">
-                    <td class="text-center nowrap" style="vertical-align: middle;">
-                      <button title="Editar - <?= $parcela['n_parcela']; ?>" style="outline: none;" class="btn-edit-parc">
-                        <i class="fa fa-pencil-square-o fa-lg"></i>
-                      </button>
-                    </td>
+                    <!-- Mostrar botão se for admin -->
+                    <?php if ($_SESSION['user']['nivel'] == '1'): ?>
+                      <td class="text-center nowrap" style="vertical-align: middle;">
+                        <button
+                          title="Editar - <?= $parcela['n_parcela']; ?>"
+                          style="outline: none;" class="btn-edit-parc"
+                          data-id="<?= $parcela['id_contrato']; ?>"
+                          data-n="<?= $parcela['n_parcela']; ?>">
+                          <i class="fa fa-pencil-square-o fa-lg"></i>
+                        </button>
+                      </td>
+                    <?php endif; ?>
                     <td><?php echo $parcelas['nome_inquilino']; ?></td>
                     <td class="fw-bold nowrap">
-                      R$ <?php echo number_format(round($parcela['valor']), 2, ',', '.'); ?>
+                      <?php
+                      $parc_valor = round($parcela['valor']);
+                      $parc_comissao_porcentagem = floatval($parcelas['comissao']);
+                      $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                      ?>
+                      R$ <?= number_format($parc_valor, 2, ',', '.'); ?>
                     </td>
                     <td style="color: #0055f3;" class="fw-bold nowrap">
-                      R$ <?php echo number_format(ceil($parcela['valor'] * $parcelas['comissao'] / 100), 2, ',', '.'); ?>
+                      R$ <?= number_format($parc_comissao_valor, 2, ',', '.'); ?>
                     </td>
                     <td class="nowrap text-center">
-                      <?= $parcelas['comissao'] ?>%
+                      <?= $parc_comissao_porcentagem ?>%
                     </td>
                     <td class="fw-bold"><?php echo date("d/m/Y", strtotime($parcela['data_inicio'])); ?></td>
                     <td class="fw-bold"><?php echo date('d/m/Y', strtotime($parcela['data_fim'])); ?></td>
@@ -221,6 +235,72 @@
     </div>
   </section>
 </div>
+
+<div class="modal fade" id="editarParcela" tabindex="-1" role="dialog" aria-labelledby="editarParcelaLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <table class="table table-bordered fs-16 table-fin table-modal" style="margin: 0;">
+          <thead>
+            <tr>
+              <th>Valor</th>
+              <th>Data Início</th>
+              <th>Data Venc.</th>
+              <th id="data_pag_th">Data Pag.</th>
+              <th id="data_rep_th">Repasse</th>
+              <th id="actions_th">Ações</th>
+            </tr>
+          </thead>
+          <form action="financeiro/editar" method="POST">
+            <input type="hidden" name="id_contrato" id="input_id_contrato">
+            <input type="hidden" name="n_parcela" id="input_n_parcela">
+
+            <tr>
+              <td>
+                <div class="flex-input">
+                  <span class="fw-bold">R$</span>
+                  <input type="text" name="valor" class="cash">
+                </div>
+              </td>
+              <td>
+                <input type="date" name="data_inicio" onfocus="this.showPicker();" min="2000-01-01" max="2100-12-31">
+              </td>
+              <td>
+                <input type="date" name="data_fim" onfocus="this.showPicker();" min="2000-01-01" max="2100-12-31">
+              </td>
+              <td id="data_pag_td">
+                <input type="date" name="data_pag" onfocus="this.showPicker();" min="2000-01-01" max="2100-12-31" id="data_pag_input">
+              </td>
+              <td id="data_rep_td">
+                <input type="date" name="data_rep" onfocus="this.showPicker();" min="2000-01-01" max="2100-12-31" id="data_rep_input">
+              </td>
+              <td class="text-center" id="actions_td">
+                <a
+                  id="btn-est-pag"
+                  href="#"
+                  class="btn btn-success"
+                  data-id=""
+                  data-n="">
+                  <i style="margin-left: 5px;" class="fa fa-undo fa-fw"></i>
+                  Estornar pagamento
+                </a>
+                <a role="button" id="btn-est-rep-none" href="#" class="btn btn-default disabled">
+                  <i style="margin-right: 5px;" class="fa fa-times fa-lg"></i>
+                  Não repassado
+                </a>
+              </td>
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-success btn-lg">Salvar alterações</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function() {
     $('.dropy').on('show.bs.dropdown', function() {
@@ -241,13 +321,28 @@
   });
 </script>
 
-<?php if (!empty($_GET['status'])): ?>
+<?php if (!empty($_GET['status'])):
+  $title = "";
+  if ($_GET['status'] == 'ok') {
+    $title = "Parcela recebida com sucesso! 💸";
+    $icon = "success";
+  } elseif ($_GET['status'] == 'editado') {
+    $title = "Parcela editada com sucesso! ✏️";
+    $icon = "success";
+  } elseif ($_GET['status'] == 'errozero') {
+    $title = "Valor inválido! O valor da parcela não pode ser zero.";
+    $icon = "error";
+  } elseif ($_GET['status'] == 'pagoestornado') {
+    $title = "Pagamento estornado com sucesso! 🔄";
+    $icon = "success";
+  }
+?>
   <script>
     $(document).ready(function() {
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Parcela recebida com sucesso! 💸",
+        position: "center",
+        icon: "<?= $icon; ?>",
+        title: "<?= $title; ?>",
         showConfirmButton: false,
         timer: 2000,
         customClass: {
@@ -280,6 +375,35 @@
           window.location.href = `<?= BASE_URL; ?>financeiro/pagar/${idContrato}/${nParcela}/${tipo}`;
         }
       });
+    });
+    // Estornar pagamento #btn-est-pag
+    $("#btn-est-pag").on("click", function() {
+      let idContrato = $(this).attr("data-id");
+      let nParcela = $(this).attr("data-n");
+
+      Swal.fire({
+        title: "Tem certeza?",
+        html: "Deseja estornar o <b>pagamento</b> desta parcela?<br>O <b>repasse</b> também será estornado <b>caso tenha sido repassado</b>.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#28a745",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, estornar!",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `<?= BASE_URL; ?>financeiro/estornarpagamento/${idContrato}/${nParcela}`;
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  $('.btn-edit-parc').on('click', function() {
+    $('#editarParcela').modal({
+      backdrop: 'static',
+      keyboard: false
     });
   });
 </script>

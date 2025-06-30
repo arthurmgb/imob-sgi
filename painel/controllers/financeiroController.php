@@ -34,6 +34,74 @@ class financeiroController extends Controller
 		$this->loadTemplate('financeiro/index', $dados);
 	}
 
+	public function populareditar()
+	{
+		$n_parcela = $_POST['n'] ?? null;
+		$id_contrato = $_POST['id'] ?? null;
+
+		if (!$n_parcela || !$id_contrato) {
+			echo json_encode(['status' => 'erro', 'msg' => 'Dados ausentes']);
+			return;
+		}
+
+		$parcelas = new Parcelas;
+		$data = $parcelas->populate($n_parcela, $id_contrato);
+
+		echo json_encode([
+			'status' => 'ok',
+			'data' => $data
+		]);
+	}
+
+	public function editar()
+	{
+		$get_input_data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+		$id_contrato = $get_input_data['id_contrato'] ?? null;
+		$n_parcela = $get_input_data['n_parcela'] ?? null;
+		$valor = $get_input_data['valor'] ?? null;
+		$data_inicio = $get_input_data['data_inicio'] ?? null;
+		$data_fim = $get_input_data['data_fim'] ?? null;
+		$data_pag = isset($get_input_data['data_pag']) && $get_input_data['data_pag'] !== ''
+			? $get_input_data['data_pag']
+			: null;
+		$data_rep = isset($get_input_data['data_rep']) && $get_input_data['data_rep'] !== ''
+			? $get_input_data['data_rep']
+			: null;
+
+
+		$valor_teste = $valor;
+		$valor_teste = str_replace('.', '', $valor_teste); // remove ponto
+		$valor_teste = str_replace(',', '.', $valor_teste); // substitui
+		$valor_teste = (float)$valor_teste; // converte para float
+		// Se valor_teste for zero da erro
+		if ($valor_teste <= 1) {
+			$data = array(
+				'status' => 'errozero',
+			);
+			$data = http_build_query($data);
+			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato . '&' . $data);
+			exit;
+		}
+
+		$parcelas = new Parcelas;
+		$parcelas->editar(
+			$n_parcela,
+			$id_contrato,
+			$data_inicio,
+			$data_fim,
+			$valor,
+			$data_pag,
+			$data_rep
+		);
+		$data = array(
+			'status' => 'editado',
+		);
+		$data = http_build_query($data);
+		header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato . '&' . $data);
+	}
+
+
 	public function pagar($id_contrato, $id_parcela, $origem)
 	{
 		if (!empty($id_contrato) && !empty($id_parcela)) {
@@ -41,6 +109,21 @@ class financeiroController extends Controller
 			$parcelas->pagar($id_contrato, $id_parcela, $origem);
 			$data = array(
 				'status' => 'ok',
+			);
+			$data = http_build_query($data);
+			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato . '&' . $data);
+			exit;
+		}
+		header('Location: ' . BASE_URL . 'financeiro');
+	}
+
+	public function estornarpagamento($id_contrato, $id_parcela)
+	{
+		if (!empty($id_contrato) && !empty($id_parcela)) {
+			$parcelas = new Parcelas;
+			$parcelas->estornarPagamento($id_contrato, $id_parcela);
+			$data = array(
+				'status' => 'pagoestornado',
 			);
 			$data = http_build_query($data);
 			header('Location: ' . BASE_URL . 'financeiro?contrato=' . $id_contrato . '&' . $data);

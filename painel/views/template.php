@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/skins.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.1">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.5">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/plugins/lightbox/css/lightbox.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -37,12 +37,19 @@
 			}
 
 			.div-generate-print-area {
-				page-break-after: always;
+				page-break-after: auto !important;
+				page-break-inside: avoid !important;
 			}
 
 			.noPrint-rel {
 				display: none;
 			}
+
+			.content {
+				margin: 0 !important;
+				padding: 3px 6px 0 6px !important;
+			}
+
 		}
 	</style>
 	<title>IMOB - Sistema de Gerenciamento Imobiliário</title>
@@ -57,9 +64,9 @@
 		<header class="main-header">
 
 			<!-- Logo -->
-			<a href="<?php echo BASE_URL; ?>" class="logo">
+			<!-- <a href="<?php echo BASE_URL; ?>" class="logo">
 				<span style="font-family: 'Source Sans Pro',sans-serif; font-weight: 400;" class="logo-lg">Sol & Lua Imobiliária</span>
-			</a>
+			</a> -->
 
 
 			<nav class="navbar navbar-static-top">
@@ -138,7 +145,7 @@
 		<script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/adminlte.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/dashboard.js"></script>
-		<script src="<?php echo BASE_URL; ?>assets/js/script.js?v=2.0"></script>
+		<script src="<?php echo BASE_URL; ?>assets/js/script.js?v=2.5"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/lightbox/js/lightbox.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/jquery-mask/jquery.mask.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.min.js"></script>

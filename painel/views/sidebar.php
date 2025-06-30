@@ -257,7 +257,7 @@
 				</ul>
 			</li>
 
-			<?php if ($_SESSION['user']['nivel'] === '1'): ?>
+			<?php if ($_SESSION['user']['nivel'] == '1'): ?>
 				<li class="treeview <?php echo ($viewData['menu_ativo'] == 'configuracoes' || $viewData['menu_ativo'] == 'usuarios' || $viewData['menu_ativo'] == 'aprovacoes') ? 'active' : ''; ?>">
 					<a href="#">
 						<i class="fa fa-cogs"></i>
