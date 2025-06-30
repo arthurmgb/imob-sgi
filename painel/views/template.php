@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/skins.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.5">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.6">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/plugins/lightbox/css/lightbox.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -75,11 +75,6 @@
 					<span class="sr-only"></span>
 				</a> -->
 
-				<a href="<?= BASE_URL ?>financeiro" class="btn btn-success btn-absolute-shortcut btn-lg">
-					<i style="margin-right: 5px;" class="fa fa-usd"></i>
-					Pagamentos
-				</a>
-
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<li class="dropdown user user-menu">
@@ -124,6 +119,11 @@
 						</li>
 					</ul>
 				</div>
+
+				<a href="<?= BASE_URL ?>financeiro" class="btn btn-success btn-absolute-shortcut btn-lg">
+					<i style="margin-right: 5px;" class="fa fa-usd"></i>
+					Pagamentos
+				</a>
 			</nav>
 		</header>
 

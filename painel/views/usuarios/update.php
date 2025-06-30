@@ -22,11 +22,11 @@
              <div class="box-body">
                <div class="form-group">
                  <label>Nome completo</label>
-                 <input autocomplete="off" name="nome" type="text" required="required" class="form-control input-lg" id="e-nome" value="<?php echo utf8_encode($usuario['nome']); ?>">
+                 <input autocomplete="off" name="nome" type="text" required="required" class="form-control input-lg" id="e-nome" value="<?php echo $usuario['nome']; ?>">
                </div>
                <div class="form-group">
                  <label>CPF</label>
-                 <input autocomplete="off" name="cpf" type="text" required="required" class="form-control input-lg" id="cpf" placeholder="000.000.000-00" value="<?php echo utf8_encode($usuario['cpf']); ?>">
+                 <input autocomplete="off" name="cpf" type="text" required="required" class="form-control input-lg" id="cpf" placeholder="000.000.000-00" value="<?php echo $usuario['cpf']; ?>">
                </div>
                <div class="form-group">
                  <label>Cargo</label>
@@ -45,14 +45,14 @@
                    E-mail
                    <small class="text-muted">(opcional)</small>
                  </label>
-                 <input autocomplete="off" name="email" type="email" class="form-control input-lg" id="e-email" value="<?php echo utf8_encode($usuario['email']); ?>">
+                 <input autocomplete="off" name="email" type="email" class="form-control input-lg" id="e-email" value="<?php echo $usuario['email']; ?>">
                </div>
                <div class="form-group">
                  <label>
                    Celular
                    <small class="text-muted">(opcional)</small>
                  </label>
-                 <input autocomplete="off" name="telefone" type="text" class="form-control input-lg" id="tel" value="<?php echo utf8_encode($usuario['telefone']); ?>">
+                 <input autocomplete="off" name="telefone" type="text" class="form-control input-lg" id="tel" value="<?php echo $usuario['telefone']; ?>">
                </div>
                <hr style="border-color: #3C8DBC;">
                <label style="font-weight: normal;" class="pb-10 fs-18">
@@ -60,7 +60,7 @@
                </label>
                <div class="form-group">
                  <label>Usuário</label>
-                 <input autocomplete="off" name="login" type="text" required="required" class="form-control input-lg" id="e-usuario" value="<?php echo utf8_encode($usuario['login']); ?>">
+                 <input autocomplete="off" name="login" type="text" required="required" class="form-control input-lg" id="e-usuario" value="<?php echo $usuario['login']; ?>">
                </div>
                <div class="form-group">
                  <label>Alterar senha</label>
