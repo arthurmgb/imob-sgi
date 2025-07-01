@@ -152,7 +152,7 @@
                                     }
 
                                     $calc_parc_comissao_porcentagem = floatval($parcela['imv_comissao']);
-                                    $calc_parc_comissao_valor = round(($parcela['valor'] / 100) * $calc_parc_comissao_porcentagem);
+                                    $calc_parc_comissao_valor = ceil(($parcela['valor'] / 100) * $calc_parc_comissao_porcentagem);
 
                                     $valor_a_rcb += $calc_parc_comissao_valor;
                                 }
@@ -271,7 +271,7 @@
                                         <?php
                                         $parc_valor = round($parcela['valor']);
                                         $parc_comissao_porcentagem = floatval($parcela['imv_comissao']);
-                                        $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                                        $parc_comissao_valor = ceil(($parc_valor / 100) * $parc_comissao_porcentagem);
                                         ?>
 
                                         <tr class="<?php echo $status; ?>">

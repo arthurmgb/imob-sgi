@@ -242,7 +242,7 @@
                                     // Seção para calcular valores
                                     $parc_valor = round($recibo['valor']);
                                     $parc_comissao_porcentagem = floatval($recibo['com_imv']);
-                                    $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                                    $parc_comissao_valor = ceil(($parc_valor / 100) * $parc_comissao_porcentagem);
                                     $parc_valor_liquido = $parc_valor - $parc_comissao_valor;
                                     ?>
 
