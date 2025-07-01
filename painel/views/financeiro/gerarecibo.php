@@ -1,10 +1,10 @@
-<div class="custom-imob-loader">
+<div class="custom-imob-loader-2">
     <div class="div-inside-loader">
         <div class="div-content-loader">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                 <g transform="translate(80,50)">
                     <g transform="rotate(0)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="1">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="1">
                             <animateTransform attributeName="transform" type="scale" begin="-0.5608974358974359s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.5608974358974359s"></animate>
                         </circle>
@@ -12,7 +12,7 @@
                 </g>
                 <g transform="translate(71.21320343559643,71.21320343559643)">
                     <g transform="rotate(45)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.875">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.875">
                             <animateTransform attributeName="transform" type="scale" begin="-0.4807692307692307s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.4807692307692307s"></animate>
                         </circle>
@@ -20,7 +20,7 @@
                 </g>
                 <g transform="translate(50,80)">
                     <g transform="rotate(90)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.75">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.75">
                             <animateTransform attributeName="transform" type="scale" begin="-0.4006410256410256s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.4006410256410256s"></animate>
                         </circle>
@@ -28,7 +28,7 @@
                 </g>
                 <g transform="translate(28.786796564403577,71.21320343559643)">
                     <g transform="rotate(135)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.625">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.625">
                             <animateTransform attributeName="transform" type="scale" begin="-0.3205128205128205s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.3205128205128205s"></animate>
                         </circle>
@@ -36,7 +36,7 @@
                 </g>
                 <g transform="translate(20,50.00000000000001)">
                     <g transform="rotate(180)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.5">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.5">
                             <animateTransform attributeName="transform" type="scale" begin="-0.24038461538461536s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.24038461538461536s"></animate>
                         </circle>
@@ -44,7 +44,7 @@
                 </g>
                 <g transform="translate(28.78679656440357,28.786796564403577)">
                     <g transform="rotate(225)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.375">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.375">
                             <animateTransform attributeName="transform" type="scale" begin="-0.16025641025641024s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.16025641025641024s"></animate>
                         </circle>
@@ -52,7 +52,7 @@
                 </g>
                 <g transform="translate(49.99999999999999,20)">
                     <g transform="rotate(270)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.25">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.25">
                             <animateTransform attributeName="transform" type="scale" begin="-0.08012820512820512s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="-0.08012820512820512s"></animate>
                         </circle>
@@ -60,7 +60,7 @@
                 </g>
                 <g transform="translate(71.21320343559643,28.78679656440357)">
                     <g transform="rotate(315)">
-                        <circle cx="0" cy="0" r="6" fill="#337ab7" fill-opacity="0.125">
+                        <circle cx="0" cy="0" r="6" fill="#ffffff" fill-opacity="0.125">
                             <animateTransform attributeName="transform" type="scale" begin="0s" values="1.5 1.5;1 1" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite"></animateTransform>
                             <animate attributeName="fill-opacity" keyTimes="0;1" dur="0.641025641025641s" repeatCount="indefinite" values="1;0" begin="0s"></animate>
                         </circle>
@@ -112,7 +112,7 @@
 
         <script>
             var btn_generate_recs = document.querySelector("#btn-generate-recs");
-            var custom_loader = document.querySelector(".custom-imob-loader");
+            var custom_loader = document.querySelector(".custom-imob-loader-2");
             var input_data_inicio = document.querySelector("#input-data-inicio");
             var input_data_fim = document.querySelector("#input-data-fim");
 
@@ -166,7 +166,7 @@
                     <?php foreach ($recibos as $recibo) : ?>
                         <div class="div-generate-print-area">
                             <hr style="margin: 15px 0 10px 0; border-color: #999;">
-                            <h4 style="margin: 25px 0 0px 0;">
+                            <h4 style="margin: 0px 0 0 0;">
                                 <i class="fa fa-user fa-fw" aria-hidden="true"></i>
                                 <b>Locador:</b> <?php echo $recibo['nome_pro'] ?>
                             </h4>
