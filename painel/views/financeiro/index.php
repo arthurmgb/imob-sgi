@@ -380,17 +380,47 @@
     $('.dropy').on('show.bs.dropdown', function() {
       var $dropdown = $(this).find('.dropdown-menu');
       var $button = $(this).find('.dropdown-toggle');
+      var $tableResponsive = $(this).closest('.table-responsive');
+
+      // Mostrar temporariamente o dropdown para calcular altura real
+      $dropdown.css({
+        'visibility': 'hidden',
+        'display': 'block'
+      });
 
       var buttonOffset = $button.offset();
       var windowHeight = $(window).height();
-      var spaceBelow = windowHeight - (buttonOffset.top + $button.outerHeight());
-      var spaceAbove = buttonOffset.top;
+      var scrollTop = $(window).scrollTop();
+      var dropdownHeight = $dropdown.outerHeight();
 
-      if (spaceBelow < $dropdown.outerHeight() && spaceAbove > $dropdown.outerHeight()) {
+      // Calcular espaço visível na viewport (não na página toda)
+      var buttonPositionInViewport = buttonOffset.top - scrollTop;
+      var spaceBelow = windowHeight - (buttonPositionInViewport + $button.outerHeight());
+      var spaceAbove = buttonPositionInViewport;
+
+      // Esconder novamente
+      $dropdown.css({
+        'visibility': 'visible',
+        'display': 'none'
+      });
+
+      if (spaceBelow < dropdownHeight && spaceAbove > dropdownHeight) {
         $(this).addClass('dropup');
       } else {
         $(this).removeClass('dropup');
       }
+
+      // Adicionar classe para fallback (navegadores sem suporte a :has())
+      $tableResponsive.addClass('dropdown-open');
+    });
+
+    $('.dropy').on('hide.bs.dropdown', function() {
+      var $tableResponsive = $(this).closest('.table-responsive');
+
+      // Remover classe após um pequeno delay para permitir animação
+      setTimeout(function() {
+        $tableResponsive.removeClass('dropdown-open');
+      }, 150);
     });
   });
 </script>

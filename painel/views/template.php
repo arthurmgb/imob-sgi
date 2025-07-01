@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/adminLTE.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/skins.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.7">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css?v=2.8">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/plugins/lightbox/css/lightbox.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -145,7 +145,7 @@
 		<script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/adminlte.min.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/dashboard.js"></script>
-		<script src="<?php echo BASE_URL; ?>assets/js/script.js?v=2.7"></script>
+		<script src="<?php echo BASE_URL; ?>assets/js/script.js?v=2.8"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/lightbox/js/lightbox.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/plugins/jquery-mask/jquery.mask.js"></script>
 		<script src="<?php echo BASE_URL; ?>assets/js/jquery-ui.min.js"></script>

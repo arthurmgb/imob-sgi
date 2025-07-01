@@ -717,7 +717,10 @@ td {
   gap: 5px;
   color: #333;
 }
-.toggler-link:hover {
+/* .toggler-link hover focus and active */
+.toggler-link:hover,
+.toggler-link:focus,
+.toggler-link:active {
   color: #000;
 }
 .fa-toggle-on {
@@ -872,7 +875,7 @@ td {
   }
 }
 .custom-imob-loader-2 {
-  position: absolute;
+  position: fixed;
   z-index: 99999;
   width: 100%;
   height: 100%;

@@ -583,6 +583,11 @@ $(".btn-edit-parc").on("click", function () {
     display: "flex",
   });
 
+  // Previnir scroll no body enquanto mostra o loading
+  $("body").css({
+    overflow: "hidden",
+  });
+
   $.ajax({
     url: BASE_URL + "financeiro/populareditar/",
     method: "post",
@@ -645,15 +650,27 @@ $(".btn-edit-parc").on("click", function () {
 
         // Esconder loading após modal abrir
         $(".custom-imob-loader-2").hide();
+        // Permitir scroll no body após modal abrir
+        $("body").css({
+          overflow: "auto",
+        });
       } else {
         // Esconder loading em caso de erro
         $(".custom-imob-loader-2").hide();
+        // Permitir scroll no body após erro
+        $("body").css({
+          overflow: "auto",
+        });
         alert("Erro ao buscar dados da parcela.");
       }
     },
     error: function (xhr, status, error) {
       // Esconder loading em caso de erro
       $(".custom-imob-loader-2").hide();
+      // Permitir scroll no body após erro
+      $("body").css({
+        overflow: "auto",
+      });
       console.log(error);
     },
   });
