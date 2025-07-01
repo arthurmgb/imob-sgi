@@ -178,7 +178,7 @@
                       <?php
                       $parc_valor = round($parcela['valor']);
                       $parc_comissao_porcentagem = floatval($parcelas['comissao']);
-                      $parc_comissao_valor = round(($parc_valor / 100) * $parc_comissao_porcentagem);
+                      $parc_comissao_valor = ceil(($parc_valor / 100) * $parc_comissao_porcentagem);
                       ?>
                       R$ <?= number_format($parc_valor, 2, ',', '.'); ?>
                     </td>

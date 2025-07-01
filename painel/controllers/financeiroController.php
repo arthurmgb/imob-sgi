@@ -23,7 +23,7 @@ class financeiroController extends Controller
 
 		$filtros = array();
 
-		if (!empty($_GET['contrato'])) {
+		if (!empty($_GET['contrato']) && ctype_digit($_GET['contrato']) && (int)$_GET['contrato'] > 0) {
 			$filtros['contrato'] = abs(addslashes($_GET['contrato']));
 			$filtros['pagas'] = isset($_GET['pagas']) ? $_GET['pagas'] : 'true';
 			$parcelas = new Parcelas();

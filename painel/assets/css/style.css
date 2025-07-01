@@ -229,8 +229,8 @@ table thead th:last-child {
 }
 .main-sidebar {
   padding-top: 10px !important;
-  /* background-color: #1e293b !important; */
   background-color: #0c121e !important;
+  z-index: 1040 !important;
   font-family: "Poppins", sans-serif !important;
 }
 .skin-blue .main-header .navbar {
@@ -825,7 +825,6 @@ td {
 /* Fix para dropdown dentro de table-responsive */
 .table-responsive {
   overflow-x: auto; /* Mantém scroll horizontal quando necessário */
-  overflow-y: visible; /* Permite dropdown "vazar" verticalmente */
 }
 
 /* Quando dropdown está aberto, permite overflow completo */
