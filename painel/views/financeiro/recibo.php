@@ -26,7 +26,7 @@ $imovel = $contrato['imovel'];
           </button>
         </div>
         <hr class="noPrint-rel" style="margin: 0px 0 10px 0; border-color: #999;">
-        <h4 style="margin: 0px;">
+        <h4 style="margin-top: 25px;">
           <i class="fa fa-user fa-fw" aria-hidden="true"></i>
           <b>Locador:</b> <?php echo $proprietario['nome'] ?>
         </h4>
