@@ -166,7 +166,7 @@
                     <?php foreach ($recibos as $recibo) : ?>
                         <div class="div-generate-print-area">
                             <hr style="margin: 15px 0 10px 0; border-color: #999;">
-                            <h4 style="margin: 10px 0 0px 0;">
+                            <h4 style="margin: 25px 0 0px 0;">
                                 <i class="fa fa-user fa-fw" aria-hidden="true"></i>
                                 <b>Locador:</b> <?php echo $recibo['nome_pro'] ?>
                             </h4>

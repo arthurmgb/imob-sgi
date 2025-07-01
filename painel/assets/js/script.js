@@ -579,6 +579,10 @@ $(".btn-edit-parc").on("click", function () {
   const id = $(this).data("id");
   const n = $(this).data("n");
 
+  $(".custom-imob-loader-2").css({
+    display: "flex",
+  });
+
   $.ajax({
     url: BASE_URL + "financeiro/populareditar/",
     method: "post",
@@ -638,11 +642,18 @@ $(".btn-edit-parc").on("click", function () {
           backdrop: "static",
           keyboard: false,
         });
+
+        // Esconder loading após modal abrir
+        $(".custom-imob-loader-2").hide();
       } else {
+        // Esconder loading em caso de erro
+        $(".custom-imob-loader-2").hide();
         alert("Erro ao buscar dados da parcela.");
       }
     },
     error: function (xhr, status, error) {
+      // Esconder loading em caso de erro
+      $(".custom-imob-loader-2").hide();
       console.log(error);
     },
   });

@@ -819,3 +819,77 @@ td {
 #actions_td > a.btn-primary:hover {
   background-color: #367fa9 !important;
 }
+/* Fix para dropdown dentro de table-responsive */
+.table-responsive {
+  overflow-x: auto; /* Mantém scroll horizontal quando necessário */
+  overflow-y: visible; /* Permite dropdown "vazar" verticalmente */
+}
+
+/* Quando dropdown está aberto, permite overflow completo */
+.table-responsive:has(.dropdown.open) {
+  overflow: visible !important;
+}
+
+.table-fin {
+  position: relative;
+}
+
+.dropy {
+  position: relative !important;
+}
+
+.dropy .dropdown-menu {
+  position: absolute !important;
+  z-index: 9999 !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+/* Dropdown normal - abre para baixo */
+.dropy:not(.dropup) .dropdown-menu {
+  top: 100% !important;
+  bottom: auto !important;
+}
+
+/* Dropdown dropup - abre para cima */
+.dropy.dropup .dropdown-menu {
+  top: auto !important;
+  bottom: 100% !important;
+}
+
+/* Garantir que o dropdown apareça por cima de outros elementos */
+.dropdown.open .dropdown-menu {
+  position: absolute !important;
+  z-index: 9999 !important;
+  display: block !important;
+}
+
+/* Fallback para navegadores que não suportam :has() */
+@supports not selector(:has(*)) {
+  .table-responsive.dropdown-open {
+    overflow: visible !important;
+  }
+}
+.custom-imob-loader-2 {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.649);
+  display: none;
+  user-select: none;
+}
+.div-inside-loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.custom-imob-loader-2 h1 {
+  font-size: 20px;
+  color: #ffffff;
+}
